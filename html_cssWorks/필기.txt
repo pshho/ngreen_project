@@ -1,0 +1,90 @@
+https://github.com/kiyongee2/green_project_web
+
+클라이언트(웹브라우저) - 서버(네이버 서버컴퓨터)
+ex) www.naver.com(실제로 100.35.127.55 이런 숫자로 구성되어 있음)
+로컬컴퓨터 서버 주소: 127.0.0.1:5500=localhost:5500 같음
+html - tag(명령어), 구조/css - 디자인
+html, css, javascript(IDE) - VS CODE (프로그램 구축 환경이 쉬워짐)
+java(IDE) - 이클립스
+sql - 데이터베이스
+python(IDE) - 파이참
+
+페이지 연결(하이퍼링크) - <a href(hyper reference)="">(anchor)
+사진 - <img src="이미지 위치">
+
+환경변수(path)가 자동으로 잡히지만 잡아줘야 될 때가 있음
+
+* 비트맵은 점이고 벡터는 선방식이기 때문
+
+* 16진수 color 넣을 땐 #을 붙이고 ff00ff(ff=R, 00=G, ff=B)
+* bit(binary digit) - 0, 1(비트 하나씩 올라갈 때마다 2의 제곱이 하나씩 올라감)
+  8bit = 1B(1Byte)
+* 문자(character)를 컴퓨터가 이해하는 방식 - 아스키 코드(7bit로 가능)
+* 한글, 일본어, 중국어 등은 아스키 코드로 다 변환할 수 없어 유니코드(16bit)가 나옴
+* UTF-8 영어는 8bit만 쓰고 한글 외 다른 언어는 16bit쓰고, UTF-16 무조건 16bit로만
+
+- 선택자(selector)
+1. 태그
+2. id 선택자: #을 앞에 붙임
+3. class 선택자: 점(.)을 앞에 붙임
+  * id(javascript에서 쓰자)는 구분지을 때 class는 같이 적용시킬 때 class를 더 많이 사용
+4. , 선택자: 그룹 선택자
+
+* 표에서 열(column)의 속성 변경
+    <colgroup>
+      <col>
+      <col>
+    </colgroup>
+
+* GIT - 명령어 툴
+  GIT HURB - 저장 공간 및 툴
+
+* DOS(도스)
+  - 디렉터리(Directory)
+  - cd(change directory): 디렉터리 위치 이동
+  - dir: 디렉터리 내부 보기
+  - cd..: 상위 디렉터리(부모로 이동)
+  - cd c:/ 루트 디렉터리
+  - cd c:\
+  - md(mkdir): 디렉터리 생성
+
+* 배치(display-일괄적)
+  - display: block(수직)
+  - display: none(숨김)
+  - display: inline(수평)
+  - display: inline-block(수평인데 속성 간직함)
+
+* 배치(float-독립적)
+
+* 쿼리스트링 형태
+  - 서버.jsp?sform='강남역'
+
+* 유효성 검사 필수
+
+* 프레임워크 - 웹 프로젝트
+    1. 자바 스프링(부트): 전자정부(중소기업) - egov(우리나라 개발)
+    2. 파이썬 장고
+    3. 자바스크립트 리엑트(프런트엔드 개발자)
+    4. 닷넷 ASP - c#
+
+* 배치 속성
+  - display(일괄 수직, 수평)
+  - float[일괄 수직(개별)]
+  - position(독립, 개별)
+
+* 레이아웃 만들 때 태그
+  <body>
+    <header>
+    </header>
+    <section>
+    </section>
+    <footer>
+    </footer>
+  </body>
+
+* http:www(포트번호 - OO)
+  ftp:(file transfer protocol) - OO
+    - 포트번호 다름
+
+* calc()
+  - 가변 크기에 패딩, 마진을 고정크기로 설정

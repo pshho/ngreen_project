@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>transform 속성 사용</title>
+        <style>
+            div{
+                width: 250px;
+                border: 5px solid #0f0;
+                padding: 20px 10px;
+                position: absolute;
+                top: 150px;
+                left: 100px;
+            }
+            h1{
+                margin: 0;
+                text-align: center;
+            }
+            div:hover{
+                -webkit-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+
+                -webkit-transition: rotate, 2s;
+                border: 5px solid rgb(255, 0, 212);
+                width: 300px;
+                
+                transition: transform, width, 3s, 2s;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Mouse Over</h1>
+        </div>
+    </body>
+</html>

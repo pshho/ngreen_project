@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수의 선언과 사용</title>
+    <script>
+        /* 학생 손흥민, 2학년 3반
+           '+' - 문자 연결 연산자
+           '=' - 대입 연산자 */
+        // 초기화 선언 후 바로 변수 작성
+        var name = '손흥민';
+        // 먼저 선언 후 뒤에 변수 작성
+        var grade;
+        grade = 2;
+        // 예약어(이미 약속된 명령어)는 사용못함
+        // var class;
+        // 단어가 합성될 때 두 번째 단어는 대문자로(관습적)
+        var schoolClass = 3;
+
+        /* console.log("이름:" + name);
+        console.log("학년:" + grade);
+        console.log("반:" + schoolClass); */
+        console.log("이름:" + name + ", 학년:" + grade + ", 반:" + schoolClass)
+        // typeof()함수는 자료형을 알려주는 기능이 있음
+        console.log(typeof(name));
+        console.log(typeof(grade));
+
+        document.write("이름: " + name + " 학년: " + grade + " 반: " + schoolClass);
+        /* document.write("학년:" + grade);
+        document.write("반:" + schoolClass); */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

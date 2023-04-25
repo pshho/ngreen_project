@@ -1,0 +1,158 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #6676bd;
+}
+
+header {
+    font-family: Josefin Sans;
+}
+
+/* section 스타일 */
+section h2 {
+    font-family: Roboto;
+    font-size: 1.2rem;
+    margin: 0;
+    background: url("../images/bullet_down.png") no-repeat right;
+    cursor: pointer;
+}
+
+section h2.on {
+    background: url("../images/bullet_up.png") no-repeat right;
+}
+
+section ul li {
+    font-size: 0.7rem;
+    font-family: Nanum Gothic;
+}
+
+#aboutMe, #career, #skill {
+    width: 90%;
+    margin: 30px auto;
+}
+
+#careerD, #skillD {
+    display: none;
+}
+
+/* aboutMe 스타일 */
+#aboutMe #aboutIntro {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#aboutMe .photo {
+    height: 125px;
+    margin: 15px 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+#aboutMe #introD {
+    margin-left: 10px;
+}
+
+img {
+    height: 100%;
+}
+
+#aboutMe h3 {
+    margin: 10px 0 5px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#aboutMe ul {
+    padding-left: 10px;
+}
+
+#aboutMe ul li {
+    list-style: none;
+    line-height: 2;
+}
+
+/* career 스타일 */
+#career ul {
+    padding-left: 30px;
+}
+
+#career ul li {
+    list-style: square;
+    line-height: 2;
+}
+
+/* skill 스타일 */
+#skill ul {
+    padding-left: 30px;
+}
+
+#skill ul li {
+    list-style: square;
+    line-height: 2;
+}
+
+@media screen and (min-width: 458px) {
+    section h2 {
+        font-size: 1.1rem;
+    }
+
+    #aboutMe .photo {
+        height: 140px;
+    }
+
+    section ul li {
+        font-size: 0.8rem;
+    }
+
+    #aboutMe h3 {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 548px) {
+    section h2 {
+        font-size: 1.3rem;
+    }
+
+    #aboutMe .photo {
+        height: 160px;
+    }
+
+    section ul li {
+        font-size: 0.9rem;
+    }
+
+    #aboutMe h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 680px) {
+    section h2 {
+        font-size: 1.4rem;
+    }
+
+    #aboutMe .photo {
+        height: 170px;
+    }
+
+    section ul li {
+        font-size: 1rem;
+    }
+
+    #aboutMe h3 {
+        font-size: 1.2rem;
+    }
+}

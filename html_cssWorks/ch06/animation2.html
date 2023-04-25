@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation 속성</title>
+    <style>
+        .box{
+            height: 60px;
+            margin: 100px;
+
+            animation: moving 2s infinite;
+            /* 애니메이션 시작 방향(기본은 normal - 정방향)이 역방향 */
+            animation-direction: alternate;
+            /* 애니메이션 끝날 때 상태를 계속 유지 */
+            animation-fill-mode: forwards;
+        }
+        h3{
+            padding: 15px;
+        }
+        @keyframes moving {
+            from{
+                width: 200px;
+                background: #ff0;
+                transform: scale(0.5) rotate(15deg);
+            }to{
+                width: 400px;
+                background: orange;
+                transform: scale(1) rotate(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>CSS3 Animation</h3>
+    </div>
+</body>
+</html>

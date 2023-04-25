@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#wrap {
+			display: flex;
+			flex-flow: row wrap;
+			width: 90%;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		header {
+			width: 100%;
+			display: flex;
+			position: relative;
+			justify-content: flex-end;
+			order: 1;
+		}
+
+		header h1 {
+			width: 12.5%;
+			height: 142px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: #ff6b57;
+		}
+
+		header nav {
+			width: 87.5%;
+			min-height: 80px;
+			background: #ff6b57;
+		}
+
+		header nav h2 {
+			margin: 24px auto;
+		}
+
+		.slider {
+			order: 2;
+			width: 50%;
+			background: #3c90be;
+		}
+
+		.gallery {
+			order: 3;
+			width: 27%;
+			height: 350px;
+			background: #f8de73;
+		}
+
+		.rankUp {
+			order: 4;
+			width: 23%;
+			background: #00d2a5;
+			text-align: center;
+		}
+
+		.latest {
+			order: 5;
+			width: 30%;
+			background: #9cabe4;
+			height: 250px;
+		}
+
+		.popular {
+			order: 6;
+			width: 30%;
+			background: #d76817;
+		}
+
+		.banner {
+			order: 7;
+			width: 23%;
+			display: flex;
+			flex-flow: column wrap;
+		}
+
+		.banner div {
+			flex: 1 1 0;
+		}
+
+		.banner div:first-child {
+			background: #0175bb;
+		}
+
+		.banner div:last-child {
+			background: #1261c9;
+		}
+
+		.social {
+			order: 8;
+			width: 17%;
+			background: #fe6eda;
+		}
+
+		footer {
+			width: 100%;
+			order: 9;
+			background: #474747;
+			height: 94px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="wrap">
+		<header>
+			<h1></h1>
+			<nav>
+				<h2>헤더 영역</h2>
+			</nav>
+		</header>
+
+		<section class="slider">
+			<h2>슬라이더 영역</h2>
+		</section>
+
+		<section class="gallery">
+			<h2>갤러리 영역</h2>
+		</section>
+
+		<section class="rankUp">
+			<h2>인기 검색어</h2>
+			<h1>영어</h1>
+		</section>
+
+		<section class="latest">
+			<h2>최근 글 영역</h2>
+		</section>
+
+		<section class="popular">
+			<h2>인기 글 영역</h2>
+		</section>
+
+		<section class="banner">
+			<div></div>
+			<div></div>
+		</section>
+
+		<section class="social">
+			<h2>소셜 네트워크 영역</h2>
+		</section>
+
+		<footer>
+			<h2>푸터 영역</h2>
+		</footer>
+	</div>
+</body>
+
+</html>

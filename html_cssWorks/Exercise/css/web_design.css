@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#main{
+    font-family: Nanum Gothic Coding;
+    border-bottom: 3px solid #333;
+    width: 450px;
+    margin: 30px auto auto auto;
+    text-align: center;
+    padding-bottom: 5px;
+}
+#sub{
+    width: 400px;
+    margin: 0 auto;
+    line-height: 2;
+}
+ul li{
+    list-style: none;
+}
+.subject1{
+    color: #ad3000;
+    font-weight: bold;
+    font-size: larger;
+    font-family: Noto Serif KR;
+}
+.subject2{
+    font-size: small;
+    font-family: Noto Serif KR;
+}

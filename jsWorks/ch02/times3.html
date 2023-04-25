@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3의 배수</title>
+    <script>
+        // 3의 배수
+        // 3의 배수 개수 구하기
+        /* let count = 0; // 변수의 위치 - 전역
+        for(var i=1; i<=100; i++){
+            // 이곳에 let count = 0;이 들어가면 for문이 끝날 때 사라짐
+            if(i % 3 == 0){
+                // count = count + 1;
+                count++;
+                document.write(i + " ");
+            }
+        }
+        document.write("개수: " + count); */
+
+        // continue문
+        // let count = 0; // 변수의 위치 - 전역
+        for(var i=1; i<=30; i++){
+            // 이곳에 let count = 0;이 들어가면 for문이 끝날 때 사라짐
+            if(i % 3 !== 0){
+                continue;
+                // count = count + 1;
+                // count++;
+                // document.write(i + " ");
+            }
+            document.write(i + " ");
+        }
+        // document.write("개수: " + count);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

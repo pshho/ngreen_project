@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>절대값 함수</title>
+    <style>
+        body{margin: 30px auto; text-align: center;}
+    </style>
+</head>
+<body>
+    <button type="button" onclick="myAbs(-34)">계산하기</button>
+    <p id="show"></p>
+    <script>
+        let myAbs = function(x){// x>0, x<0
+            // return: if~else문
+            if(x<0){
+                document.getElementById("show").innerHTML = -x;
+            }
+            else{
+                document.getElementById("show").innerHTML = x;
+            }
+        }
+
+        // let value = myAbs(13);
+        // document.write("절대값: " + value);
+    </script>
+</body>
+</html>

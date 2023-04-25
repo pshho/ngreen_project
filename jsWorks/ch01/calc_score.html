@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과목의 총점과 평균 계산</title>
+    <script>
+        // 영어와 수학, 국어 과목의 총점, 평균
+        let subject;
+        let engScore = 80;
+        let mathScore = 75;
+        let korScore = 90;
+        let total, avg;
+
+        // 두 개 이상의 자료 넣을 때 배열
+        /* let score = [90, 80, 80]; */
+        /* score[0]; index 번호, 0부터 시작 */
+
+        // 연산
+        // 총점
+        total = engScore + mathScore + korScore;
+
+        //출력
+        console.log("총점: " + total);
+
+        // 평균 = 총점/개수
+        avg = total / 3;
+        console.log("평균: " + avg);
+
+        // 자료형
+        console.log(typeof(total)); // 자바에서 number - int형(정수)
+        console.log(typeof(avg)); // 자바에서 number - float형(실수)
+    </script>
+</head>
+<body>
+</body>
+</html>

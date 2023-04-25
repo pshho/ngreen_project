@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클릭하면 이미지 바꾸기</title>
+    <style>
+        #pic{cursor: pointer;}
+    </style>
+</head>
+<body>
+    <img src="./images/cup-1.png" alt="컵1" onclick="changePic()" id="pic">
+
+    <script>
+        // 객체.src = "파일의 위치(경로)"
+        let pic = document.getElementById("pic");
+        let state = true;
+
+        function changePic(){
+            setInterval(function(){
+                if(state){
+                    pic.src = "./images/cup-2.png";
+                    
+                    state = false;
+                }else{
+                    pic.src = "./images/cup-1.png";
+
+                    state = true;
+                }
+            }, 1000);
+            
+            /* if(state){
+                setTimeout(function(){
+                    pic.src = "./images/cup-2.png";
+                }, 1000);
+
+                state = false;
+            }else{
+                setTimeout(function(){
+                    pic.src = "./images/cup-1.png";
+                }, 1000);
+                
+                state =true;
+            } */
+        }
+    </script>
+</body>
+</html>

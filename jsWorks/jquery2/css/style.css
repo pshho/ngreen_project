@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#wrap {
+    height: 2000px;
+}
+
+#up {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    transition: all 0.5s ease-in;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#up.on {
+    opacity: 1;
+    visibility: visible;
+}
+
+#up a {
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 20px;
+}

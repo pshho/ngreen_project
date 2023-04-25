@@ -1,0 +1,100 @@
+* head 안에 script에 javascript 들어감
+
+* 변수 - variable
+* type(자료형)
+ - 숫자형(3, 1.2 - 정수, 실수형)
+ - 문자형('봄')
+ - 부울형(true/false)
+
+ * 변수 대입
+  - 자바: int num = 10
+  - 자바스크립트: var num = 10
+  - 자바: char(짧은 문자) ch = 'a', string(긴 문자) pwd = "abcd1234"
+  - 자바스크립트: var ch = 'a'
+   # 자바스크립트는 모든 자료형에 대입이 통일되어있음
+    - 변수 선언 방법: var 변수이름 = '값'(ex. var userid = 'sky123')
+
+* 산술연산
+  비교연산(논리연산) - 조건연산(삼항연산)
+  (조건식) ? true : false
+  비트연산
+
+* &&(and) 연산자 - 논리곱, 교집합
+  - 두 조건이 모두 참일 때만 참
+    # T && T ㅡ> T
+      T && F ㅡ> F
+      F && T ㅡ> F
+      F && F ㅡ> F
+
+* || 연산자 - 논리합, 합집합
+  - 두 조건 중 한 개만 참이어도 참
+   # T || T ㅡ> T
+     T || F ㅡ> T
+     F || T ㅡ> T
+     F || F ㅡ> F
+
+* ! 연산자 - 논리 부정
+  - ! T ㅡ> F
+    ! F ㅡ> T
+
+* 프로그래밍에서 중요한
+  - 제어(control): 조건문(if), 반복문(for, while)
+
+* object: 가장 큰 자료형(바이트가 크다)
+  - 숫자, 문자열, 부울형, null, array(배열) 포함됨
+
+* 함수(function, method)
+  - 기능: 입력, 출력, 사칙연산
+  - function 함수이름(){실행문(변수, 제어문(if, for))}
+  - 유형: return 있는 함수와 없는 함수(매개변수)
+
+* 반복문
+  - 반복정지: break문
+  - 아래의 실행문을 수행하지 않고 다시 올라감: continue문
+
+* 배열(Array)
+  - 여러 개의 연속적인 값을 저장하는 자료형
+  - 유형1
+     let 배열이름 = [값1, 값2...] - 많이 쓰임
+  - 유형2
+     let 배열이름 = new Array(4) - 객체방식
+
+* 메인 함수(블록) - 변수
+  - 사용자 함수(코드블록){변수, 제어문}
+    ∴ 변수 사용 유의(변수의 유효범위 - scope)
+        -전역(global)변수, 지역(local)변수의 유효범위: 메모리 위치가 다름
+
+* 0 < Math.random() < 1
+
+* 사용자 함수
+  - function showHide(){}
+  사용자 객체 - 첫글자 대문자
+  생성자 함수(클래스)
+  - function Showhide(){}
+    ▷ 객체 1개 - json(xml > json)
+        let book = {title: '반응형 웹', writer: '김윤아'};
+    ▷ 배열
+        let book = ["자바책", "웹 교재", "파이썬 책"];
+    ▷ 객체 여러개
+
+* 일차원 배열
+  - let msg = "hello"
+  - msg[0] = 'h'
+  - let num = [1, 2, 3, 4]
+
+  이차원 배열
+  - let arr = [ // 2행 3열
+      [1, 2], [3, 4, 5]
+    ]
+
+* ES5(2009)
+  - 현재 ES6(2016): ECMAScript(Javascript)
+  - ES6를 할 줄 알아야 리액트 프레임워크(웹) → 리액트 네이티브(앱)까지 할 수 있다
+  - jQuery(제이쿼리): 라이브러리 + 자바 스프링 프레임워크
+  - Javascript: CSS 역할 - 객체이름.style.속성
+                HTML 생성 - createElement(), createTextNode()
+
+* 정규 표현식(Regular Expression)
+  - let str = new RegExp('/text/' or '/[0~9]/' or '/[a-zA-Z]/')
+  - /[a-c]/ == /[abc]/
+    /^[a-c]/ == abc가 아니다

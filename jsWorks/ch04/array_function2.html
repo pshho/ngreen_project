@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 객체 함수</title>
+    <script>
+        // 배열 요소 합치기
+        let numbers = [1, 2, 3];
+        let chars = ['a', 'b', 'c'];
+
+        let list = numbers.concat(chars);
+        // let list = numbers + "," + chars; // 연결만 함, 실제 배열 합치기 X
+        
+        // list의 2번 조회
+        document.write(list[2] + "<br>");
+
+        for(let i in list)
+            document.write(list[i] + " ");
+
+        document.write("<br>" + list + "<br>");
+
+        // 구분기호 연결하기
+        document.write(numbers.join("-") + "<br>");
+        document.write(chars.join(" ") + "<br>");
+        document.write(list.join(":") + "<br>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

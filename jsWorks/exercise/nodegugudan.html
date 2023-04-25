@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단 출력</title>
+    <script>
+        let state = 0;
+
+        function calc(){
+            let dan = document.querySelector("div");
+            let x = document.querySelector("input").value;
+            let n = parseInt(x);
+
+            if(state == 0){
+                for(let i=1; i<=9; i++){
+                    let newDiv = document.createElement("div");
+                    let text = document.createTextNode(n + "x" + i + "= " + (n * i));
+                    newDiv.appendChild(text);
+
+                    dan.appendChild(newDiv);
+                }
+
+                state = 1;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>구구단</h1>
+    <label>
+        단 입력: <input type="text" id="dan">
+        <button type="button" onclick="calc()">OK</button>
+        <div></div>
+    </label>
+</body>
+</html>

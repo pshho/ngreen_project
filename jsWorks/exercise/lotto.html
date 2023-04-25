@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lotto 추첨</title>
+    <style>
+        section{
+            width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1{
+            display: inline-block;
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            margin: 10px auto;
+            background-color: #eee;
+            cursor: pointer;
+        }
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1 onclick="clk()">로또 추첨 번호</h1>
+        <p id="show"></p>
+    </section>
+
+    <script>
+        function clk(){
+            let number = 45;
+            let pickNumber = 6;
+            let success = new Array(pickNumber);
+            let result = "";
+            let temp = 0;
+            let num2 = 0;
+
+            result += document.getElementById("show").innerHTML = "번호: ";
+
+            for(let i=0; i<success.length; i++){
+                let pick = Math.floor(Math.random() * number + 1);
+                success[i] = pick;
+                console.log(success[i]);
+
+                for(let j=0; j<i; j++){
+                    if(success[j] == success[i]){
+                        console.log("중복번호: " + success[i]);
+                        i--;
+                    }
+                    if(success[j] > success[i]){
+                            temp = success[i];
+                            success[i] = success[j];
+                            success[j] = temp;
+                    }
+                }
+            }
+
+            for(let i=0; i<success.length; i++){
+                if(i == success.length - 1){
+                    result += document.getElementById("show").innerHTML = success[i] + "";
+                }else{
+                    result += document.getElementById("show").innerHTML = success[i] + ", ";
+                }
+            }
+            // document.write("</p>");
+            // console.log(success.length);
+            let display = document.getElementById("show");
+            display.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

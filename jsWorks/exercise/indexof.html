@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어 검색 프로그램</title>
+</head>
+<body>
+    <script>
+        // let search = ['안녕', '시간', '잘있어', '잘가', '잘 있어', '잘 가'];
+        // console.log(search.indexOf("잘 있어"));
+
+        while(true){
+            let input = prompt("단어를 입력해주세요.");
+
+            if(/* search[0] == input */ input.indexOf("안녕") >= 0){
+                alert("안녕하세요.");
+
+                break;
+            }else if(/* search[1] == input */ input.indexOf("시간") >= 0){
+                const now = new Date();
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+
+                alert("현재 시간은 " + hours + "시 " + minutes + "분 입니다.")
+
+                break;
+            }else if(/* search[2] == input || search[3] == input || search[4] == input ||
+                     search[5] == input */ input.indexOf("잘가") >= 0 || input.indexOf("잘 가") >= 0||
+                     input.indexOf("잘있어") >= 0 || input.indexOf("잘 있어") >= 0){
+                        alert("안녕히 가세요.")
+
+                        break;
+            }else{
+                alert("모르는 단어입니다.")
+            }
+        }
+    </script>
+</body>
+</html>

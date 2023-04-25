@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>부트스트랩 구성요소</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <style>
+        div {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">삭제</button>
+    </div>
+
+    <div>
+        <h1>Example heading <span class="badge bg-danger">New</span></h1>
+        <h2>Example heading <span class="badge bg-secondary">New</span></h2>
+        <h3>Example heading <span class="badge bg-secondary">New</span></h3>
+        <h4>Example heading <span class="badge bg-secondary">New</span></h4>
+    </div>
+
+    <!-- * 1em = 16px(부모크기 비교), 1rem = 16px(고정크기)
+        
+         * my - margin(top/bottom)
+           mx - margin(right/left)
+           mt - margin-top
+           mb - margin-bottom
+           my-3: 1rem
+           mb-2: 0.5rem
+
+           py - padding(top/bottom)
+           px - padding(right/left)
+           pt - padding-top
+           pb - padding-bottom -->
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">이 부분이 카드의 내용입니다.<br>
+                즐거운 주말 보내세요!!</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+    <script>
+        /* let num1 = [1, 3, 5, 7, 9];
+        let sumV = 0;
+        
+        for(let i=0; i<num1.length; i++){
+            sumV += num1[i];
+        }
+        num1.push(sumV);
+
+        for(let i=0; i<num1.length; i++){
+            document.write(num1[i] + " ");
+        }
+        document.write("<br>");
+        for(let i in num1)
+            document.write(num1[i] + " "); */
+
+        let num = new Array();
+        let sum = 0;
+
+        for(let i=0; i<5; i++){
+            num.push(2*i+1);
+            sum += num[i]
+        }
+        num.push(sum);
+        console.log(sum);
+
+        for(let i in num){
+            document.write(num[i] + " ");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

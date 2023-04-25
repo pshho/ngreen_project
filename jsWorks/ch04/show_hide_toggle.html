@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼 토글 기능</title>
+    <style>
+        button{margin: 10px 0;}
+        .pic{display: none;}
+    </style>
+</head>
+<body>
+    <button type="button" onclick="showHide()" id="btnText">보이기</button>
+    <div>
+        <img src="./images/flower1.jpg" alt="꽃" id="pic" class="pic">
+    </div>
+    <script>
+        /* let sw=1;
+        function showHide(){
+            let img = document.getElementById('pic');
+            let btnText = document.getElementById('btnText');
+            if(img.style.display == "none"){
+                img.style.display = "block";
+                btnText.innerHTML = "숨기기";
+            }else{
+                img.style.display = "none";
+                btnText.innerHTML = "보이기";
+            }
+        } */
+
+        /*
+            toggle 기능
+            let state = true; // 상태변수(전역변수)
+            
+            if(state){ // 조건이 상태변수임
+                실행1
+                state = false;
+            }else{
+                실행2
+                state = true;
+            }
+        */
+    
+        let state = true;
+        
+        function showHide(){
+            let img = document.getElementById('pic');
+            let btnText = document.getElementById('btnText');
+            
+            if(state){
+                img.style.display = "block";
+                btnText.innerHTML = "숨기기";
+
+                state = false;
+            }else{
+                img.style.display = "none";
+                btnText.innerHTML = "보이기";
+
+                state = true;
+            }
+        }
+    </script>
+</body>
+</html>

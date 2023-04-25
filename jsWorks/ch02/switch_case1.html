@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch~case문</title>
+    <script>
+        /* switch(변수){
+            case 조건1:
+                break;
+            case 조건2:
+                break;
+            ...
+            default:
+                break;
+        } */
+
+        // 1위-금메달, 2위-은메달, 3위-동메달, 기본-메달이 없음
+        let rank = 2;
+        let medal;
+
+        /* switch(rank){
+            case 1:
+                document.write("금메달"); break;
+            case 2:
+                document.write("은메달"); break;
+            case 3:
+                document.write("동메달"); break;
+            default:
+                document.write("메달 없음"); break;
+        } */
+        
+        // switch문을 if문으로 변경
+        if(rank == 1){
+            medal = "금메달";
+        }
+        else if(rank == 2){
+            medal = "은메달";
+        }
+        else if(rank == 3){
+            medal = "동메달";
+        }
+        else{
+            medal = "메달 없음";
+        }
+        document.write(medal);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation 속성</title>
+    <style>
+        div{
+            float: left;
+            margin: 50px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background: greenyellow;
+
+            animation: box1 1.5s infinite alternate ease-in;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background: purple;
+
+            animation: box2 1.5s infinite alternate ease-in;
+        }
+        @keyframes box1 {
+            from{
+                border: 1px solid #000;
+                position: absolute;
+                top: 200px;
+                left: 100px;
+            }to{
+                border: 1px solid #000;
+                border-radius: 50%;
+                position: absolute;
+                top: 200px;
+                left: 200px;
+            }
+        }
+        @keyframes box2 {
+            from{
+                border: 1px solid #000;
+                position: absolute;
+                top: 200px;
+                left: 300px;
+            }to{
+                border: 1px solid #000;
+                transform: rotate(45deg);
+                position: absolute;
+                top: 200px;
+                left: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

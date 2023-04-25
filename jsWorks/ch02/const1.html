@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상수(constant variable)</title>
+    <script>
+        /* 상수: 정해진 수(파이, 날짜 등)
+            - 상수지정: const(값이 변하지 않음 - 변경해서는 안되는 진리나 사실)
+            - 변수지정: var, let */
+        /* let month = 13; */
+        const MONTH = 12; // 어느 언어와 관계없이 상수는 관례상 대문자로 사용함
+        // month = 13; // const 선언한 변수는 변경할 수 없음
+
+        document.write("1년은 " + MONTH + "달이 있습니다.");
+
+        // 원의 넓이: 반지름 X 반지름 X PI(3.14)
+        // 원의 둘레: 2 X PI X 반지름
+        let area, length;
+        let radius = 5;
+        const PI = 3.1415926535897932384626433832795;
+        // PI = 3; - 바꿀 수 없는 상수를 바꾸려고 했기 때문에 runtime 오류
+        area = radius * radius * PI;
+        length = 2 * PI * radius;
+
+        document.write("<br>반지름: " + radius);
+        document.write("<br>원의 넓이: " + area.toFixed(2));
+        document.write("<br>원의 둘레: " + length.toFixed(2));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

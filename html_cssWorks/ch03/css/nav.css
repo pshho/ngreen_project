@@ -1,0 +1,23 @@
+#wrap{
+    width: 1000px;
+    margin: 0 auto;
+}
+nav{
+    width: 800px;
+    text-align: right;
+}
+ul{list-style: none;}
+ul li{
+    display: inline-block;
+    /* float: left; */
+    margin: 20px;
+    padding: 10px;
+    border-top: 2px solid #333;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+li:hover{background-color: #eee;}
+a:hover{color: #00f;}
+section{padding-left: 100px; /* clear: both; */}

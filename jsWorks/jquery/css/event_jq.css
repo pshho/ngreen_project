@@ -1,0 +1,13 @@
+#container{width: 1000px; margin: 0 auto;}
+#wrap1{width: 200px; margin: 10px auto;}
+nav ul{text-align: center; padding: 0;}
+ul li{list-style: none; border: 2px solid red;
+      border-radius: 5px; padding: 10px 0; text-align: center;}
+li a{text-decoration: none; color: black; padding: 10px 40px;}
+#wrap2{width: 400px; border: 1px solid #ccc; margin: 5px auto;
+       padding: 10px 15px; position: relative; display: none;}
+#pic{width: 400px; height: 300px; margin: 0 auto;
+     background: url(../images/flower1.jpg) no-repeat; background-size: cover;}
+#wrap3, #exp3{display: none;}
+/* #exp3{display: none;} */
+#exp2{position: absolute; bottom: 30px; left: 30px;}

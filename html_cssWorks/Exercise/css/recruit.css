@@ -1,0 +1,34 @@
+#container{
+    width: 700px;
+    height: 800px;
+    margin: 0 auto;
+    padding: 10px 20px 20px;
+    background-color: #02233b;
+}
+#wrap{
+    height: 760px;
+    padding: 20px 30px;
+    background: url(../images/mic.png) #fff no-repeat right bottom;
+    /* background-color: #fff; */
+}
+h1, h2{text-align: center;}
+h1{
+    background-color: #004344;
+    color: white;
+    padding: 15px;
+}
+h2{
+    font-style: italic;
+    padding-bottom: 20px;
+}
+dt{
+    color: rgb(194, 102, 21);
+    font-weight: bold;
+    padding: 10px;
+}
+dd{padding: 15px;}
+    
+/* ul li{
+    list-style: none;
+    padding: 15px;
+} */

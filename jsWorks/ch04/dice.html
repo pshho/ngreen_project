@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주사위 던지기 게임</title>
+    <script>
+        /*
+            주사위 2개를 10번 던지기
+        */
+        let sum1 = new Array();
+        let sum2 = new Array();
+        let sum3 = new Array();
+
+        for(var i=0; i<10; i++){
+            let dice1 = Math.floor(Math.random()*6)+1;
+            let dice2 = Math.floor(Math.random()*6)+1;
+            let total = dice1+dice2;
+            // console.log(total);
+            
+            if(dice1 == dice2){
+                console.log("Double Thrown!");
+                sum1.push(i);
+            }else if(total == 8){
+                console.log("Eight Thrown!");
+                sum2.push(i);
+            }else if(total == 11){
+                console.log("Eleven Thrown!");
+                sum3.push(i);
+            }
+        }
+        document.write("Double Thrown의 개수: " + sum1.length + "<br>");
+        document.write("Eight Thrown의 개수: " + sum2.length + "<br>");
+        document.write("Eleven Thrown의 개수: " + sum3.length + "<br>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

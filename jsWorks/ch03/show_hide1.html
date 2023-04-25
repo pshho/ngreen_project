@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 보이기, 숨기기</title>
+    <style>
+        img{margin-top: 10px; display: none;}
+    </style>
+</head>
+<body>
+    <button type="button" onclick="show()">보이기</button>
+    <button type="button" onclick="hide()">숨기기</button>
+    <div>
+        <img src="./images/flower.jpg" alt="꽃" id="pic">
+    </div>
+    
+    <script>
+        // 자바스크립트는 class는 선택 못함, id만 가능
+        function show(){
+            document.getElementById("pic").style.display = "block";
+        }
+        function hide(){
+            document.getElementById("pic").style.display = "none";
+        }
+    </script>
+</body>
+</html>

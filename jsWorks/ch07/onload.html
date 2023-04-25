@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window 객체의 onload()</title>
+</head>
+<body>
+    <script>
+        window.onload = function(){
+            let text = document.querySelector("p");
+            text.style.color = "blue";
+            text.style.fontWeight = "bold";
+            text.style.fontSize = "1.5em";
+        }
+    </script>
+
+    <!-- 자바스크립트로 글꼴 색상을 파랑색, 굵기를 굵게 -->
+    <p>오늘도 좋은 하루!!</p>
+</body>
+</html>

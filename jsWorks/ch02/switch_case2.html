@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch~case문</title>
+    <style>
+        p{width: 700px; margin: 50px auto; padding: 30px 10px; background-color: navy;
+          color: white; text-align: center; font-size: 2em; text-shadow: 2px 2px 2px pink;}
+        strong{
+            color: yellow;
+            /* 부모 p의 2em에서 1.5em 더함 */
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 1-마케팅, 2-개발, 3-디자인
+        let session = prompt("관심 세션을 입력해주세요.", "1-마케팅, 2-개발, 3-디자인");
+
+        switch(session){ // 입력받은 숫자 문자를 문자형태로 인식할 수 있게 해야함
+            case '1':
+                document.write("<p>마케팅 세션은 <strong>201호</strong>에서 진행됩니다.</p>"); break;
+            case '2':
+                document.write("<p>개발 세션은 <strong>202호</strong>에서 진행됩니다.</p>"); break;
+            case '3':
+                document.write("<p>디자인 세션은 <strong>203호</strong>에서 진행됩니다.</p>"); break;
+            default:
+                document.write("<p>진행되는 세션이 없습니다.</p>"); break;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+#wrapper{
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+/* 폼(form) 스타일 */
+form{
+    background: #0094ff;
+    padding: 30px;
+}
+input{
+    width: 420px;
+    padding: 10px;
+}
+.btnAdd{
+    width: 60px;
+    padding: 10px;
+}
+#wrapper #itemList{
+    margin: 10px;
+    text-align: justify;
+}
+ul{
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+}
+ul li{
+    list-style: none;
+    margin: 10px 0;
+    padding: 10px 10px 10px 20px;
+    background: #eee;
+    position: relative;
+}
+ul li:hover{
+    background: #ddd;
+}
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+.close:hover{
+    cursor: pointer;
+    background: rgb(72, 123, 177);
+}

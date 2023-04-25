@@ -1,0 +1,16 @@
+#container{
+    width: 480px;
+    margin: 20px auto;
+    padding: 20px 35px;
+    border: 1px solid #222;
+}
+p{font-size: 15px;}
+ul li{
+    list-style: none;
+    margin: 10px;
+}
+.button input{
+    margin: 10px 1px 0;
+    padding: 2px 5px;
+    cursor: pointer;
+}

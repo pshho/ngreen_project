@@ -1,0 +1,20 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+#container{width: 1000px; margin: 30px auto;}
+h1{text-align: center; margin-top: 30px;}
+.prod-list{list-style: none; text-align: center;}
+.prod-list li{display: inline-block; margin: 5px 10px;
+              position: relative; overflow: hidden;}
+.prod-list img{float: left;}
+.prod-list .caption{
+    width: 300px; height: 200px;
+    /* 이미지 바로 밑에 위치[부모 위치(li 이미지)] */
+    position: absolute; top: 200px;
+    transition: all 1s;
+}
+.prod-list li:hover .caption{
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-200px);
+    color: #fff; line-height: 2.5;
+}
+.prod-list h2{padding: 20px 10px 0;}
+/* .prod-list .caption h2, p{color: #fff; line-height: 2.5;} */

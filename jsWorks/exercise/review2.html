@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트</title>
+</head>
+<body>
+    <h1 onclick="chColor()" id="change">자바스크립트</h1>
+    <p id="demo"></p>
+    <button type="button" onclick="sayHello('샛별이')">로그인</button>
+
+    <script>
+        /* return이 있는 함수
+           매개변수 1개(1이 증가하는 함수 */
+        function oneUp(x){
+            // x = x + 1;
+            // x += 1;
+            // document.write(x);
+            return x + 1;
+        }
+        let num = oneUp(10);
+        document.write(num);
+        // document.write(oneUp(10));
+        document.write("<br>");
+        
+        // 절대값: Math.abs() - 내장된 함수
+        document.write(Math.abs(-11)); // 11
+
+        // 절대값
+        function MyAbs(x){
+            if(x>0){
+                return x;
+            }
+            else{
+                return -x;
+            }
+        }
+        document.write("<br>");
+        
+        // 호출
+        document.write(MyAbs(-11));
+        document.write("<br>");
+
+        // 매개변수 2개
+        function subNumber(x, y){
+            let result = x - y;
+            return result; // result 지역변수로서 값을 반환하고 소멸
+        }
+
+        let result = subNumber(4, 7);
+        document.write(result);
+        // document.write(subNumber(4, 7));
+    </script>
+</body>
+</html>
