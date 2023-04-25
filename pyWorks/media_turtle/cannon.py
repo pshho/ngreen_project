@@ -32,7 +32,7 @@ def fire():
         t.hideturtle()
         t.sety(random.randint(20, 150))  # 성공 또는 실패 글자 표시 위치
         t.color('blue')
-        t.write('축하합니다!', False, 'right', ('', 30))
+        t.write('축하합니다!', False, 'center', ('', 30))
     else: # 목표지점에 닿지 않았을 때
         t.shape(image)
         # t.color('red')
@@ -40,6 +40,7 @@ def fire():
         # t.color('black')
         # t.goto(-650, 20)
         # t.setheading(30) # 미리 지정된 머리 각도로
+
 def start():
     global target
     t.shape('turtle')
