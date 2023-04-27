@@ -65,13 +65,15 @@ def play():
         t.ontimer(play, 100) # 0.1초 간격으로 계속 play 호출
 
         t.forward(10)
-        te.forward(9)
+        te.forward(8)
     else:
         playing
         ts.goto(0, 100)
         ts.write('Game Over!!', False, 'center', ('', 20))
         ts.goto(0, 0)
-        ts.write('다시 시작하시겠습니까?\nESC를 눌러주세요!', False, 'center', ('', 20))
+        ts.write('다시 시작하시겠습니까?', False, 'center', ('', 20))
+        ts.goto(0, -30)
+        ts.write('ESC를 눌러주세요', False, 'center', ('', 20))
 
     # 적 거북이가 주인공을 위치를 쫒아옴
     # 방향을 알아채는데 20% 확률로 적용
@@ -87,7 +89,7 @@ def play():
     # 주인공 거북이가 먹이에 닿으면 먹이가 새 위치에서 랜덤하게 나타남
     if t.distance(tf) < 12:
         score += 1
-        ts.speed(0)
+
         ts.clear()
         ts.write(f'Score: {score}', False, 'center', ('', 20))
 
@@ -97,17 +99,14 @@ def play():
 
         return score
 
-m1 = 'Turtle Run'
-m2 = 'Start = Space'
-
-def message(m1, m2):
+def message():
     tt.hideturtle()
     tt.goto(0, 100)
-    tt.write(m1, False, 'center', ('', 20))
+    tt.write('Turtle Run', False, 'center', ('', 20))
     tt.goto(0, -100)
-    tt.write(m2, False, 'center', ('', 20))
+    tt.write('Start = Space', False, 'center', ('', 20))
 
-message(m1, m2)
+message()
 
 def start():
     tt.clear()
