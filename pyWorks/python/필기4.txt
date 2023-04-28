@@ -34,7 +34,7 @@
   - 명령문 사용: {% for ~ in(if) %} 실행문 {% endfor(endif) %}
   - loop.index(1, 2, 3, 4 ...)
 
-* flask
-  1. 경로(url) 설정 - app.py
-  2. 제어함수 - app.py
-  3. html 작성
+* flask(웹 사이트 제작 순서)
+  1. 경로(url) 설정 - app.py(app.route())
+  2. 제어함수 - app.py(methods = ['GET', 'POST'](데이터 - 자료구조, DB))
+  3. html, css, js(출력)

@@ -1,0 +1,85 @@
+#container {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            box-sizing: border-box;
+}
+
+h1 {
+    color: #00f;
+}
+
+ul li {
+    list-style: none;
+}
+
+/* even_odd 스타일 */
+#even_odd .error {
+    color: red;
+    font-weight: bold;
+}
+
+#even_odd label {
+    font-size: 1.1vw;
+}
+
+#even_odd input {
+    padding: 5px;
+}
+
+#even_odd input[type='text'] {
+    width: 20%;
+}
+
+#even_odd input[type='submit'] {
+    width: 3%;
+}
+
+/* register 스타일 */
+#container #register {
+    width: 30%;
+    margin: 0 auto;
+}
+
+#register form ul {
+    padding-left: 10px;
+}
+
+#register form ul li {
+    margin: 20px 10px;
+}
+
+#register form label {
+    float: left;
+    width: 20%
+}
+
+#register form input {
+    width: 60%
+}
+
+#register form input[type='submit'],
+#register form input[type='reset'] {
+    margin-top: 20px;
+    padding: 5px;
+    width: 15%
+}
+
+/* memberlist 스타일 */
+#list table {
+    width: 40%;
+    margin: 0 auto;
+}
+
+#list table, th, td {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+#list th, td {
+    padding: 10px;
+}
+
+#list th {
+    background: #eee;
+}

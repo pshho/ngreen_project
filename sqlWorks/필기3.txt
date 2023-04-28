@@ -39,3 +39,14 @@ RDBMS()(Releation) - 관계형 데이터 베이스/객체, 관계형 데이터�
 * 테이블 간(집합) 연산
   - 더하기(합집합)(UNION)
   - 빼기(차집합)(MINUS)
+
+* 자료형(Oracle)
+  - 문자: VARCHAR2
+  - 숫자: NUMBER
+  - 날짜: DATE
+
+  자료형(SQLITE3)
+  - 문자: TEXT
+  - 숫자: INTEGER
+  - 실수: REAL
+  - 날짜: DATE, TIMESTAMP

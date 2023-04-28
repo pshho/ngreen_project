@@ -1,5 +1,5 @@
 # SuperSonicAirplane 클래스 생성
-from pyWorks.classification.airplane import Airplane
+from pyWorks.python.classification.airplane import Airplane
 
 # Airplane 상속받음
 class SuperSonicAirplane(Airplane):

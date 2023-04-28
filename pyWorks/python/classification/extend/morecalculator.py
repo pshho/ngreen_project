@@ -1,5 +1,5 @@
 # 확장 계산기
-from pyWorks.classification.calculator2 import Calculator
+from pyWorks.python.classification.calculator2 import Calculator
 
 class MoreCalculator(Calculator):
     '''

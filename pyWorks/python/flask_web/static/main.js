@@ -9,3 +9,5 @@ function changePic() {
 function originPic() {
     pic.src = "../static/coffee-blue.jpg"
 }
+
+//let val = document.querySelector('.error')

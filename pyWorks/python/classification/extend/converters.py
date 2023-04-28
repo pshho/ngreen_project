@@ -2,8 +2,8 @@
 # 화씨온도(F) = 섭씨온도(C) X 1.8 + 32
 # import 패키지이름.모듈이름
 # from 패키지이름.모듈이름 import 클래스
-import pyWorks.classification.scale_converter
-from pyWorks.classification.scale_converter import ScaleConverter
+import pyWorks.python.classification.scale_converter
+from pyWorks.python.classification.scale_converter import ScaleConverter
 
 class Converter(ScaleConverter):
     def __init__(self, units_from, units_to, factor, offset):
