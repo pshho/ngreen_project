@@ -2,8 +2,8 @@
 # 화씨온도(F) = 섭씨온도(C) X 1.8 + 32
 # import 패키지이름.모듈이름
 # from 패키지이름.모듈이름 import 클래스
-import pyWorks.python.classification.scale_converter
-from pyWorks.python.classification.scale_converter import ScaleConverter
+import pyWorks.classification.scale_converter
+from pyWorks.classification.scale_converter import ScaleConverter
 
 class Converter(ScaleConverter):
     def __init__(self, units_from, units_to, factor, offset):
@@ -14,9 +14,10 @@ class Converter(ScaleConverter):
         # return self.factor * value + self.offset
         return super().convert(value) + self.offset
 
-conv = Converter('C', 'F', 1.8, 32)
-print("Converting 21C")
-print(f'{conv.convert(21):.2f}{conv.units_to}')
+if __name__ == '__main__':
+    conv = Converter('C', 'F', 1.8, 32)
+    print("Converting 21C")
+    print(f'{conv.convert(21):.2f}{conv.units_to}')
 
 '''
 con = ScaleConverter('KB', 'B', 1024)

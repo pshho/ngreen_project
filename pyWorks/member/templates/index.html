@@ -7,31 +7,7 @@
 </head>
 <body>
     <div id="container">
-        <header>
-            <div id="logo">
-                <a href="{{ url_for('index') }}"><h1>Gangnam</h1></a>
-            </div>
-
-            <nav>
-                <ul id="topMenu">
-                    <li>
-                        <a href="#">회원</a>
-                        <ul>
-                            <li><a href="#">회원 가입</a></li>
-                            <li><a href="#">회원 목록</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">게시판</a>
-                        <ul>
-                            <li><a href="#">글목록</a></li>
-                            <li><a href="#">글쓰기</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">로그인</a></li>
-                </ul>
-            </nav>
-        </header>
+        {% include 'header.html' %}
 
         <section id="main">
             <h2>안녕하세요! 강남 커뮤니티입니다.</h2>
@@ -40,9 +16,7 @@
             </div>
         </section>
 
-        <footer>
-
-        </footer>
+        {% include 'footer.html' %}
     </div>
 </body>
 </html>
