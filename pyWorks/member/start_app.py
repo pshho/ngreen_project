@@ -15,8 +15,6 @@ def getconn():
     conn = sqlite3.connect("c:/ngreen_project/sqlWorks/sql/pydb/member.db")
     return conn
 
-getconn()
-
 # url - '/' 경로 설정
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -49,6 +47,9 @@ def register():
         cursor = conn.cursor()
         sql = f"INSERT INTO member(memberid, passwd, name, gender) " \
               f"VALUES (?, ?, ?, ?)"
+
+        # 자동 로그인 - 세션 발급
+        session['userid'] = request.form['memberid']
         cursor.execute(sql, (mid, mpd, mnm, mgd))
         conn.commit()
         conn.close()

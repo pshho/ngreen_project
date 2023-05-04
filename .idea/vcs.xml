@@ -2,7 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/jsWorks/자료/jsworks3" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/sqlWorks/자료/sqld" vcs="Git" />
   </component>
 </project>

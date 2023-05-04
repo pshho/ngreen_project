@@ -94,6 +94,11 @@ header nav {
     margin: 50px;
 }
 
+#main > p {
+    width: 90%;
+    text-align: right;
+}
+
 #main .img1 {
     width: 40%;
     margin: 30px auto;
@@ -160,7 +165,7 @@ footer {
 }
 
 #register form {
-    width: 35%;
+    width: 45%;
     margin: 20px auto;
     font-size: 0.9vw;
 }
@@ -213,7 +218,7 @@ footer {
 }
 
 #login form {
-    width: 35%;
+    width: 40%;
     margin: 20px auto;
     font-size: 0.9vw;
 }
@@ -250,4 +255,15 @@ footer {
     color: red;
     text-align: center;
     margin-top: 10px;
+}
+
+/* media screen */
+@media screen and (min-width: 1530px) {
+    #register {
+        width: 90%;
+    }
+
+    #login{
+        width: 90%;
+    }
 }

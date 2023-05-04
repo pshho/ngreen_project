@@ -38,3 +38,6 @@
   1. 경로(url) 설정 - app.py(app.route())
   2. 제어함수 - app.py(methods = ['GET', 'POST'](데이터 - 자료구조, DB))
   3. html, css, js(출력)
+
+* all(x) - x가 모두 T이면 T(AND 개념)
+  any(x) - x가 하나만 T이면 T(OR 개념)

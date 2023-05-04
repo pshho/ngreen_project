@@ -20,7 +20,7 @@ def select():
 
     getconn().close()
 
-# select()
+select()
 
 def insert():
     conn = getconn()
