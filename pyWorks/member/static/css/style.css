@@ -1,7 +1,7 @@
 /* common 스타일 */
 * {margin: 0;, padding: 0; box-sizing: border-box;}
 #container {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -32,6 +32,7 @@ header {
 
 #logo h1 {
     color: #fff;
+    font-size: 5vw;
     padding-left: 30px;
 }
 
@@ -39,21 +40,24 @@ header {
 header nav {
     float: right;
     width: 70%;
-    margin: 9.5px 0;
+    height: 60px;
+    margin: 10px 0;
 }
 
 #topMenu {
-    height: 60px;
+    height: 100%;
+    padding-left: 40px;
 }
 
 #topMenu > li {
     float: left;
     position: relative;
+    font-size: 1.8vw;
 }
 
 #topMenu > li > a {
     display: block;
-    padding: 20px 50px;
+    padding: 25px;
     color: #fff;
 }
 
@@ -82,26 +86,44 @@ header nav {
 
 #topMenu > li > ul > li > a {
     color: #333;
-    font-size: 0.75vw;
+    font-size: 1.5vw;
 }
 
 #topMenu > li > ul > li > a:hover {
     color: red;
 }
 
+/* 배경 이미지 스타일 */
+#main-pic {
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+}
+
+#main-pic > img {
+    width: 100%;
+    height: 100%;
+}
+
 /* section main 스타일 */
 #main {
-    margin: 50px;
+    margin: 20px;
 }
 
 #main > p {
-    width: 90%;
+    width: 100%;
     text-align: right;
+    font-size: 3vw;
+    margin-bottom: 30px;
+}
+
+#main > h2 {
+    font-size: 5vw;
 }
 
 #main .img1 {
-    width: 40%;
-    margin: 30px auto;
+    width: 90%;
+    margin: 30px auto 60px auto;
 }
 
 #main .img1 > img{
@@ -116,12 +138,14 @@ footer {
 
 #bottomMenu {
     margin-top: 20px;
+    font-size: 1.2vw;
+    padding-left: 20px;
 }
 
 #bottomMenu li {
     display: inline-block;
     border-right: 2px solid #ccc;
-    padding: 0 30px 0 20px;
+    padding: 0 20px 0 10px;
 }
 
 #bottomMenu li:last-child {
@@ -138,13 +162,13 @@ footer {
 
 /* memberlist 스타일 */
 #memberlist {
-    width: 80%;
-    margin: 30px auto;
+    width: 90%;
+    margin: 30px auto 60px auto;
 }
 
 #memberlist table {
     margin: 20px auto;
-    width: 50%;
+    width: 100%;
     text-align: center;
 }
 
@@ -160,14 +184,14 @@ footer {
 
 /* register 스타일 */
 #register {
-    width: 80%;
+    width: 90%;
     margin: 30px auto;
 }
 
 #register form {
-    width: 45%;
-    margin: 20px auto;
-    font-size: 0.9vw;
+    width: 100%;
+    margin: 30px auto 80px auto;
+    font-size: 3vw;
 }
 
 #register form ul {
@@ -213,14 +237,14 @@ footer {
 
 /* login 스타일 */
 #login {
-    width: 80%;
-    margin: 30px auto;
+    width: 90%;
+    margin: 30px auto 60px auto;
 }
 
 #login form {
-    width: 40%;
+    width: 100%;
     margin: 20px auto;
-    font-size: 0.9vw;
+    font-size: 3vw;
 }
 
 #login form ul {
@@ -265,5 +289,107 @@ footer {
 
     #login{
         width: 90%;
+    }
+}
+
+/* 태블릿 기준 */
+@media screen and (min-width: 760px) {
+    #topMenu > li > a {
+        padding: 25px 40px;
+    }
+
+    #main .img1 {
+        width: 80%;
+    }
+
+    #register form {
+        width: 90%;
+    }
+
+    #login form {
+        width: 90%;
+    }
+}
+
+/* PC 기준 */
+@media screen and (min-width: 1024px) {
+    #logo h1 {
+        font-size: 4vw;
+    }
+
+    #topMenu > li {
+        font-size: 1.4vw;
+    }
+
+    #topMenu > li > ul > li > a {
+        font-size: 1.2vw;
+    }
+
+    #main > h2 {
+        font-size: 4vw;
+    }
+
+    #main > p {
+        font-size: 2vw;
+    }
+
+    #main .img1 {
+        width: 60%;
+    }
+
+    #register form {
+        width: 70%;
+    }
+
+    #login form {
+        width: 70%;
+    }
+
+    #memberlist {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1320px) {
+    #logo h1 {
+        font-size: 3vw;
+    }
+
+    #topMenu > li {
+        font-size: 1.2vw;
+    }
+
+    #topMenu > li > ul > li > a {
+        font-size: 1vw;
+    }
+
+    #topMenu > li > a {
+        padding: 20px 40px;
+    }
+
+    #main > h2 {
+        font-size: 2vw;
+    }
+
+    #main > p {
+        font-size: 1.5vw;
+    }
+
+    #main .img1 {
+        width: 50%;
+    }
+
+    #register form {
+        width: 45%;
+        font-size: 1.5vw;
+    }
+
+    #login form {
+        width: 45%;
+        font-size: 1.5vw;
+    }
+
+    #memberlist {
+        width: 50%;
     }
 }

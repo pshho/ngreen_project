@@ -1,0 +1,55 @@
+-- ROWNUM: 순번을 정해놓은 SUDO COLUMN이다.
+-- 조회되는 행의 수 제한 가능
+SELECT ROWNUM, bno, title, writer, content
+FROM board
+-- 1을 포함해야 조회됨
+WHERE ROWNUM > 0 and ROWNUM <= 10
+ORDER BY bno;
+
+-- 11번 ~ 20번까지 검색(중첩쿼리 시 검색 가능)
+SELECT *
+FROM (SELECT ROWNUM RN, bno, title, writer, content
+        FROM board)
+WHERE RN > 20 and RN <= 30; -- 별칭을 사용해야 함
+
+-- ROWNUM 예시를 위한 테이블 생성
+CREATE TABLE EX_SCORE (
+    NAME    VARCHAR2(10),
+    SCORE   NUMBER
+);
+
+INSERT INTO EX_SCORE VALUES ('김하나', 94);
+INSERT INTO EX_SCORE VALUES ('이하나', 100);
+INSERT INTO EX_SCORE VALUES ('박하나', 97);
+INSERT INTO EX_SCORE VALUES ('정하나', 87);
+INSERT INTO EX_SCORE VALUES ('조하나', 87);
+INSERT INTO EX_SCORE VALUES ('안하나', 91);
+INSERT INTO EX_SCORE VALUES ('유하나', 66);
+INSERT INTO EX_SCORE VALUES ('오하나', 80);
+INSERT INTO EX_SCORE VALUES ('한하나', 80);
+INSERT INTO EX_SCORE VALUES ('성하나', 95);
+
+SELECT * FROM EX_SCORE;
+
+-- 점수가 높은 순으로 5명 검색(잘못된 검색)
+SELECT ROWNUM, NAME, SCORE
+FROM EX_SCORE
+WHERE ROWNUM <= 5
+ORDER BY SCORE DESC;
+
+-- ROWNUM 올바른 사용(서브 쿼리 방식 - 인라인 뷰)
+SELECT ROWNUM, NAME, SCORE
+FROM (SELECT ROWNUM, NAME, SCORE
+      FROM EX_SCORE
+      ORDER BY SCORE DESC)
+WHERE ROWNUM <= 5;
+
+-- 성적 순위
+SELECT  NAME,
+        SCORE,
+        RANK () OVER (ORDER BY SCORE DESC) RANK,
+        DENSE_RANK () OVER (ORDER BY SCORE DESC) DENSE_RANK
+     -- COUNT(*) 학생수
+FROM EX_SCORE;
+
+DROP TABLE EX_SCORE;
