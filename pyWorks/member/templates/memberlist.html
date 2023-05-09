@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 목록</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/main-js.js') }}"></script>
 </head>
 <body>
     <div id="container">
@@ -18,18 +19,24 @@
 
         {% include 'header.html' %}
 
+        <!-- 배경 이미지 -->
+        <div id="main-pic">
+            <img src="{{ url_for('static', filename='./images/header1.jpg') }}" alt="배경사진" id="pic">
+        </div>
+
         <section id="memberlist">
             <h2>회원 목록</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>아이디</th><th>비밀번호</th><th>이름</th><th>성별</th>
+                        <th>번호</th><th>아이디</th><th>비밀번호</th><th>이름</th><th>성별</th>
                     </tr>
                 </thead>
 
                 <tbody>
                 {% for i in rs %}
                     <tr>
+                        <td>{{ loop.index }}</td>
                         <td>{{ i[0] }}</td>
                         <td>{{ i[1] }}</td>
                         <td>{{ i[2] }}</td>

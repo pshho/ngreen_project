@@ -13,7 +13,6 @@ namelist = [
 def click():
     pick = []
 
-    '''
     while True:
         text = random.choice(namelist)
 
@@ -25,10 +24,12 @@ def click():
 
     output.delete(0.0, END)
 
+    '''
     for i in pick:
         output.insert(END, i + ' ')
     '''
 
+    '''
     while len(pick) < 5:
         idx = random.randint(0, 19)
 
@@ -39,6 +40,9 @@ def click():
 
     for i in pick:
         output.insert(END, namelist[i] + ' ')
+    '''
+
+    output.insert(END, ' '.join(pick))
 
 window = Tk()
 window.title('쿠폰 추첨기')

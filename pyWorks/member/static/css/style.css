@@ -13,10 +13,6 @@ ul li {
     list-style: none;
 }
 
-h2 {
-    text-align: center;
-}
-
 /* navbar 스타일 */
 header {
     width: 100%;
@@ -118,6 +114,7 @@ header nav {
 }
 
 #main > h2 {
+    text-align: center;
     font-size: 5vw;
 }
 
@@ -188,6 +185,11 @@ footer {
     margin: 30px auto;
 }
 
+#register h2 {
+    width: 100%;
+    margin: 0 auto;
+}
+
 #register form {
     width: 100%;
     margin: 30px auto 80px auto;
@@ -241,6 +243,10 @@ footer {
     margin: 30px auto 60px auto;
 }
 
+#login h2 {
+    text-align: center;
+}
+
 #login form {
     width: 100%;
     margin: 20px auto;
@@ -282,12 +288,12 @@ footer {
 }
 
 /* media screen */
-@media screen and (min-width: 1530px) {
+@media screen and (min-width: 360px) {
     #register {
         width: 90%;
     }
 
-    #login{
+    #login {
         width: 90%;
     }
 }
@@ -295,11 +301,15 @@ footer {
 /* 태블릿 기준 */
 @media screen and (min-width: 760px) {
     #topMenu > li > a {
-        padding: 25px 40px;
+        padding: 20px 40px;
     }
 
     #main .img1 {
         width: 80%;
+    }
+
+    #register h2 {
+        width: 90%;
     }
 
     #register form {
@@ -314,7 +324,7 @@ footer {
 /* PC 기준 */
 @media screen and (min-width: 1024px) {
     #logo h1 {
-        font-size: 4vw;
+        font-size: 3vw;
     }
 
     #topMenu > li {
@@ -325,8 +335,13 @@ footer {
         font-size: 1.2vw;
     }
 
+    #topMenu > li > ul {
+        position: absolute;
+        width: 100%;
+    }
+
     #main > h2 {
-        font-size: 4vw;
+        font-size: 3vw;
     }
 
     #main > p {
@@ -335,6 +350,10 @@ footer {
 
     #main .img1 {
         width: 60%;
+    }
+
+    #register h2 {
+        width: 70%;
     }
 
     #register form {
@@ -351,20 +370,12 @@ footer {
 }
 
 @media screen and (min-width: 1320px) {
-    #logo h1 {
-        font-size: 3vw;
-    }
-
     #topMenu > li {
         font-size: 1.2vw;
     }
 
     #topMenu > li > ul > li > a {
         font-size: 1vw;
-    }
-
-    #topMenu > li > a {
-        padding: 20px 40px;
     }
 
     #main > h2 {
@@ -377,6 +388,10 @@ footer {
 
     #main .img1 {
         width: 50%;
+    }
+
+    #register > h2 {
+        width: 45%;
     }
 
     #register form {

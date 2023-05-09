@@ -6,10 +6,16 @@
     <title>회원 가입</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main-js.js') }}"></script>
 </head>
 <body>
     <div id="container">
         {% include 'header.html' %}
+
+        <!-- 배경 이미지 -->
+        <div id="main-pic">
+            <img src="{{ url_for('static', filename='./images/header1.jpg') }}" alt="배경사진" id="pic">
+        </div>
 
         <section id="register">
             <h2>회원 가입</h2>
