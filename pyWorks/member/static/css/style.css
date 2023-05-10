@@ -42,18 +42,18 @@ header nav {
 
 #topMenu {
     height: 100%;
-    padding-left: 40px;
+    padding-left: 30px;
 }
 
 #topMenu > li {
     float: left;
     position: relative;
-    font-size: 1.8vw;
+    font-size: 1.4vw;
 }
 
 #topMenu > li > a {
     display: block;
-    padding: 25px;
+    padding: 25px 15px;
     color: #fff;
 }
 
@@ -61,14 +61,25 @@ header nav {
     color: #444;
 }
 
+#topMenu > li > a > .session {
+    color: #ff0;
+    font-size: 0.8vw;
+}
+
 /* 부매뉴 */
 #topMenu > li > ul {
     position: absolute;
-    width: 100%;
+    left: -12.5px;
+    width: 150%;
     padding: 0;
     background: rgba(246, 248, 213, 0.6);
     text-align: center;
     display: none;
+}
+
+#topMenu > li:nth-child(2) > ul {
+    position: absolute;
+    left: -15px;
 }
 
 #topMenu > li:hover > ul {
@@ -82,7 +93,7 @@ header nav {
 
 #topMenu > li > ul > li > a {
     color: #333;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
 }
 
 #topMenu > li > ul > li > a:hover {
@@ -173,6 +184,7 @@ footer {
     border: 1px solid #ccc;
     border-collapse: collapse;
     padding: 10px;
+    font-size: 0.8vw;
 }
 
 #memberlist th {
@@ -287,6 +299,37 @@ footer {
     margin-top: 10px;
 }
 
+/* boardlist 스타일 */
+#boardlist {
+    width: 90%;
+    margin: 30px auto 60px auto;
+}
+
+#boardlist table {
+    margin: 20px auto;
+    width: 100%;
+    text-align: center;
+}
+
+#boardlist table, th, td {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 10px;
+    font-size: 0.8vw;
+}
+
+#boardlist th {
+    background: #eee;
+}
+
+#boardlist .btnWrite {
+    text-align: right;
+}
+
+#boardlist .btnWrite button {
+    padding: 3px 10px;
+}
+
 /* media screen */
 @media screen and (min-width: 360px) {
     #register {
@@ -300,8 +343,35 @@ footer {
 
 /* 태블릿 기준 */
 @media screen and (min-width: 760px) {
+    #topMenu > li {
+        font-size: 1.8vw;
+    }
+
     #topMenu > li > a {
         padding: 20px 40px;
+    }
+
+    #topMenu > li > a > .session {
+        font-size: 1.4vw;
+    }
+
+    #topMenu > li > ul {
+        position: absolute;
+        left: 0;
+        width: 100%;
+    }
+
+    #topMenu > li:nth-child(2) > ul {
+        position: absolute;
+        left: 0;
+    }
+
+    #topMenu > li > ul > li > a {
+        font-size: 1.6vw;
+    }
+
+    #main-pic {
+        height: 250px;
     }
 
     #main .img1 {
@@ -319,6 +389,14 @@ footer {
     #login form {
         width: 90%;
     }
+
+    #memberlist table, th, td {
+        font-size: 1.3vw;
+    }
+
+    #boardlist table, th, td {
+        font-size: 1.3vw;
+    }
 }
 
 /* PC 기준 */
@@ -329,6 +407,10 @@ footer {
 
     #topMenu > li {
         font-size: 1.4vw;
+    }
+
+    #topMenu > li > a > .session {
+        font-size: 1.2vw;
     }
 
     #topMenu > li > ul > li > a {
@@ -372,6 +454,10 @@ footer {
 @media screen and (min-width: 1320px) {
     #topMenu > li {
         font-size: 1.2vw;
+    }
+
+    #topMenu > li > a > .session {
+        font-size: 1vw;
     }
 
     #topMenu > li > ul > li > a {
