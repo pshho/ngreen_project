@@ -168,26 +168,26 @@ footer {
     color: red;
 }
 
-/* memberlist 스타일 */
-#memberlist {
+/* memberlist, boardlist, writing, detail 스타일 */
+#memberlist, #boardlist, #writing, #detail {
     width: 90%;
     margin: 30px auto 60px auto;
 }
 
-#memberlist table {
+#memberlist table, #boardlist table, #writing form table, #detail table {
     margin: 20px auto;
     width: 100%;
     text-align: center;
 }
 
-#memberlist table, th, td {
+section > table, th, .st {
     border: 1px solid #ccc;
     border-collapse: collapse;
-    padding: 10px;
+    padding: 5px;
     font-size: 0.8vw;
 }
 
-#memberlist th {
+#memberlist th, #boardlist th {
     background: #eee;
 }
 
@@ -300,28 +300,6 @@ footer {
 }
 
 /* boardlist 스타일 */
-#boardlist {
-    width: 90%;
-    margin: 30px auto 60px auto;
-}
-
-#boardlist table {
-    margin: 20px auto;
-    width: 100%;
-    text-align: center;
-}
-
-#boardlist table, th, td {
-    border: 1px solid #ccc;
-    border-collapse: collapse;
-    padding: 5px;
-    font-size: 0.8vw;
-}
-
-#boardlist th {
-    background: #eee;
-}
-
 #boardlist .btnWrite {
     text-align: right;
 }
@@ -330,62 +308,29 @@ footer {
     padding: 3px 10px;
 }
 
-/* writing 스타일 */
-#writing {
-    width: 90%;
-    margin: 30px auto 60px auto;
-}
-
-#writing form {
-    margin: 20px auto;
-    width: 100%;
-}
-
+/* writing, detail 스타일 */
 #writing form table {
-    width: 100%;
     border: 1px solid #ccc;
-    border-collapse: collapse;
-    text-align: center;
+    padding: 20px 10px;
 }
 
-#writing form table td input[type='text'] {
+#detail div table {
+    border: 1px solid #ccc;
+    padding: 20px 10px;
+}
+
+#writing form table td input[type='text'], #detail table input {
     width: 100%;
+    margin: 10px 0;
 }
 
-#writing form table td textarea {
+#writing form table td textarea, #detail table td textarea {
     width: 100%;
     height: 250px;
+    margin: 10px 0;
 }
 
-#writing form table td input[type='submit'], input[type='reset'] {
-    padding: 3px 10px;
-    margin: 5px;
-}
-
-/* detail 스타일 */
-#detail {
-    width: 90%;
-    margin: 30px auto 60px auto;
-}
-
-#detail table {
-    width: 100%;
-    margin: 20px auto;
-    border: 1px solid #ccc;
-    border-collapse: collapse;
-    text-align: center;
-}
-
-#detail table input {
-    width: 100%;
-}
-
-#detail table textarea {
-    width: 100%;
-    height: 250px;
-}
-
-#detail table button {
+#writing form table td input[type='submit'], input[type='reset'], #detail table button {
     padding: 3px 10px;
     margin: 5px;
 }
@@ -450,11 +395,7 @@ footer {
         width: 90%;
     }
 
-    #memberlist table, th, td {
-        font-size: 1.3vw;
-    }
-
-    #boardlist table, th, td {
+    section table, th, .st {
         font-size: 1.3vw;
     }
 
