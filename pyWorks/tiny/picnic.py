@@ -11,6 +11,7 @@ def get_args():
                         nargs='+',  # 인수를 1개 이상 전달함
                         help='Item(s) to bring')
 
+    # -s, --sorted를 사용하면 정렬 기능 사용
     parser.add_argument('-s',
                         '--sorted',
                         action='store_true',

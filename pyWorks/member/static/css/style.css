@@ -314,7 +314,7 @@ footer {
 #boardlist table, th, td {
     border: 1px solid #ccc;
     border-collapse: collapse;
-    padding: 10px;
+    padding: 5px;
     font-size: 0.8vw;
 }
 
@@ -328,6 +328,66 @@ footer {
 
 #boardlist .btnWrite button {
     padding: 3px 10px;
+}
+
+/* writing 스타일 */
+#writing {
+    width: 90%;
+    margin: 30px auto 60px auto;
+}
+
+#writing form {
+    margin: 20px auto;
+    width: 100%;
+}
+
+#writing form table {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#writing form table td input[type='text'] {
+    width: 100%;
+}
+
+#writing form table td textarea {
+    width: 100%;
+    height: 250px;
+}
+
+#writing form table td input[type='submit'], input[type='reset'] {
+    padding: 3px 10px;
+    margin: 5px;
+}
+
+/* detail 스타일 */
+#detail {
+    width: 90%;
+    margin: 30px auto 60px auto;
+}
+
+#detail table {
+    width: 100%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#detail table input {
+    width: 100%;
+}
+
+#detail table textarea {
+    width: 100%;
+    height: 250px;
+}
+
+#detail table button {
+    padding: 3px 10px;
+    margin: 5px;
 }
 
 /* media screen */
@@ -397,6 +457,14 @@ footer {
     #boardlist table, th, td {
         font-size: 1.3vw;
     }
+
+    #writing, #detail {
+        width: 60%;
+    }
+
+    #writing table td textarea {
+        height: 300px;
+    }
 }
 
 /* PC 기준 */
@@ -449,6 +517,10 @@ footer {
     #memberlist {
         width: 70%;
     }
+
+    #writing, #detail {
+        width: 50%;
+    }
 }
 
 @media screen and (min-width: 1320px) {
@@ -492,5 +564,39 @@ footer {
 
     #memberlist {
         width: 50%;
+    }
+
+    #writing, #detail {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1540px) {
+    #logo h1 {
+        font-size: 2.5vw;
+    }
+
+    #topMenu > li > a {
+        padding: 15px 40px;
+    }
+
+    #main > h2 {
+        font-size: 1.8vw;
+    }
+
+    #main > p {
+        font-size: 1.3vw;
+    }
+
+    #register form {
+        font-size: 1.2vw;
+    }
+
+    #login form {
+        font-size: 1.2vw;
+    }
+
+    #writing, #detail {
+        width: 30%;
     }
 }

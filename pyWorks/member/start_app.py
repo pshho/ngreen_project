@@ -97,7 +97,7 @@ def logout():
 def boardlist():
     conn = getconn()
     cursor = conn.cursor()
-    sql = "SELECT * FROM board"
+    sql = "SELECT * FROM board ORDER BY bno DESC"
     cursor.execute(sql)
     boardlist = cursor.fetchall()
     conn.close()
@@ -107,6 +107,49 @@ def boardlist():
 # 글작성 페이지
 @app.route('/writing', methods=['GET', 'POST'])
 def writing():
-    return render_template('writing.html')
+    if request.method == 'POST':
+        # 입력된 글 가져와서 DB에 저장
+        title = request.form['title']
+        content = request.form['content']
+        # userid: session 이름을 가져옴
+        memberid = session.get('userid')
+
+        conn = getconn()
+        cursor = conn.cursor()
+        sql = "INSERT INTO board(title, content, memberid) VALUES (?, ?, ?)"
+        cursor.execute(sql, (title, content, memberid))
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('boardlist'))
+
+    else:
+        return render_template('writing.html')
+
+# 글 상세보기
+@app.route('/detail/<int:bno>', methods=['GET', 'POST'])
+def detail(bno):    # 매개변수 bno 설정
+    # DB board TABLE에서 bno로 검색된 글 가져오기
+    conn = getconn()
+    cursor = conn.cursor()
+    sql = f"SELECT * FROM board WHERE bno = {bno}"
+    cursor.execute(sql)
+    board = cursor.fetchone()   # 게시글 1개 가져옴
+    conn.close()
+
+    return render_template('detail.html', board=board)
+
+# 게시글 삭제
+@app.route('/delete/<int:bno>', methods=['GET', 'POST'])
+def delete(bno):
+    # 삭제 요청한 글번호를 DB TABLE에서 삭제
+    conn = getconn()
+    cursor = conn.cursor()
+    sql = f"DELETE FROM board WHERE bno = {bno}"    # bno는 숫자이므로 따옴표 붙이지 않음
+    cursor.execute(sql)
+    conn.commit()
+    conn.close()
+
+    return redirect(url_for('boardlist'))
 
 app.run()

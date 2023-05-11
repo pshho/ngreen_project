@@ -1,6 +1,8 @@
 window.onload = function () {
     // 디지털 시계
-    setInterval(setWatch, 1000);
+    if (window.location.href == 'http://127.0.0.1:5000/') {
+        setInterval(setWatch, 1000);
+    }
 
     function setWatch () {
         let date = new Date();
