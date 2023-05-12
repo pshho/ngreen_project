@@ -169,12 +169,12 @@ footer {
 }
 
 /* memberlist, boardlist, writing, detail 스타일 */
-#memberlist, #boardlist, #writing, #detail {
+#memberlist, #boardlist, #writing, #detail, #update {
     width: 90%;
     margin: 30px auto 60px auto;
 }
 
-#memberlist table, #boardlist table, #writing form table, #detail table {
+#memberlist table, #boardlist table, #writing form table, #detail table, #update form table {
     margin: 20px auto;
     width: 100%;
     text-align: center;
@@ -308,8 +308,8 @@ section > table, th, .st {
     padding: 3px 10px;
 }
 
-/* writing, detail 스타일 */
-#writing form table {
+/* writing, detail, update 스타일 */
+#writing form table, #update form table {
     border: 1px solid #ccc;
     padding: 20px 10px;
 }
@@ -319,18 +319,19 @@ section > table, th, .st {
     padding: 20px 10px;
 }
 
-#writing form table td input[type='text'], #detail table input {
+#writing form table td input[type='text'], #detail table input, #update form table td input[type='text'] {
     width: 100%;
     margin: 10px 0;
 }
 
-#writing form table td textarea, #detail table td textarea {
+#writing form table td textarea, #detail table td textarea, #update form table td textarea {
     width: 100%;
     height: 250px;
     margin: 10px 0;
 }
 
-#writing form table td input[type='submit'], input[type='reset'], #detail table button {
+#writing form table td input[type='submit'], input[type='reset'], #detail table button,
+#update form table td input[type='submit'], input[type='reset'] {
     padding: 3px 10px;
     margin: 5px;
 }
@@ -399,11 +400,11 @@ section > table, th, .st {
         font-size: 1.3vw;
     }
 
-    #writing, #detail {
+    #writing, #detail, #update {
         width: 60%;
     }
 
-    #writing table td textarea {
+    #writing table td textarea, #update table td textarea {
         height: 300px;
     }
 }
@@ -459,7 +460,7 @@ section > table, th, .st {
         width: 70%;
     }
 
-    #writing, #detail {
+    #writing, #detail, #update {
         width: 50%;
     }
 }
@@ -507,7 +508,7 @@ section > table, th, .st {
         width: 50%;
     }
 
-    #writing, #detail {
+    #writing, #detail, #update {
         width: 40%;
     }
 }
@@ -537,7 +538,7 @@ section > table, th, .st {
         font-size: 1.2vw;
     }
 
-    #writing, #detail {
+    #writing, #detail, #update {
         width: 30%;
     }
 }

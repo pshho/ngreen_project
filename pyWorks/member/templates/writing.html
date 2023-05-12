@@ -11,6 +11,13 @@
     <div id="container">
         {% include 'header.html' %}
 
+        {% if not session %}
+            <script>
+                alert("로그인을 해주세요.")
+                location.href = "http://127.0.0.1:5000/login"
+            </script>
+        {% endif %}
+
         <!-- 배경 이미지 -->
         <div id="main-pic">
             <img src="{{ url_for('static', filename='./images/header1.jpg') }}" alt="배경사진" id="pic">

@@ -135,6 +135,12 @@ def detail(bno):    # 매개변수 bno 설정
     sql = f"SELECT * FROM board WHERE bno = {bno}"
     cursor.execute(sql)
     board = cursor.fetchone()   # 게시글 1개 가져옴
+
+    # 조회수 증가
+    hit = board[4]
+    sql = f"UPDATE board SET hit = {hit + 1} WHERE bno = {bno}"
+    cursor.execute(sql)
+    conn.commit()
     conn.close()
 
     return render_template('detail.html', board=board)
@@ -151,5 +157,32 @@ def delete(bno):
     conn.close()
 
     return redirect(url_for('boardlist'))
+
+@app.route('/update/<int:bno>', methods=['GET', 'POST'])
+def update(bno):
+    if request.method == 'POST':
+        # 수정 페이지에 수정한 입력 내용을 board 테이블에 저장
+        title = request.form['title']
+        content = request.form['content']
+
+        # DB에 저장
+        conn = getconn()
+        cursor = conn.cursor()
+        sql = "UPDATE board SET title = ?, content = ? WHERE bno = ?"
+        cursor.execute(sql, (title, content, bno))
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('detail', bno=bno))
+    else:
+        # 수정할 글(상세보기)를 DB에서 가져오기
+        conn = getconn()
+        cursor = conn.cursor()
+        sql = f"SELECT * FROM board WHERE bno = {bno}"
+        cursor.execute(sql)
+        board = cursor.fetchone()
+        conn.close()
+
+        return render_template('update.html', board=board)
 
 app.run()
