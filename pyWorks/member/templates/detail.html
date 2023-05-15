@@ -35,7 +35,9 @@
                             <td><textarea name="content" readonly>{{ board[2] }}</textarea></td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="memberid" value="작성자: {{ board[5] }}" readonly></td>
+                            <td>
+                                <input type="text" name="memberid" value="작성자: {{ board[5] }} {% if board[6] %}(수정일: {{ board[6] }}) {% else %}(작성일: {{ board[3] }}) {% endif %}" readonly>
+                            </td>
                         </tr>
                         <tr>
                             <td>

@@ -113,3 +113,13 @@ def select_board():
     conn.close()
 
 select_board()
+
+def alter_board():
+    conn = getconn()
+    cursor = conn.cursor()
+    sql = "ALTER TABLE board ADD COLUMN modifydate DATETIME"
+    cursor.execute(sql)
+    conn.commit()
+    conn.close()
+
+# alter_board()

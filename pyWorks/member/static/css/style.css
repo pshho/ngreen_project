@@ -322,12 +322,17 @@ section > table, th, .st {
 #writing form table td input[type='text'], #detail table input, #update form table td input[type='text'] {
     width: 100%;
     margin: 10px 0;
+    padding: 5px 3px;
+    font-family: "맑은 고딕";
 }
 
 #writing form table td textarea, #detail table td textarea, #update form table td textarea {
     width: 100%;
     height: 250px;
     margin: 10px 0;
+    padding: 5px 3px;
+    resize: none;
+    font-family: "맑은 고딕";
 }
 
 #writing form table td input[type='submit'], input[type='reset'], #detail table button,

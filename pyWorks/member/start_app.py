@@ -6,6 +6,7 @@ import sqlite3
 from flask import Flask, render_template, request, \
                   redirect, url_for, session
 from sqlite3.dbapi2 import *
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'asd2fa3ewoij@ae#gh?uivas5hdui$1hweaiu6haiwfei@#$^'
@@ -164,12 +165,14 @@ def update(bno):
         # 수정 페이지에 수정한 입력 내용을 board 테이블에 저장
         title = request.form['title']
         content = request.form['content']
+        now = datetime.today()
+        modifydate = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # DB에 저장
         conn = getconn()
         cursor = conn.cursor()
-        sql = "UPDATE board SET title = ?, content = ? WHERE bno = ?"
-        cursor.execute(sql, (title, content, bno))
+        sql = "UPDATE board SET title = ?, content = ?, modifydate = ? WHERE bno = ?"
+        cursor.execute(sql, (title, content, modifydate, bno))
         conn.commit()
         conn.close()
 
