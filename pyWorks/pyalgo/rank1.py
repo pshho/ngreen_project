@@ -5,10 +5,10 @@ n = len(score)
 # print(n)
 
 # 중첩 for문 - 조건문
-for i in range(0, n):
-    for j in range(0, n):
+for i in range(n):
+    for j in range(n):
         if score[i] < score[j]:
-            rank[i] += 1 # 순위 1증가(순위가 밀림)
+            rank[i] += 1    # 순위 1증가(순위가 밀림)
 
 '''
     i=0 < j=0 60 < 60 False
