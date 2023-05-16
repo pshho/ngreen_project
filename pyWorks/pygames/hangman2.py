@@ -22,7 +22,7 @@ def get_guess(word):
     return guess
 
 def print_word_with_blanks(word):
-    display_word = ''   # 게이머가 추측한 글자가 입력될 변수
+    display_word = ''
     for letter in word:
         if guessed_letters.find(letter) > -1:   # 글자를 찾음
             display_word += letter
@@ -35,7 +35,8 @@ def process_guess(guess, word):
     lives_remaining -= 1
     guessed_letters += guess
 
-    if guess == word:
+    if guess == word or set(guessed_letters) == set(word):
+        print(word)
         return True
     else:
         return False
