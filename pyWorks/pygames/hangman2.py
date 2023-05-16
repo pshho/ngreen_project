@@ -25,15 +25,16 @@ def print_word_with_blanks(word):
     display_word = ''   # 게이머가 추측한 글자가 입력될 변수
     for letter in word:
         if guessed_letters.find(letter) > -1:   # 글자를 찾음
-            display_word += letter  # 단어를 추가해서 저장
+            display_word += letter
         else:
             display_word += '_'
     print(display_word)
 
 def process_guess(guess, word):
-    global lives_remaining, guessed_letters  # 전역 변수화(global)
-    lives_remaining -= 1    # 기회가 1줄어듬
+    global lives_remaining, guessed_letters
+    lives_remaining -= 1
     guessed_letters += guess
+
     if guess == word:
         return True
     else:
