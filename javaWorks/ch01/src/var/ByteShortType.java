@@ -6,7 +6,7 @@ public class ByteShortType {
 		// byte형(-128 ~ 127)
 		// short형(-32768 ~ 32767)
 		byte bData1 = -128;
-		// byte bData2 = 128; // 127까지 가능(0부터 이기 때문)
+		// byte bData2 = 128; // 127까지 가능(0부터 이기 때문) - overflow
 		
 		short sData1 = 128;
 		short sData2 = 32767;
