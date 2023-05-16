@@ -7,3 +7,9 @@
   - 제어문자: 33
   - 총 128개: 7bit
   - 한글은 유니코드로 16bit, 2byte - 65,536
+
+* 자료형
+  - 정수: byte < short < int < long
+  - 실수: float < double
+  - 문자: char < String
+  - 불리언: boolean(true/false)
