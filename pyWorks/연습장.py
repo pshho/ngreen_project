@@ -33,6 +33,7 @@ while i <= 5:
     i += 1
 '''
 
+'''
 a = list((input("숫자 10개 입력(ex. 1, 2, 3 ···)(1~100까지): ")).split(', '))
 count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 text = []
@@ -62,4 +63,58 @@ for row in a:
 for i in range(10):
     text.append("*" * int(count[i]))
 
+for i in range(10):
+    if i == 0:
+        print("1 - 10:", text[i])
+    elif i == 1:
+        print("11 - 20:", text[i])
+    elif i == 2:
+        print("21 - 30:", text[i])
+    elif i == 3:
+        print("31 - 40:", text[i])
+    elif i == 4:
+        print("41 - 50:", text[i])
+    elif i == 5:
+        print("51 - 60:", text[i])
+    elif i == 6:
+        print("61 - 70:", text[i])
+    elif i == 7:
+        print("71 - 80:", text[i])
+    elif i == 8:
+        print("81 - 90:", text[i])
+    elif i == 9:
+        print("91 - 100:", text[i])
+'''
 
+c = ['', '', '', '', '', '', '', '', '', '']
+
+for i in range(10):
+    b = int(input("숫자 입력(1~100 중): "))
+    text = ['1 - 10:', '11 - 20:', '21 - 30:', '31 - 40:', '41 - 50:',
+            '51 - 60:', '61 - 70:', '71 - 80:', '81 - 90:', '91 - 100:']
+
+    if 1 <= b and b <= 10:
+        c[0] += '*'
+    elif 11 <= b and b <= 20:
+        c[1] += '*'
+    elif 21 <= b and b <= 30:
+        c[2] += '*'
+    elif 31 <= b and b <= 40:
+        c[3] += '*'
+    elif 41 <= b and b <= 50:
+        c[4] += '*'
+    elif 51 <= b and b <= 60:
+        c[5] += '*'
+    elif 61 <= b and b <= 70:
+        c[6] += '*'
+    elif 71 <= b and b <= 80:
+        c[7] += '*'
+    elif 81 <= b and b <= 90:
+        c[8] += '*'
+    elif 91 <= b and b <= 100:
+        c[9] += '*'
+
+    for i in range(10):
+        print(text[i], c[i])
+
+    print()
