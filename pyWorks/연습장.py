@@ -63,24 +63,3 @@ for i in range(10):
     text.append("*" * int(count[i]))
 
 
-    if text[i] == text[0]:
-        print("1 - 10: " + text[i])
-    elif text[i] == text[1]:
-        print("11 - 20: " + text[i])
-    elif text[i] == text[2]:
-        print("21 - 30: " + text[i])
-    elif text[i] == text[3]:
-        print("31 - 40: " + text[i])
-    elif text[i] == text[4]:
-        print("41 - 50: " + text[i])
-    elif text[i] == text[5]:
-        print("51 - 60: " + text[i])
-    elif text[i] == text[6]:
-        print("61 - 70: " + text[i])
-    elif text[i] == text[7]:
-        print("71 - 80: " + text[i])
-    elif text[i] == text[8]:
-        print("81 - 90: " + text[i])
-    elif text[i] == text[9]:
-        print("91 - 100: " + text[i])
-
