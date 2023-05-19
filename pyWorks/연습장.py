@@ -88,7 +88,8 @@ for i in range(10):
 
 c = ['', '', '', '', '', '', '', '', '', '']
 
-for i in range(10):
+i = 0
+while i < 10:
     b = int(input("숫자 입력(1~100 중): "))
     text = ['1 - 10:', '11 - 20:', '21 - 30:', '31 - 40:', '41 - 50:',
             '51 - 60:', '61 - 70:', '71 - 80:', '81 - 90:', '91 - 100:']
@@ -114,7 +115,9 @@ for i in range(10):
     elif 91 <= b and b <= 100:
         c[9] += '*'
 
-    for i in range(10):
-        print(text[i], c[i])
+    for j in range(10):
+        print(text[j], c[j])
 
     print()
+
+    i += 1
