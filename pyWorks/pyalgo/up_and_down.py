@@ -9,10 +9,10 @@
 
 import random
 
-com = random.randint(1, 100)
+# com = random.randint(1, 100)
 # count = 10
-min_v = 1
-max_v = 100
+# min_v = 1
+# max_v = 100
 
 '''
 while True:
@@ -45,31 +45,37 @@ while True:
         continue
 '''
 
-for i in range(1, 11):
-    try:
-        guess = int(input(f"숫자 추측({min_v}~{max_v} 중 하나): "))
+def number_game(com, min_v, max_v, current_turn):
+    for i in range(current_turn, 11):
+        try:
+            guess = int(input(f"숫자 추측({min_v}~{max_v} 중 하나): "))
 
-        if guess > 100 or guess < 1:
-            print("입력 범위가 아닙니다. 다시 입력해주세요.")
-            continue
-        else:
-            if guess == com:
-                print("정답!")
-                print("점수:", ((10 - i + 1) * 10))
+            if guess > 100 or guess < 1:
+                print("입력 범위가 아닙니다. 다시 입력해주세요.")
+                number_game(com, min_v, max_v, i)
                 break
-            elif guess < com:
-                if guess > min_v:
-                    min_v = guess
-                print("너무 작아요!")
             else:
-                if guess < max_v:
-                    max_v = guess
-                print("너무 커요!")
+                if guess == com:
+                    print("정답!")
+                    print("점수:", ((10 - i + 1) * 10))
+                    break
+                elif guess < com:
+                    if guess > min_v:
+                        min_v = guess
+                    print("너무 작아요!")
+                else:
+                    if guess < max_v:
+                        max_v = guess
+                    print("너무 커요!")
 
-            if i == 10:
-                print()
-                print("아쉽습니다.")
+        except Exception as e:
+            print("숫자를 입력해주세요.")
+            number_game(com, min_v, max_v, i)
+            break
+    else:
+        print()
+        print("아쉽습니다.")
 
-    except Exception as e:
-        print("숫자를 입력해주세요.")
-        continue
+com = random.randint(1, 100)
+
+number_game(com, 1, 100, 1)
