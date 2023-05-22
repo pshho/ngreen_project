@@ -13,6 +13,7 @@ public class BankMain {
 		boolean run = true;
 		
 		while(run) {
+			
 			System.out.println("=================================================");
 			System.out.println("1. 계좌 생성 | 2. 계좌 목록 | 3. 예금 | 4. 출금 | 5. 종료");
 			System.out.println("=================================================");
@@ -66,9 +67,13 @@ public class BankMain {
 		for(int i=0; i<accountArray.length; i++) {
 			
 			if(accountArray[i] == null) {
-				accountArray[i] = new Account(owner, Integer.parseInt(balance));
+				
+				String random = accountNumber();
+				
+				accountArray[i] = new Account(random, owner, Integer.parseInt(balance));
 				System.out.println("결과: 계좌가 정상적으로 생성되었습니다.");
 				break;
+				
 			}
 			
 		}
@@ -85,10 +90,15 @@ public class BankMain {
 		for(int i=0; i<accountArray.length; i++) {
 			
 			if(accountArray[i] != null) {
-
-				System.out.println("계좌번호: " + accountArray[i].getAno());
+				
+				String formatNumber = accountArray[i].getAno();
+				formatNumber = formatNumber.substring(0, 3) + 
+						"-" + formatNumber.substring(3, 7) + "-" +
+						formatNumber.substring(7, 10);
+				
+				System.out.println("계좌번호: " + formatNumber);
 				System.out.println("계좌주: " + accountArray[i].getOwner());
-				System.out.println("예금액: " + accountArray[i].getBalance());
+				System.out.printf("예금액: %,d\n", accountArray[i].getBalance());
 				System.out.println();
 				
 			}
@@ -103,5 +113,34 @@ public class BankMain {
 //		
 //		
 //	}
+	
+	// 계좌번호 랜덤 생성
+	
+	private static String accountNumber() {
+		
+		while(true) {
+			
+			String random = "";
+			int stackNum = 265;
+			random = "" + stackNum;
+			
+			for(int i=0; i<7; i++) {
+				
+				int num = (int)(Math.random() * 9) + 1;
+				random += "" + num;
+				
+			}
+			
+			for(Account account : accountArray) {
+				if(account != null && account.getAno().equals(random)) {
+					break;
+				}
+			}
+			
+			return random;
+			
+		}
+		
+	}
 
 }

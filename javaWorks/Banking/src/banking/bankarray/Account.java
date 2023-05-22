@@ -6,19 +6,9 @@ public class Account {
 	private String owner;	// 계좌주
 	private int balance;	// 잔고
 
-	public Account(String owner, int balance) {
+	public Account(String ano, String owner, int balance) {
 		
-		String random = "";
-		
-		for(int i=0; i<8; i++) {
-			
-			int num = (int)(Math.random() * 9) + 1;
-			random += "" + num;
-			
-		}
-		
-		ano = random;
-		
+		this.ano = ano;
 		this.owner = owner;
 		this.balance = balance;
 		
