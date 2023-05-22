@@ -11,8 +11,8 @@ import re
 # buf = []
 
 # 2차원 배열 나선형(달팽이) 순환 저장
-n = 7
-m = 7
+n = 11
+m = 11
 a = []
 b = []
 
@@ -26,11 +26,10 @@ for i in range(n):
 for j in range(m):
     a.append(list(b))
 
-print(a)
+# print(a)
 
 i = 0
 j = 0
-x = 0
 a[i][j] = 1
 c = 2
 
