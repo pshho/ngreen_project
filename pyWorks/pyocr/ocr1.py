@@ -4,7 +4,15 @@ from pytesseract import pytesseract
 
 # 엔진
 pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
-img = Image.open("source/text.PNG")
+img = Image.open("source/p1.png")
 # img.show()
-text = pytesseract.image_to_string(img, lang="kor")
+text = pytesseract.image_to_string(img, lang="kor+eng")
+# print(text)
+# text = text.replace(" ", "")
 print(text)
+
+# 변환된 텍스트를 파일에 쓰기
+# encoding='utf-8' 꼭 명시해야함
+with open("./output/news.text", 'w', encoding='utf-8') as f:
+    # f.write(text)
+    f.write(text.replace(" ", ""))

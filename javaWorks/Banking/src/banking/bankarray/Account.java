@@ -32,4 +32,16 @@ public class Account {
 		
 	}
 	
+	public void setBalanceAdd(int money) {
+		
+		this.balance += money;
+		
+	}
+	
+	public void setBalanceSub(int money) {
+		
+		this.balance -= money;
+		
+	}
+	
 }
