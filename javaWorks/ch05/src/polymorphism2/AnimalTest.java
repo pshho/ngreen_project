@@ -1,4 +1,4 @@
-package polymorphism;
+package polymorphism2;
 
 class Animal {
 	
@@ -42,6 +42,9 @@ public class AnimalTest {
 
 	public static void main(String[] args) {
 		
+		// AnimalTest 클래스 객체 생성
+		AnimalTest aTest = new AnimalTest();
+		
 		// 다형성 - 부모 타입으로 객체 생성(자동 형변환)
 		Animal animal = new Animal();
 		Animal human = new Human();
@@ -49,23 +52,29 @@ public class AnimalTest {
 		Animal eagle = new Eagle();
 		
 		// animal.move();
-		moveAnimal(animal);
+		// moveAnimal(animal);
 		
 		// Human human = new Human();
 		
 		// human.move();
-		moveAnimal(human);
+		// moveAnimal(human);
 		
 		// Tiger tiger = new Tiger();
 		
 		// tiger.move();
-		moveAnimal(tiger);
+		// moveAnimal(tiger);
 		
-		moveAnimal(eagle);
+		// moveAnimal(eagle);
+		
+		aTest.moveAnimal(animal);
+		aTest.moveAnimal(human);
+		aTest.moveAnimal(tiger);
+		aTest.moveAnimal(eagle);
+		
 	}
 	
 	// move()를 사용할 메소드 생성 - 매개 변수 다형성
-	public static void moveAnimal(Animal animal) {
+	public void moveAnimal(Animal animal) {
 		animal.move();
 	}
 
