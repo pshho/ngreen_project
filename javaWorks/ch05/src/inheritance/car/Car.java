@@ -15,7 +15,7 @@ public class Car {
 	}
 	
 	String carInfo() {
-		return "브랜드: " + brand + " CC: " + cc + "cc";
+		return "브랜드: " + brand + "\t CC: " + cc + "cc";
 	}
 
 }
