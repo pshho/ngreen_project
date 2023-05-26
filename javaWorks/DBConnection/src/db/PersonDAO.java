@@ -11,18 +11,26 @@ public class PersonDAO {
 	// field
 	private Connection conn = null;			// 연결 처리 클래스
 	private PreparedStatement pstmt = null;	// sql 처리 클래스
-	
-	// 연결 - 클래스 작성 호출
-	
+	private ResultSet rs = null; 
+		
 	
 	// 자료 삽입
 	public void insertPerson(Person person) {
+		conn = JDBCUtil.getConnection();
+		String sql = "INSERT INTO person(userid, userpw, name, age) "
+				+ "VALUES (?, ?, ?, ?)";
 		try {
-			conn = JDBCUtil.getConnection();
-			String sql = "";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, person.getUserId());
+			pstmt.setString(2, person.getUserPw());
+			pstmt.setString(3, person.getName());
+			pstmt.setInt(4, person.getAge());
+			
+			pstmt.executeUpdate();	// 실행 처리(DB에 저장)
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
 		}
 	}
 	
@@ -31,9 +39,9 @@ public class PersonDAO {
 		ArrayList<Person> personList = new ArrayList<>();
 		
 		try {
-			conn = JDBCUtil.getConnection();
+			conn = JDBCUtil.getConnection();		// conn - 연결 객체 생성
 			String sql = "SELECT * FROM person";
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);		// sql -처리 객체 생성
 			ResultSet rs = pstmt.executeQuery();	// 검색할 때 쓰는 executeQuery
 			while(rs.next()) {
 				Person person = new Person();
@@ -47,9 +55,33 @@ public class PersonDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
 		}
 		
 		return personList;	// 호출하는 곳으로 반환
+		
+	}
+	public Person getPerson(String userId) {
+		Person person = new Person();
+		conn=JDBCUtil.getConnection();
+		String sql ="SELECT * FROM person WHERE userid=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				person.setUserId(rs.getString("userid"));
+				person.setUserPw(rs.getString("userpw"));
+				person.setName(rs.getString("name"));
+				person.setAge(rs.getInt("age"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return person;
 		
 	}
 
