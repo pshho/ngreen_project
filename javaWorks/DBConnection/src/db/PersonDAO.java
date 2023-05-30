@@ -12,8 +12,7 @@ public class PersonDAO {
 	private Connection conn = null;			// 연결 처리 클래스
 	private PreparedStatement pstmt = null;	// sql 처리 클래스
 	private ResultSet rs = null; 
-		
-	
+
 	// 자료 삽입
 	public void insertPerson(Person person) {
 		conn = JDBCUtil.getConnection();
@@ -27,6 +26,39 @@ public class PersonDAO {
 			pstmt.setInt(4, person.getAge());
 			
 			pstmt.executeUpdate();	// 실행 처리(DB에 저장)
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	
+	// 자료 삭제
+	public void deletePerson(String userid) {
+		conn = JDBCUtil.getConnection();
+		String sql = "DELETE FROM person WHERE userid = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userid);	// 외부에서 입력한 userid를 설정
+			pstmt.executeUpdate();		// DB에서 삭제
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	
+	// 자료 수정
+	public void updatePerson(Person person) {
+		conn = JDBCUtil.getConnection();
+		String sql = "UPDATE person SET userpw = ?, name = ?, age = ? WHERE userid = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, person.getUserPw());
+			pstmt.setString(2, person.getName());
+			pstmt.setInt(3, person.getAge());
+			pstmt.setString(4, person.getUserId());
+			pstmt.executeUpdate();	// DB 수정 실행
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -62,6 +94,8 @@ public class PersonDAO {
 		return personList;	// 호출하는 곳으로 반환
 		
 	}
+	
+	// 자료 검색(1개)
 	public Person getPerson(String userId) {
 		Person person = new Person();
 		conn=JDBCUtil.getConnection();

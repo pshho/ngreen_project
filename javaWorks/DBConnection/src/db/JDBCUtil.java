@@ -12,8 +12,8 @@ public class JDBCUtil {
 	// field
 	static String driverClass = "oracle.jdbc.OracleDriver";		// 오라클 드라이버
 	static String url = "jdbc:oracle:thin:@localhost:1521/xe";	// db 경로(위치)
-	static String username = "C##mydb2";
-	static String password = "mydb";
+	static String username = "c##mydb";
+	static String password = "1234";
 	
 	// DB 연결 메서드
 	public static Connection getConnection() {
@@ -49,6 +49,7 @@ public class JDBCUtil {
 			}
 		}
 	}
+	
 	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
 		if(rs != null) {
 			try {
