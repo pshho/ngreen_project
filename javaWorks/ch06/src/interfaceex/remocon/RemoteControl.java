@@ -13,4 +13,18 @@ public interface RemoteControl {
 	
 	public void setVolume(int volume);
 	
+	// 디폴트 메시지(실체 메서드) - 무음 처리/해제
+	default void setMute(boolean mute) {
+		if(mute) {	// mute == true
+			System.out.println("무음 처리");
+		}else {
+			System.out.println("무음 해제");
+		}
+	}
+	
+	// 정적 메서드
+	static void changeBattery() {
+		System.out.println("건전기 교환");
+	}
+	
 }
