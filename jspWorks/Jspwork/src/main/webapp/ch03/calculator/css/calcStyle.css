@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+#container {
+	width: 90%;
+	margin: 30px auto;
+	text-align: center;
+}
+
+#wrap {
+	width: 90%;
+	margin: 10px auto;
+	text-align: center;
+	color: red;
+}

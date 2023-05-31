@@ -1,7 +1,9 @@
-<%@page import="beans.LoginBean"%>
+<%@ page import="beans.LoginBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("utf-8");
+
 	// form 데이터 가져오기
 	String id = request.getParameter("userid");
 	String pd = request.getParameter("passwd");
