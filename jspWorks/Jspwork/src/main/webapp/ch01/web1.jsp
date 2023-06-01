@@ -18,6 +18,9 @@
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter datetime = DateTimeFormatter.ofPattern("yyyy-MM-dd a hh:mm:ss");
 		String current_time = now.format(datetime);
+		
+		// 5초 후 새로고침
+		response.setIntHeader("Refresh", 1);
 	%>
 	<h3>현재 날짜와 시간은 <%= current_time %></h3>
 </body>

@@ -2,7 +2,6 @@ from sqlite3.dbapi2 import *
 import sqlite3
 
 # member table과 연동
-'''
 def getconn():
     conn = sqlite3.connect("c:/ngreen_project/sqlWorks/sql/pydb/member.db")
     return conn
@@ -48,9 +47,10 @@ def select_one():
 
     conn.close()
 
-select_one()
-'''
+# select_one()
 
+
+"""
 # board table과 연동
 def getconn():
     conn = sqlite3.connect("c:/ngreen_project/sqlWorks/sql/pydb/member.db")
@@ -112,7 +112,7 @@ def select_board():
 
     conn.close()
 
-select_board()
+# select_board()
 
 def alter_board():
     conn = getconn()
@@ -123,3 +123,4 @@ def alter_board():
     conn.close()
 
 # alter_board()
+"""

@@ -9,14 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/calculator/calc")
-public class CalcServlet extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
+@WebServlet("/calculator/calc2")
+public class CalcServlet2 extends HttpServlet {
 	
-	// method 방식 get 요청 처리
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 폼 데이터 가져오기
 		int x = Integer.parseInt(req.getParameter("x"));
 		int y = Integer.parseInt(req.getParameter("y"));
@@ -62,14 +61,20 @@ public class CalcServlet extends HttpServlet {
 				+ "</body>\r\n"
 				+ "</html>\r\n"
 				+ "");
-		
+	}
+	
+	/*
+	// method 방식 get 요청 처리
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	}
 	
 	// method 방식 post 요청 처리
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
+		// doGet(req, resp);
 	}
+	*/
 
 	@Override
 	public void destroy() {
