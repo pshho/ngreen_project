@@ -2,7 +2,9 @@ package banking.bankarraylist;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 // import java.util.regex.*;
+import java.util.regex.Pattern;
 
 public class BankArrayList {
 	
@@ -192,14 +194,26 @@ public class BankArrayList {
 			System.out.print("계좌번호: ");
 			String ano = scanner.nextLine();
 			
-			if(findAccount(ano) != null) {	// 계좌를 찾았다면(반환값이 있다면)
+			Pattern pattern = Pattern.compile("\\d+");
+			Matcher matcher = pattern.matcher(ano);
+			
+			String b = "";
+			
+			while(matcher.find()) {
+				
+				// System.out.println(matcher.group());
+				b += matcher.group();
+				
+			}
+			
+			if(findAccount(b) != null) {	// 계좌를 찾았다면(반환값이 있다면)
 				
 				System.out.print("입금액: ");
 				String balance = scanner.nextLine();
 				int money = Integer.parseInt(balance);
 					
 				// 예금: 잔고 + 예금액
-				Account account = findAccount(ano);
+				Account account = findAccount(b);
 				account.setBalanceAdd(money);
 				
 				System.out.println("정상처리되었습니다.");
@@ -229,7 +243,19 @@ public class BankArrayList {
 			System.out.print("계좌번호: ");
 			String ano = scanner.nextLine();
 			
-			if(findAccount(ano) != null) {	// 계좌를 찾았다면(반환값이 있다면)
+			Pattern pattern = Pattern.compile("\\d+");
+			Matcher matcher = pattern.matcher(ano);
+			
+			String b = "";
+			
+			while(matcher.find()) {
+				
+				// System.out.println(matcher.group());
+				b += matcher.group();
+				
+			}
+			
+			if(findAccount(b) != null) {	// 계좌를 찾았다면(반환값이 있다면)
 				
 				boolean running = true;
 				
@@ -240,7 +266,7 @@ public class BankArrayList {
 					int money = Integer.parseInt(balance);
 					
 					// 예금: 잔고 + 예금액
-					Account account = findAccount(ano);
+					Account account = findAccount(b);
 					account.setBalanceSub(money);
 					
 					if(account.getBalance() < 0) {

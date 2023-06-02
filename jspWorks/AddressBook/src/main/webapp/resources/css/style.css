@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+#container {
+	width: 90%;
+	margin: 50px auto;
+	text-align: center;
+}
+
+#container #tbl_reg {
+	width: 30%;
+	margin: 20px auto;
+	font-size: 1.1vw;
+	border: 1px solid #ccc;
+	padding: 10px 20px;
+}
+
+#container #tbl_reg tr {
+	display: flex;
+	justify-content: space-around;
+	margin: 20px 0;
+}
+
+#container #tbl_reg tr td {
+	width: 25%;
+	text-align: left;
+}
+
+#container #tbl_reg tr td:nth-of-type(2) {
+	width: 60%;
+}
+
+#container #tbl_reg tr td input {
+	width: 100%;
+	padding: 7px 5px;
+}
+
+#container #tbl_reg tr:last-child {
+	display: flex;
+	justify-content: center;
+}
+
+#container #tbl_reg tr:last-child td {
+	padding: 5px 10px;
+}
+
+#container #tbl_reg tr:last-child td input {
+	width: 40%;
+}
+
+#container #tbl_reg select {
+	padding: 7px 5px;
+}
+
+#container #wrap {
+	width: 25%;
+	margin: 20px auto;
+	text-align: left;
+	font-size: 1.1vw;
+}
+
+#container #tbl_list {
+	margin: 20px auto;
+	font-size: 1.1vw;
+}
+
+#container #tbl_list thead {
+	background: #eee;
+}
+
+#container #tbl_list, #tbl_list th, #tbl_list td {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	padding: 10px 20px;
+}
+
+#container a {
+	font-size: 1.1vw;
+	text-decoration: none;
+}
