@@ -15,7 +15,6 @@
 	<div id="container">
 		<h1>주소록</h1>
 		<hr>
-		<p><a href="addrForm.jsp">주소 추가</a></p>
 		<table id="tbl_list">
 			<thead>
 				<tr>
@@ -23,6 +22,8 @@
 					<th>전화번호</th>
 					<th>이메일</th>
 					<th>성별</th>
+					<th>보기</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,14 +34,24 @@
 				%>
 				<tr>
 					<td><%= aB.getUsername() %></td>
-					<td><%= aB.getTel().substring(0, 3) + "-" 
-					+ aB.getTel().substring(3, 7) + "-" + aB.getTel().substring(7, 11) %></td>
-					<td><%= aB.getEmail() %></td>
-					<td><%= aB.getGender() %></td>
+					<td>************</td>
+					<td>************</td>
+					<td>************</td>
+					<td>
+						<a href="addrView.jsp?username=<%= aB.getUsername() %>">
+							<button type="button">보기</button>
+						</a>
+					</td>
+					<td>
+						<a href="addrDelete.jsp?username=<%= aB.getUsername() %>" onclick="return confirm('정말로 삭제하시겠습니까?')">
+							<button type="button">삭제</button>
+						</a>
+					</td>
 				</tr>
 				<% } %>
 			</tbody>
 		</table>
+		<p><a href="addrForm.jsp">주소 추가</a></p>
 	</div>
 </body>
 </html>
