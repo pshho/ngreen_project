@@ -15,6 +15,15 @@ public class StringIndexOf {
 			System.out.println("자바와 관련이 없는 책이군요!");
 		}
 		
+		// lastIndexOf() - 찾는 문자를 뒤에서 부터 탐색
+		String url = "/board/boardList.jsp";
+		int url_idx1 = url.indexOf('/');
+		
+		System.out.println(url_idx1);	// 앞에 있는 '/'
+		
+		int url_idx2 = url.lastIndexOf('/');
+		System.out.println(url_idx2);	// 뒤에 있는 '/'
+		
 	}
 
 }

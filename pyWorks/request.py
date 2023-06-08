@@ -20,7 +20,7 @@ def calc():
         c = input('{}번째로 원하시는 상품을 입력해주세요: '.format(i+1))
         d = input(f"'{c}' 상품을 몇 개를 원하시나요?: ")
 
-        s1 = int(a[c]) * int(d)
+        s1 = a[c] * int(d)
         e.append(s1)
         s2 += e[i]
 
