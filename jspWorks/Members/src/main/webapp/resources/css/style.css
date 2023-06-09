@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+*{margin: 0;}
+
+#container {
+	width: 70%;
+	margin: 30px auto;
+	text-align: center;
+}
+
+#container h2 {
+	font-size: 1.5vw;
+	margin: 20px auto;
+}
+
+#container img {
+	border-radius: 10px;
+	margin: 20px auto;
+}
+
+/* header 스타일 */
+header {
+	width: 80%;
+	height: 100px;
+	margin: 0 auto;
+	background: #f4aaaa;
+}
+
+header nav ul {
+	display: flex;
+	justify-content: space-around;
+}
+
+header nav ul li {
+	margin: 34px auto;
+	list-style: none;
+}
+
+
+/* memberList 스타일 */
+#container #tbl_list {
+	width: 60%;
+	margin: 20px auto;
+}
+
+#container #tbl_list, #tbl_list th, #tbl_list td {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	padding: 10px 20px;
+}
+
+#container #tbl_list thead {
+	background: #eee;
+	font-size: 1.1vw;
+}
+
+#container #tbl_list tbody {
+	font-size: 0.9vw;
+}
+
+/* memberForm 스타일 */
+#register {
+	width: 60%;
+	margin: 20px auto;
+}
+
+#register form fieldset ul {
+	padding: 0;
+	font-size: 1.2vw;
+}
+
+#register form fieldset ul li {
+	display: flex;
+	justify-content: space-between;
+	margin: 70px 40px;
+	list-style: none;
+}
+
+#register form fieldset ul li input {
+	width: 70%;
+}
+
+#register form fieldset ul li .la1 {
+	width: 42%;
+}
+
+#register form fieldset ul li .la1 input {
+	width: 30%;
+	height: 18px;
+}
+
+#register .button input {
+	margin: 20px 7px;
+	padding: 5px 10px;
+	font-size: 1.1vw;
+}
