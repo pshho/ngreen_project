@@ -178,7 +178,51 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("/boardWrite.do")) {
 			nextPage = "/board/boardWrite.jsp";
 		}else if(command.equals("/addBoard.do")) {
+			String title = req.getParameter("title");
+			String contents = req.getParameter("contents");
+			String id = req.getParameter("memberId");
 			
+			Board nBoard = new Board();
+			
+			nBoard.setTitle(title);
+			nBoard.setContents(contents);
+			nBoard.setMemberId(id);
+			
+			boardDAO.insertBoard(nBoard);
+			
+			nextPage = "/boardList.do";
+		}else if(command.equals("/boardView.do")) {
+			int bid = Integer.parseInt(req.getParameter("bid"));
+			
+			Board nBoard = new Board();
+			
+			nBoard = boardDAO.getBoard(bid);
+			
+			req.setAttribute("board", nBoard);
+			
+			nextPage = "/board/boardView.jsp";
+		}else if(command.equals("/boardUpdate.do")) {
+			int bid = Integer.parseInt(req.getParameter("bid"));
+			
+			Board nBoard = new Board();
+			
+			nBoard = boardDAO.getBoard(bid);
+			
+			req.setAttribute("board", nBoard);
+			
+			nextPage = "/board/boardUpdate.jsp";
+		}else if(command.equals("/updBoard.do")) {
+			int bid = Integer.parseInt(req.getParameter("bid"));
+			String title = req.getParameter("title");
+			String contents = req.getParameter("contents");
+			
+			Board nBoard = new Board();
+			
+			nBoard.setBid(bid);
+			nBoard.setTitle(title);
+			nBoard.setContents(contents);
+			
+			boardDAO.updateBoard(nBoard);
 			
 			nextPage = "/boardList.do";
 		}

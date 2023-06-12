@@ -35,7 +35,7 @@
 							<input type="button" value="수정">
 						</a>
 						<a href="/memberDelete.do?memberId=${ member.memberId }">
-							<input type="button" value="삭제">
+							<input type="button" value="삭제" onclick="return confirm('정말로 삭제하시겠습니까?')">
 						</a>
 					</li>
 				</c:if>

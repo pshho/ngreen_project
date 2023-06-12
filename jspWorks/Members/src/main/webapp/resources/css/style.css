@@ -56,7 +56,7 @@ header nav #headerMenu li {
 }
 
 
-/* memberList 스타일 */
+/* memberList, boardList 스타일 */
 #container #tbl_list, #container #brd_list {
 	width: 60%;
 	margin: 40px auto;
@@ -90,8 +90,8 @@ header nav #headerMenu li {
 	padding: 5px 10px;
 }
 
-/* memberForm, memberUpdate, loginForm, board_write 스타일 */
-#register, #update, #loginForm, #board_write {
+/* memberForm, memberUpdate, loginForm, board_write, board_update 스타일 */
+#register, #update, #loginForm, #board_write, #board_update {
 	width: 60%;
 	margin: 40px auto;
 }
@@ -99,7 +99,8 @@ header nav #headerMenu li {
 #register form fieldset ul, 
 #update form fieldset ul,
 #loginForm form fieldset ul,
-#board_write form fieldset ul {
+#board_write form fieldset ul,
+#board_update ul {
 	padding: 0;
 	font-size: 1.2vw;
 }
@@ -107,7 +108,8 @@ header nav #headerMenu li {
 #register form fieldset ul li, 
 #update form fieldset ul li,
 #loginForm form fieldset ul li,
-#board_write form fieldset ul li {
+#board_write form fieldset ul li,
+#board_update ul li {
 	display: flex;
 	justify-content: space-between;
 	margin: 70px 40px;
@@ -117,7 +119,10 @@ header nav #headerMenu li {
 #register form fieldset ul li input, 
 #update form fieldset ul li input,
 #loginForm form fieldset ul li input,
-#board_write form fieldset ul li input, textarea {
+#board_write form fieldset ul li input, 
+#board_write form fieldset ul li textarea,
+#board_update ul li input, 
+#board_update ul li textarea {
 	width: 70%;
 }
 
@@ -135,25 +140,27 @@ header nav #headerMenu li {
 #register .button input, 
 #update .button input, 
 #loginForm .button input,
-#board_write .button input {
+#board_write .button input,
+#board_update .button input {
 	margin: 20px 7px;
 	padding: 5px 10px;
 	font-size: 1.1vw;
 }
 
-/* memberView 스타일 */
-#memberView {
+/* memberView, boardView 스타일 */
+#memberView, #boardView {
 	width: 60%;
 	margin: 50px auto;
 }
 
-#memberView ul {
+#memberView ul, #boardView ul {
 	width: 60%;
 	margin: 20px auto;
 	padding: 0;
 }
 
-#memberView ul li{
+#memberView ul li,
+#boardView ul li {
 	margin: 25px auto;
 	list-style: none;
 	display: flex;
@@ -161,11 +168,14 @@ header nav #headerMenu li {
 	font-size: 1.1vw;
 }
 
-#memberView ul li input {
+#memberView ul li input,
+#boardView ul li input,
+#boardView ul li textarea {
 	width: 70%;
 }
 
-#memberView ul li label {
+#memberView ul li label,
+#boardView ul li label {
 	width: 45%;
 	font-size: 0.9vw;
 }
@@ -178,14 +188,16 @@ header nav #headerMenu li {
 	width: 30%;
 }
 
-#memberView ul #btn {
+#memberView ul #btn,
+#boardView ul #btn {
 	display: flex;
 	justify-content: center;
 }
 
-#memberView ul #btn a {
+#memberView ul #btn a,
+#boardView ul #btn a {
 	width: 20%;
-	margin: 0 5px;
+	padding: 5px 10px;
 }
 
 /* footer 스타일 */

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import common.JDBCUtil;
@@ -51,16 +52,16 @@ public class BoardDAO {
 
 	}
 
-	// 자료 검색(회원 1명의 게시글)
-	public Board getMember(String memberId) {
+	// 자료 검색(한 개의 게시글)
+	public Board getBoard(int bid) {
 		Board board = new Board();
 
 		conn = JDBCUtil.getConnection();
-		String sql = "SELECT * FROM boards WHERE memberid = ?";
+		String sql = "SELECT * FROM boards WHERE bid = ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberId);
+			pstmt.setInt(1, bid);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -103,13 +104,13 @@ public class BoardDAO {
 	}
 
 	// 자료 삭제
-	public void deleteBoard(String memberId) {
+	public void deleteBoard(int bid) {
 		conn = JDBCUtil.getConnection();
-		String sql = "DELETE FROM boards WHERE memberid = ?";
+		String sql = "DELETE FROM boards WHERE bid = ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberId);
+			pstmt.setInt(1, bid);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -120,16 +121,18 @@ public class BoardDAO {
 	}
 
 	// 자료 수정
-	public void updateMember(Board board) {
+	public void updateBoard(Board board) {
+		Timestamp now = new Timestamp(System.currentTimeMillis());
+		
 		conn = JDBCUtil.getConnection();
-		String sql = "UPDATE boards SET title = ?, contents = ?, modifydate = ? WHERE memberid = ?";
+		String sql = "UPDATE boards SET title = ?, contents = ?, modifydate = ? WHERE bid = ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getContents());
-			pstmt.setTimestamp(3, board.getModifyDate());
-			pstmt.setString(4, board.getMemberId());
+			pstmt.setTimestamp(3, now);
+			pstmt.setInt(4, board.getBid());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

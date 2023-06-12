@@ -11,8 +11,8 @@ public class JDBCUtil {
 	// oracle connect
 	static String driverClass = "oracle.jdbc.OracleDriver";
 	static String url = "jdbc:oracle:thin:@localhost:1521/xe";
-	static String username = "c##mydb";
-	static String password = "1234";
+	static String username = "C##mydb2";
+	static String password = "mydb";
 	
 	public static Connection getConnection() {
 		try {

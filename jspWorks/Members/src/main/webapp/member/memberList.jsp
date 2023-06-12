@@ -50,7 +50,7 @@
 		<c:otherwise>
 			<script>
 				alert("로그인을 해주세요");
-				location.href("/loginForm.do");	// 페이지 이동
+				location.replace("/loginForm.do");	// 페이지 이동
 			</script>
 		</c:otherwise>
 	</c:choose>
