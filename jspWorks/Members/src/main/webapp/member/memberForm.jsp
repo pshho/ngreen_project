@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 <body>
+	<jsp:include page="../header.jsp"></jsp:include>
 	<div id="container">
 		<section id="register">
 			<h2>회원 가입</h2>
@@ -32,8 +33,8 @@
 						</li>
 						<li>
 							<label for="gender">성별</label>
-							<label class="la1"><input type="radio" name="gender" id="gender">남</label>
-							<label class="la1"><input type="radio" name="gender" id="gender">여</label>
+							<label class="la1"><input type="radio" name="gender" id="gender" value="남">남</label>
+							<label class="la1"><input type="radio" name="gender" id="gender" value="여">여</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -44,5 +45,6 @@
 			</form>
 		</section>
 	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

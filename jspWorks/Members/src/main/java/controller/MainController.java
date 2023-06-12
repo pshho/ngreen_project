@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import board.Board;
+import board.BoardDAO;
 import member.Member;
 import member.MemberDAO;
 
@@ -22,12 +26,14 @@ public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 4L;
 	
 	MemberDAO memberDAO;	// MemberDAO 객체 선언
+	BoardDAO boardDAO;		// BoardDAO 객체 선언
 
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		memberDAO = new MemberDAO();
+		boardDAO = new BoardDAO();
 	}
 
 	/**
@@ -37,6 +43,9 @@ public class MainController extends HttpServlet {
 		
 		// 한글 인코딩
 		req.setCharacterEncoding("utf-8");
+		
+		// 콘텐츠 타입 설정(response)
+		res.setContentType("text/html; charset=utf-8");
 		
 		// command 패턴으로 url 설정하기
 		String uri = req.getRequestURI();
@@ -48,6 +57,12 @@ public class MainController extends HttpServlet {
 		
 		String nextPage = null;
 		
+		// 출력 스트림 객체
+		PrintWriter out = res.getWriter();
+		
+		// session 발급 및 조회
+		HttpSession session = req.getSession();
+		
 		// 회원 목록 조회
 		if(command.equals("/memberList.do")) {
 			
@@ -57,9 +72,9 @@ public class MainController extends HttpServlet {
 			// Model 생성
 			req.setAttribute("memberList", memberList);
 			
-			nextPage = "memberList.jsp";
+			nextPage = "/member/memberList.jsp";
 		}else if(command.equals("/memberForm.do")) {
-			nextPage = "memberForm.jsp";
+			nextPage = "/member/memberForm.jsp";
 		}else if(command.equals("/addMember.do")) {
 			
 			String id = req.getParameter("memberId");
@@ -76,7 +91,98 @@ public class MainController extends HttpServlet {
 			memberDAO.insertMember(nmember);	// 회원을 DB에 저장
 			
 			nextPage = "index.jsp";
+		}else if(command.equals("/memberView.do")) {
+			
+			String id = req.getParameter("memberId");
+			
+			Member nmember = new Member();
+			
+			nmember = memberDAO.getMember(id);
+			
+			req.setAttribute("member", nmember);
+			
+			nextPage = "/member/memberView.jsp";
+		}else if(command.equals("/updMember.do")) {
+			
+			String id = req.getParameter("memberId");
+			String pw = req.getParameter("passwd1");
+			String na = req.getParameter("name");
+			String gd = req.getParameter("gender");
+			
+			Member nmember = new Member();
+			nmember.setMemberId(id);
+			nmember.setPasswd(pw);
+			nmember.setName(na);
+			nmember.setGender(gd);
+			
+			memberDAO.updateMember(nmember);
+			
+			nextPage = "/memberList.do";
+			
+		}else if(command.equals("/memberUpdate.do")) {
+			
+			String id = req.getParameter("memberId");
+			
+			Member nmember = new Member();
+			
+			nmember = memberDAO.getMember(id);
+			
+			req.setAttribute("member", nmember);
+			
+			nextPage = "/member/memberUpdate.jsp";
+		}else if(command.equals("/memberDelete.do")) {
+			String id = req.getParameter("memberId");
+			
+			memberDAO.deleteMember(id);
+			
+			nextPage = "/memberList.do";
+		}else if(command.equals("/loginForm.do")) {
+			nextPage = "/member/loginForm.jsp";
+		}else if(command.equals("/loginProcess.do")) {
+			// 로그인 폼에 입력된 데이터 받아오기
+			String id = req.getParameter("memberId");
+			String pw = req.getParameter("passwd1");
+			
+			Member nmember = new Member();
+			nmember.setMemberId(id);
+			nmember.setPasswd(pw);
+			
+			boolean check = memberDAO.checkLogin(nmember);
+			
+			if(check) {
+				session.setAttribute("sessionId", id);
+				
+				nextPage = "/index.jsp";
+			}else {
+				out.println("<script>\n "
+						+ "alert('아이디와 비밀번호를 확인해주세요')\n "
+						+ "history.go(-1)\n "	// 이전 페이지 이동
+						+ "</script> ");
+			}
+			
+		}else if(command.equals("/logout.do")) {
+			session.invalidate();
+			
+			nextPage = "/index.jsp";
 		}
+		
+		// 게시판 관리
+		if(command.equals("/boardList.do")) {
+			
+			ArrayList<Board> boardList;
+			boardList = boardDAO.getBoardList();
+			
+			req.setAttribute("boardList", boardList);
+			
+			nextPage = "/board/boardList.jsp";
+		}else if(command.equals("/boardWrite.do")) {
+			nextPage = "/board/boardWrite.jsp";
+		}else if(command.equals("/addBoard.do")) {
+			
+			
+			nextPage = "/boardList.do";
+		}
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(nextPage);
 		dispatcher.forward(req, res);

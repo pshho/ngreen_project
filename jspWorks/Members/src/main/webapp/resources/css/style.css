@@ -1,6 +1,7 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap');
 
-*{margin: 0;}
+*{margin: 0; font-family: 'Gowun Batang', serif;}
 
 #container {
 	width: 70%;
@@ -24,73 +25,193 @@ header {
 	height: 100px;
 	margin: 0 auto;
 	background: #f4aaaa;
+	border-radius: 15px;
 }
 
-header nav ul {
+header a {
+	text-decoration: none;
+	color: black;
+}
+
+header h2 {
+	font-family: sans-serif;
+}
+
+header nav #headerMenu {
 	display: flex;
 	justify-content: space-around;
+	padding: 0;
 }
 
-header nav ul li {
-	margin: 34px auto;
+header nav #headerMenu li:first-of-type {
+	width: 15%;
+	margin: 25px;
+	font-size: 1.3vw;
+}
+
+header nav #headerMenu li {
+	margin: 38px auto;
 	list-style: none;
+	font-size: 1vw;
 }
 
 
 /* memberList 스타일 */
-#container #tbl_list {
+#container #tbl_list, #container #brd_list {
 	width: 60%;
-	margin: 20px auto;
+	margin: 40px auto;
 }
 
-#container #tbl_list, #tbl_list th, #tbl_list td {
+#container #tbl_list, #tbl_list th, #tbl_list td,
+#brd_list, #brd_list th, #brd_list td {
 	border: 1px solid #ccc;
 	border-collapse: collapse;
 	padding: 10px 20px;
 }
 
-#container #tbl_list thead {
+#container #tbl_list thead,
+#brd_list thead {
 	background: #eee;
 	font-size: 1.1vw;
 }
 
-#container #tbl_list tbody {
+#container #tbl_list tbody,
+#brd_list tbody {
 	font-size: 0.9vw;
 }
 
-/* memberForm 스타일 */
-#register {
+#board_btn {
 	width: 60%;
-	margin: 20px auto;
+	margin: 0 auto;
+	text-align: right;
 }
 
-#register form fieldset ul {
+#board_btn input {
+	padding: 5px 10px;
+}
+
+/* memberForm, memberUpdate, loginForm, board_write 스타일 */
+#register, #update, #loginForm, #board_write {
+	width: 60%;
+	margin: 40px auto;
+}
+
+#register form fieldset ul, 
+#update form fieldset ul,
+#loginForm form fieldset ul,
+#board_write form fieldset ul {
 	padding: 0;
 	font-size: 1.2vw;
 }
 
-#register form fieldset ul li {
+#register form fieldset ul li, 
+#update form fieldset ul li,
+#loginForm form fieldset ul li,
+#board_write form fieldset ul li {
 	display: flex;
 	justify-content: space-between;
 	margin: 70px 40px;
 	list-style: none;
 }
 
-#register form fieldset ul li input {
+#register form fieldset ul li input, 
+#update form fieldset ul li input,
+#loginForm form fieldset ul li input,
+#board_write form fieldset ul li input, textarea {
 	width: 70%;
 }
 
-#register form fieldset ul li .la1 {
+#register form fieldset ul li .la1, 
+#update form fieldset ul li .la1 {
 	width: 42%;
 }
 
-#register form fieldset ul li .la1 input {
+#register form fieldset ul li .la1 input, 
+#update form fieldset ul li .la1 input {
 	width: 30%;
 	height: 18px;
 }
 
-#register .button input {
+#register .button input, 
+#update .button input, 
+#loginForm .button input,
+#board_write .button input {
 	margin: 20px 7px;
 	padding: 5px 10px;
 	font-size: 1.1vw;
+}
+
+/* memberView 스타일 */
+#memberView {
+	width: 60%;
+	margin: 50px auto;
+}
+
+#memberView ul {
+	width: 60%;
+	margin: 20px auto;
+	padding: 0;
+}
+
+#memberView ul li{
+	margin: 25px auto;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.1vw;
+}
+
+#memberView ul li input {
+	width: 70%;
+}
+
+#memberView ul li label {
+	width: 45%;
+	font-size: 0.9vw;
+}
+
+#memberView ul li label:last-of-type {
+	text-align: left;
+}
+
+#memberView ul li label input {
+	width: 30%;
+}
+
+#memberView ul #btn {
+	display: flex;
+	justify-content: center;
+}
+
+#memberView ul #btn a {
+	width: 20%;
+	margin: 0 5px;
+}
+
+/* footer 스타일 */
+footer {
+	width: 80%;
+	margin: 30px auto;
+	padding-top: 10px;
+	border-top: 2px solid #ccc;
+}
+
+footer a {
+	text-decoration: none;
+	color: black;
+}
+
+footer #bottomMenu {
+	display: flex;
+}
+
+footer #bottomMenu li {
+	margin: 0 20px;
+	list-style: none;
+	padding-right: 40px;
+	border-right: 1px solid black;
+}
+
+footer #bottomMenu li:last-of-type {
+	border-right: 0;
 }

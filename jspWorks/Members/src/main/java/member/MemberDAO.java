@@ -20,7 +20,7 @@ public class MemberDAO {
 		ArrayList<Member> memberList = new ArrayList<>();
 		
 		conn = JDBCUtil.getConnection();
-		String sql = "SELECT * FROM members";
+		String sql = "SELECT * FROM members ORDER BY joindate";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -134,6 +134,32 @@ public class MemberDAO {
 		} finally {
 			JDBCUtil.close(conn, pstmt);
 		}
+		
+	}
+	
+	// 로그인 체크
+	public boolean checkLogin(Member member) {
+		conn = JDBCUtil.getConnection();
+		String sql = "SELECT * FROM members WHERE memberid = ? and "
+				+ "passwd = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getPasswd());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		
+		return false;
 		
 	}
 
