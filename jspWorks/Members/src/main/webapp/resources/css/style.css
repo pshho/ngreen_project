@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap');
 
-*{margin: 0; font-family: 'Gowun Batang', serif;}
+*{margin: 0; font-family: 'Gowun Batang', serif; border-radius: 15px;}
 
 #container {
 	width: 70%;
@@ -17,6 +17,10 @@
 #container img {
 	border-radius: 10px;
 	margin: 20px auto;
+}
+
+#container input[type="file"] {
+	font-size: 0.7vw;
 }
 
 /* header 스타일 */
@@ -62,11 +66,21 @@ header nav #headerMenu li {
 	margin: 40px auto;
 }
 
-#container #tbl_list, #tbl_list th, #tbl_list td,
-#brd_list, #brd_list th, #brd_list td {
+#memberList .logout {
+	width: 60%;
+	margin: 20px auto;
+	text-align: right;
+}
+
+#tbl_list, #brd_list {
 	border: 1px solid #ccc;
-	border-collapse: collapse;
-	padding: 10px 20px;
+	padding: 10px;
+}
+
+#tbl_list th, #brd_list th,
+#tbl_list td, #brd_list td {
+	border-bottom: 1px solid #ccc;
+	padding: 5px 15px;
 }
 
 #container #tbl_list thead,
@@ -90,17 +104,25 @@ header nav #headerMenu li {
 	padding: 5px 10px;
 }
 
-/* memberForm, memberUpdate, loginForm, board_write, board_update 스타일 */
-#register, #update, #loginForm, #board_write, #board_update {
+/* memberForm, memberUpdate, loginForm, 
+adminLogin, board_write, board_update 스타일 */
+#register, #update, #loginForm, 
+#board_write, #board_update, #adminLogin {
 	width: 60%;
 	margin: 40px auto;
+}
+
+#adminLogin .error {
+	color: red;
+	margin: 10px auto;
 }
 
 #register form fieldset ul, 
 #update form fieldset ul,
 #loginForm form fieldset ul,
 #board_write form fieldset ul,
-#board_update ul {
+#board_update ul,
+#adminLogin form fieldset ul {
 	padding: 0;
 	font-size: 1.2vw;
 }
@@ -109,7 +131,8 @@ header nav #headerMenu li {
 #update form fieldset ul li,
 #loginForm form fieldset ul li,
 #board_write form fieldset ul li,
-#board_update ul li {
+#board_update ul li,
+#adminLogin form fieldset ul li {
 	display: flex;
 	justify-content: space-between;
 	margin: 70px 40px;
@@ -122,7 +145,8 @@ header nav #headerMenu li {
 #board_write form fieldset ul li input, 
 #board_write form fieldset ul li textarea,
 #board_update ul li input, 
-#board_update ul li textarea {
+#board_update ul li textarea,
+#adminLogin form fieldset ul li input {
 	width: 70%;
 }
 
@@ -141,15 +165,21 @@ header nav #headerMenu li {
 #update .button input, 
 #loginForm .button input,
 #board_write .button input,
-#board_update .button input {
+#board_update .button input,
+#adminLogin .button input {
 	margin: 20px 7px;
 	padding: 5px 10px;
 	font-size: 1.1vw;
 }
 
 /* memberView, boardView 스타일 */
-#memberView, #boardView {
+#memberView {
 	width: 60%;
+	margin: 50px auto;
+}
+
+#boardView {
+	width: 80%;
 	margin: 50px auto;
 }
 
@@ -168,16 +198,22 @@ header nav #headerMenu li {
 	font-size: 1.1vw;
 }
 
-#memberView ul li input,
-#boardView ul li input,
-#boardView ul li textarea {
+#memberView ul li input {
 	width: 70%;
 }
 
-#memberView ul li label,
-#boardView ul li label {
+#boardView ul li input,
+#boardView ul li textarea {
+	width: 80%;
+}
+
+#memberView ul li label {
 	width: 45%;
 	font-size: 0.9vw;
+}
+
+#boardView ul li label {
+	width: 20%;
 }
 
 #memberView ul li label:last-of-type {
@@ -194,9 +230,13 @@ header nav #headerMenu li {
 	justify-content: center;
 }
 
-#memberView ul #btn a,
-#boardView ul #btn a {
+#memberView ul #btn a {
 	width: 20%;
+	padding: 5px 10px;
+}
+
+#boardView ul #btn a {
+	width: 10%;
 	padding: 5px 10px;
 }
 

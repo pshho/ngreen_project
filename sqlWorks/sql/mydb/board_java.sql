@@ -13,9 +13,14 @@ CREATE TABLE boards(
 
 -- 게시글 번호 시퀀스 생성
 CREATE SEQUENCE b_seq;
-ALTER SEQUENCE b_seq 
-NOCACHE;
-DROP SEQUENCE b_seq;
+ALTER SEQUENCE b_seq NOCACHE;
+-- DROP SEQUENCE b_seq;
+
+-- 시퀀스 번호 변경
+ALTER SEQUENCE b_seq INCREMENT BY 1;
+
+-- 게시판 테이블 파일 업로드 항목 추가
+ALTER TABLE boards ADD fileuploads VARCHAR2(50);
 
 -- 게시글 등록
 INSERT INTO boards(bid, title, contents, memberid)
@@ -25,3 +30,15 @@ VALUES(b_seq.NEXTVAL, '공지사항', '글 내용', 'today');
 SELECT * FROM boards;
 
 DELETE FROM boards WHERE bid = 3;
+
+-- 게시글 수정
+UPDATE boards SET hit = 0 WHERE bid = 4;
+
+-- 기존 외래키 제약 조건 삭제
+ALTER TABLE boards DROP CONSTRAINT fk_member_board;
+
+-- 새로운 외래키 제약 조건 추가(ON DELETE CASCADE 추가)
+ALTER TABLE boards ADD CONSTRAINT fk_member_board
+    FOREIGN KEY (memberid)
+    REFERENCES members(memberid)
+    ON DELETE CASCADE;

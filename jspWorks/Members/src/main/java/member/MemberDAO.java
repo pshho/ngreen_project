@@ -20,7 +20,7 @@ public class MemberDAO {
 		ArrayList<Member> memberList = new ArrayList<>();
 		
 		conn = JDBCUtil.getConnection();
-		String sql = "SELECT * FROM members ORDER BY joindate";
+		String sql = "SELECT * FROM members ORDER BY joindate DESC";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

@@ -13,7 +13,14 @@
 			<ul id="headerMenu">
 				<li><h2><a href="index.jsp">GangNam</a></h2></li>
 				<li><a href="memberForm.do">회원가입</a></li>
-				<li><a href="memberList.do">회원목록</a></li>
+				<c:choose>
+					<c:when test="${ not empty sessionId }">
+						<li><a href="memberView.do?memberId=${ sessionId }">마이 페이지</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="memberList.do">회원목록</a></li>
+					</c:otherwise>
+				</c:choose>
 				<li><a href="boardList.do">게시판</a></li>
 				<c:choose>
 					<c:when test="${ empty sessionId }">

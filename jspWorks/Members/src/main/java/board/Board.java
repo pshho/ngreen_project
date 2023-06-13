@@ -11,7 +11,7 @@ public class Board implements Serializable {
 	private static final long serialVersionUID = 5L;
 	
 	private int bid, hit;
-	private String title, contents, memberId;
+	private String title, contents, memberId, fileUploads;
 	private Timestamp regDate, modifyDate;
 	
 	public int getBid() {
@@ -55,6 +55,12 @@ public class Board implements Serializable {
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
+	}
+	public String getFileUploads() {
+		return fileUploads;
+	}
+	public void setFileUploads(String fileUploads) {
+		this.fileUploads = fileUploads;
 	}
 
 }

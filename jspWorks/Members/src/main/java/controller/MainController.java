@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -12,6 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import board.Board;
 import board.BoardDAO;
@@ -178,15 +182,29 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("/boardWrite.do")) {
 			nextPage = "/board/boardWrite.jsp";
 		}else if(command.equals("/addBoard.do")) {
-			String title = req.getParameter("title");
-			String contents = req.getParameter("contents");
-			String id = req.getParameter("memberId");
+			String realFolder = "C:\\ngreen_project\\jspWorks\\Members\\src\\main\\webapp\\resources\\uploadFile";
+			MultipartRequest multi = new MultipartRequest(req, realFolder, 5*1024*1024, 
+					"utf-8", new DefaultFileRenamePolicy());
+			
+			String title = multi.getParameter("title");
+			String contents = multi.getParameter("contents");
+			String id = multi.getParameter("memberId");
+			
+			Enumeration<String> files = multi.getFileNames();
+			String name = "";
+			String fileName = "";
+			
+			if(files.hasMoreElements()) {
+				name = (String)files.nextElement();
+				fileName = multi.getFilesystemName(name);
+			}
 			
 			Board nBoard = new Board();
 			
 			nBoard.setTitle(title);
 			nBoard.setContents(contents);
 			nBoard.setMemberId(id);
+			nBoard.setFileUploads(fileName);
 			
 			boardDAO.insertBoard(nBoard);
 			
@@ -197,6 +215,8 @@ public class MainController extends HttpServlet {
 			Board nBoard = new Board();
 			
 			nBoard = boardDAO.getBoard(bid);
+			
+			boardDAO.hitUpdateBoard(nBoard.getBid());
 			
 			req.setAttribute("board", nBoard);
 			
@@ -212,17 +232,37 @@ public class MainController extends HttpServlet {
 			
 			nextPage = "/board/boardUpdate.jsp";
 		}else if(command.equals("/updBoard.do")) {
-			int bid = Integer.parseInt(req.getParameter("bid"));
-			String title = req.getParameter("title");
-			String contents = req.getParameter("contents");
+			String realFolder = "C:\\ngreen_project\\jspWorks\\Members\\src\\main\\webapp\\resources\\uploadFile";
+			MultipartRequest multi = new MultipartRequest(req, realFolder, 5*1024*1024, 
+					"utf-8", new DefaultFileRenamePolicy());
+			
+			int bid = Integer.parseInt(multi.getParameter("bid"));
+			String title = multi.getParameter("title");
+			String contents = multi.getParameter("contents");
+			
+			Enumeration<String> files = multi.getFileNames();
+			String name = "";
+			String fileName = "";
+			
+			if(files.hasMoreElements()) {
+				name = (String)files.nextElement();
+				fileName = multi.getFilesystemName(name);
+			}
 			
 			Board nBoard = new Board();
 			
 			nBoard.setBid(bid);
 			nBoard.setTitle(title);
 			nBoard.setContents(contents);
+			nBoard.setFileUploads(fileName);
 			
 			boardDAO.updateBoard(nBoard);
+			
+			nextPage = "/boardList.do";
+		}else if(command.equals("/boardDelete.do")) {
+			int bid = Integer.parseInt(req.getParameter("bid"));
+			
+			boardDAO.deleteBoard(bid);
 			
 			nextPage = "/boardList.do";
 		}

@@ -50,7 +50,7 @@
 					</ul>
 				</fieldset>
 				<div class="button">
-					<input type="submit" value="수정">
+					<input type="submit" value="저장">
 					<a href="/memberView.do?memberId=${ member.memberId }">
 						<input type="button" value="취소">
 					</a>

@@ -37,6 +37,7 @@ public class BoardDAO {
 				board.setMemberId(rs.getString("memberid"));
 				board.setModifyDate(rs.getTimestamp("modifydate"));
 				board.setHit(rs.getInt("hit"));
+				board.setFileUploads(rs.getString("fileUploads"));
 
 				boardList.add(board);
 
@@ -72,6 +73,7 @@ public class BoardDAO {
 				board.setMemberId(rs.getString("memberId"));
 				board.setModifyDate(rs.getTimestamp("modifyDate"));
 				board.setHit(rs.getInt("hit"));
+				board.setFileUploads(rs.getString("fileUploads"));
 			}
 
 		} catch (SQLException e) {
@@ -86,13 +88,14 @@ public class BoardDAO {
 	// 자료 삽입(게시글 추가)
 	public void insertBoard(Board board) {
 		conn = JDBCUtil.getConnection();
-		String sql = "INSERT INTO boards(bid, title, contents, memberid) " + "VALUES(b_seq.NEXTVAL, ?, ?, ?)";
+		String sql = "INSERT INTO boards(bid, title, contents, memberid, fileuploads) " + "VALUES(b_seq.NEXTVAL, ?, ?, ?, ?)";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getContents());
 			pstmt.setString(3, board.getMemberId());
+			pstmt.setString(4, board.getFileUploads());
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -125,14 +128,15 @@ public class BoardDAO {
 		Timestamp now = new Timestamp(System.currentTimeMillis());
 		
 		conn = JDBCUtil.getConnection();
-		String sql = "UPDATE boards SET title = ?, contents = ?, modifydate = ? WHERE bid = ?";
+		String sql = "UPDATE boards SET title = ?, contents = ?, modifydate = ?, fileuploads = ? WHERE bid = ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getContents());
 			pstmt.setTimestamp(3, now);
-			pstmt.setInt(4, board.getBid());
+			pstmt.setString(4, board.getFileUploads());
+			pstmt.setInt(5, board.getBid());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,6 +144,22 @@ public class BoardDAO {
 			JDBCUtil.close(conn, pstmt);
 		}
 
+	}
+	
+	public void hitUpdateBoard(int bid) {
+		conn = JDBCUtil.getConnection();
+		String sql = "UPDATE boards SET hit = hit + 1 WHERE bid = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+		
 	}
 
 }
