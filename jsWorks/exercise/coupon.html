@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행운의 추첨</title>
+</head>
+<body>
+    <section>
+        <button onclick="clk()">추첨</button>
+        <p id="display"></p>
+    </section>
+
+    <script>
+        function clk(){
+            let name = ['이진성', '노승우', '박성호', '권지혜', '김은효', '이경철', '성의석', '이유진', '유성길', '한주훈', 
+                '강정현', '김현우', '이영준', '김민정', '유세현', '윤기은', '오화룡', '조은별', '이가은', '안재훈'];
+            let pickNumber = 5;
+            let success = new Array(pickNumber);
+            let result = "";
+
+            result += document.getElementById("display").innerHTML = "이름: ";
+
+            for(let i=0; i<success.length; i++){
+                let pick = Math.floor(Math.random() * name.length);
+                success[i] = name[pick];
+
+                for(let j=0; j<i; j++){
+                    if(success[j] == success[i]){
+                        i--;
+                    }
+                }
+            }
+
+            for(let i=0; i<success.length; i++){
+                if(i == success.length - 1){
+                    result += document.getElementById("display").innerHTML = success[i] + "";
+                }else{
+                    result += document.getElementById("display").innerHTML = success[i] + ", ";
+                }
+            }
+
+            let display = document.getElementById("display");
+            display.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

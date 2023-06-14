@@ -18,10 +18,15 @@
 						<li><a href="memberView.do?memberId=${ sessionId }">마이 페이지</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="memberList.do">회원목록</a></li>
+						<li><a href="memberList.do">회원</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><a href="boardList.do">게시판</a></li>
+				<li>
+					<a href="boardList.do">게시판</a>
+					<ul id="subMenu">
+						<li><a href="memberEvent.do">행운의 추첨</a></li>
+					</ul>
+				</li>
 				<c:choose>
 					<c:when test="${ empty sessionId }">
 						<li><a href="loginForm.do">로그인</a></li>

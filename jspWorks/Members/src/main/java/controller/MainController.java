@@ -168,6 +168,8 @@ public class MainController extends HttpServlet {
 			session.invalidate();
 			
 			nextPage = "/index.jsp";
+		}else if(command.equals("/memberEvent.do")) {
+			nextPage = "/member/memberEvent.jsp";
 		}
 		
 		// 게시판 관리
