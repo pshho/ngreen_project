@@ -11,7 +11,6 @@ function checkMember() {
 	
 	// 정규 표현식
 	const id_pat = /^[a-zA-Z]+/;						// 영어로 시작
-	const pat1 = /\\s/g;
 	const pw_pat1 = /\d+/g;
 	const pw_pat2 = /[a-zA-Z]+/g;
 	const pw_pat3 = /[~!@#$%^&*()_+]+/g;
