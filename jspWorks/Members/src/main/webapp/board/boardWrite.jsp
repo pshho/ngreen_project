@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>게시글 작성</title>
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
@@ -15,30 +17,24 @@
 			<div id="container">
 				<section id="board_write">
 					<h2>게시글 작성</h2>
-					<form action="addBoard.do" method="post" enctype="multipart/form-data">
+					<form action="addBoard.do" method="post"
+						enctype="multipart/form-data">
 						<fieldset>
 							<ul>
-								<li>
-									<label for="title">제목</label>
-									<input type="text" name="title" id="title">
-								</li>
-								<li>
-									<label for="contents">내용</label>
-									<textarea rows="15" cols="40" name="contents" id="contents"></textarea>
-								</li>
-								<li>
-									<label for="fileUploads">파일</label>
-									<input type="file" name="fileUploads">
-								</li>
-								<li>
-									<label for="memberId">작성자</label>
-									<input type="text" name="memberId" id="memberId" value="${ sessionId }" readonly>
+								<li><label for="title">제목</label> <input type="text"
+									name="title" id="title" required></li>
+								<li><label for="contents">내용</label> <textarea rows="15"
+										cols="40" name="contents" id="contents" required></textarea></li>
+								<li><label for="fileUploads">파일</label> <input type="file"
+									name="fileUploads"></li>
+								<li><label for="memberId">작성자</label> <input type="text"
+									name="memberId" id="memberId" value="${ sessionId }" readonly>
 								</li>
 							</ul>
 						</fieldset>
 						<div class="button">
-							<input type="submit" value="등록"> <a href="/boardList.do"><input type="button"
-								value="취소"></a>
+							<input type="submit" value="등록"> <a href="/boardList.do"><input
+								type="button" value="취소"></a>
 						</div>
 					</form>
 				</section>

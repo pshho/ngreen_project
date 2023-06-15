@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원 목록</title>
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
@@ -16,7 +18,9 @@
 			<h2>회원 목록</h2>
 			<hr>
 			<div class="logout">
-				<p><a href="/logout.do">관리자 로그아웃</a></p>
+				<p>
+					<a href="/logout.do">관리자 로그아웃</a>
+				</p>
 			</div>
 			<table id="tbl_list">
 				<thead>
@@ -39,8 +43,9 @@
 							<td><c:out value="${ member.name }" /></td>
 							<td><c:out value="${ member.gender }" /></td>
 							<td><fmt:formatDate value="${ member.joinDate }" type="both" /></td>
-							<td><a href="/memberDelete.do?memberId=${ member.memberId }"><input type="button" 
-							value="계정 삭제" onclick="return confirm('정말로 삭제하시겠습니까?')"></a></td>
+							<td><a href="/memberDelete.do?memberId=${ member.memberId }"><input
+									type="button" value="계정 삭제"
+									onclick="return confirm('정말로 삭제하시겠습니까?')"></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

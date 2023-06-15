@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>게시글 상세 보기</title>
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
@@ -19,9 +21,8 @@
 					name="title" id="title" value="${ board.title }" readonly></li>
 				<li><label for="contents">내용</label> <textarea rows="15"
 						cols="40" id="contents" name="contents" readonly>${ board.contents }</textarea></li>
-				<li>
-					<label for="fileUploads">파일</label>
-					<input type="text" name="fileUploads" value="${ board.fileUploads }" readonly>
+				<li><label for="fileUploads">파일</label> <input type="text"
+					name="fileUploads" value="${ board.fileUploads }" readonly>
 				</li>
 				<li><label for="memberId">작성자</label> <input type="text"
 					name="memberId" id="memberId" value="${ board.memberId }" readonly></li>

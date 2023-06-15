@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>게시글 수정</title>
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
@@ -14,18 +16,17 @@
 	<div id="container">
 		<section id="board_update">
 			<h2>게시글 수정</h2>
-			<form action="updBoard.do" method="post" enctype="multipart/form-data">
+			<form action="updBoard.do" method="post"
+				enctype="multipart/form-data">
 				<input type="hidden" name="bid" value="${ board.bid }">
 				<fieldset>
 					<ul>
 						<li><label for="title">제목</label> <input type="text"
-							name="title" id="title" value="${ board.title }"></li>
+							name="title" id="title" value="${ board.title }" required></li>
 						<li><label for="contents">내용</label> <textarea rows="15"
-								cols="40" id="contents" name="contents">${ board.contents }</textarea></li>
-						<li>
-							<label for="fileUploads">파일</label>
-							<input type="file" name="fileUploads">
-						</li>
+								cols="40" id="contents" name="contents" required>${ board.contents }</textarea></li>
+						<li><label for="fileUploads">파일</label> <input type="file"
+							name="fileUploads"></li>
 						<li><label for="memberId">작성자</label> <input type="text"
 							name="memberId" id="memberId" value="${ board.memberId }"
 							readonly></li>

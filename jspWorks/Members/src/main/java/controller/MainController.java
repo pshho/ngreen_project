@@ -94,7 +94,7 @@ public class MainController extends HttpServlet {
 			
 			memberDAO.insertMember(nmember);	// 회원을 DB에 저장
 			
-			nextPage = "index.jsp";
+			nextPage = "/loginProcess.do";
 		}else if(command.equals("/memberView.do")) {
 			
 			String id = req.getParameter("memberId");

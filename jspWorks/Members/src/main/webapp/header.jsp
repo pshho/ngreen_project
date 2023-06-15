@@ -5,7 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/style.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./resources/css/style.css">
+<link rel="stylesheet" href="./resources/css/responsive_web.css">
 </head>
 <body>
 	<header>
@@ -24,7 +27,7 @@
 				<li>
 					<a href="boardList.do">게시판</a>
 					<ul id="subMenu">
-						<li><a href="memberEvent.do">행운의 추첨</a></li>
+						<li><a href="memberEvent.do">추첨</a></li>
 					</ul>
 				</li>
 				<c:choose>
