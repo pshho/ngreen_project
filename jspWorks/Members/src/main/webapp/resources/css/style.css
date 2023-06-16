@@ -162,6 +162,20 @@ adminLogin, board_write, board_update 스타일 */
 	list-style: none;
 }
 
+#register form fieldset ul li:first-of-type {
+	margin-bottom: 5px;
+}
+
+#register form fieldset ul .check {
+	margin-top: 5px;
+	justify-content: flex-end;
+	font-size: 0.8vw;
+}
+
+#register form fieldset ul .check button {
+	margin-left: 10px;
+}
+
 #register form fieldset ul li input, 
 #update form fieldset ul li input,
 #loginForm form fieldset ul li input,

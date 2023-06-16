@@ -7,7 +7,7 @@ function checkMember() {
 	let pw1 = form.passwd1.value;
 	let pw2 = form.passwd2.value;
 	let nm = form.name.value;
-	let gd = form.gender.value;
+	let cch = form.cch.value;
 	
 	// 정규 표현식
 	const id_pat = /^[a-zA-Z]+/;						// 영어로 시작
@@ -48,6 +48,11 @@ function checkMember() {
 	if(!nm_pat1.test(nm)) {
 		alert('이름은 한글만 가능합니다.');
 		nm.select();
+		return
+	}
+	
+	if(cch == "") {
+		alert('중복체크 해주세요.');
 		return
 	}
 	

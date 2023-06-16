@@ -162,5 +162,31 @@ public class MemberDAO {
 		return false;
 		
 	}
+	
+	// ID 중복 체크
+	public boolean duplicatedId(String memberId) {
+		boolean result = false;
+		
+		conn = JDBCUtil.getConnection();
+		String sql = "SELECT DECODE(COUNT(*), 1, 'true', 'false') as result "
+				+ "FROM members WHERE memberid = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getBoolean("result");	// 칼럼 result의 값 꺼내오기
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		
+		
+		return result;
+	}
 
 }
