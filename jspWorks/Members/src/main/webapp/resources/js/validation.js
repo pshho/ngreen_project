@@ -7,7 +7,8 @@ function checkMember() {
 	let pw1 = form.passwd1.value;
 	let pw2 = form.passwd2.value;
 	let nm = form.name.value;
-	let cch = form.cch.value;
+	// let cch = form.cch.value;
+	let check = form.check.value;
 
 	// 정규 표현식
 	const pat1 = /\s/g;
@@ -20,6 +21,11 @@ function checkMember() {
 	if (pat1.test(id) || pat1.test(pw1)
 		|| pat1.test(pw2) || pat1.test(nm)) {
 		alert('공백은 입력하실 수 없습니다.')
+		return
+	}
+	
+	if (check == "N") {
+		alert('중복체크 해주세요.');
 		return
 	}
 
@@ -57,13 +63,6 @@ function checkMember() {
 		nm.select();
 		return
 	}
-
-	if (cch == "") {
-		alert('중복체크 해주세요.');
-		return
-	}
-
-
 
 	form.submit();
 

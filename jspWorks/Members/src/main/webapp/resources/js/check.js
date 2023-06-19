@@ -8,6 +8,7 @@ function checkId() {
 		data: { id: memberId },
 		success: function(data) {
 			if ($.trim(data) == "usable") {
+				$("#check").val("Y")
 				$('#checked').text("사용 가능한 ID 입니다.")
 							 .css('color', 'red');
 			} else {
@@ -15,7 +16,7 @@ function checkId() {
 							 .css('color', 'red');
 			}
 			
-			$('#cch').val("good");
+			// $('#cch').val("good");
 			
 		},
 		error: function() {

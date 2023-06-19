@@ -164,11 +164,11 @@ public class MemberDAO {
 	}
 	
 	// ID 중복 체크
-	public boolean duplicatedId(String memberId) {
-		boolean result = false;
+	public int duplicatedId(String memberId) {
+		int result = 0;
 		
 		conn = JDBCUtil.getConnection();
-		String sql = "SELECT DECODE(COUNT(*), 1, 'true', 'false') as result "
+		String sql = "SELECT COUNT(*) as result "
 				+ "FROM members WHERE memberid = ?";
 		
 		try {
@@ -177,7 +177,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				result = rs.getBoolean("result");	// 칼럼 result의 값 꺼내오기
+				result = rs.getInt("result");	// 칼럼 result의 값 꺼내오기
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -45,9 +45,9 @@ public class CheckId extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		String id = request.getParameter("id");
-		boolean duplicatedId = dao.duplicatedId(id);
+		int checkId = dao.duplicatedId(id);
 		
-		if(duplicatedId == true) {
+		if(checkId == 1) {
 			out.println("not_usable");
 		}else {
 			out.println("usable");
