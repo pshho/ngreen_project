@@ -161,5 +161,74 @@ public class BoardDAO {
 		}
 		
 	}
+	
+	// 게시글 총 개수
+	public int getBoardCount() {
+		int total = 0;
+		conn = JDBCUtil.getConnection();
+		String sql = "SELECT COUNT(*) as total FROM boards";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				total = rs.getInt("total");
+			}
+			
+			return total;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		
+		return 0;
+	}
+	
+	// 자료 검색(게시글 전체 목록)
+	public ArrayList<Board> getBoardList1(int page) {
+		ArrayList<Board> boardList = new ArrayList<>();
+
+		conn = JDBCUtil.getConnection();
+		String sql = "SELECT * "
+				+ "FROM (SELECT ROWNUM rn, boards.* "
+				+ "FROM boards ORDER BY bid DESC)"
+				+ "WHERE rn >= ? AND rn <= ?";
+		
+		int pageSize = 10;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (page - 1) * pageSize + 1);	// 시작행
+			pstmt.setInt(2, page * pageSize);			// 페이지당 게시글 총개수
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Board board = new Board();
+
+				board.setBid(rs.getInt("bid"));
+				board.setTitle(rs.getString("title"));
+				board.setContents(rs.getString("contents"));
+				board.setRegDate(rs.getTimestamp("regdate"));
+				board.setMemberId(rs.getString("memberid"));
+				board.setModifyDate(rs.getTimestamp("modifydate"));
+				board.setHit(rs.getInt("hit"));
+				board.setFileUploads(rs.getString("fileUploads"));
+
+				boardList.add(board);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+
+		return boardList;
+
+	}
 
 }

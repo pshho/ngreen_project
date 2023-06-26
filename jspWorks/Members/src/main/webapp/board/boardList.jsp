@@ -41,6 +41,21 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<!-- 페이지 처리 영역 -->
+			<div class='pagination'>
+				<!-- 이전 페이지 -->
+				<c:if test="${ startPage > 1 }">
+					<a href="/boardList.do?pageNum=${ startPage - 1 }">이전</a>
+				</c:if>
+				<c:if test="${ startPage <= 1 }">
+					<a href="#"></a>
+				</c:if>
+				<!-- 페이지 리스트 -->
+				<c:forEach var='i' begin='1' end='${ endPage }'>
+					<a href='/boardList.do?pageNum=${ i }'>${i}</a>
+				</c:forEach>
+			</div>
+			
 			<div id="board_btn">
 				<a href="boardWrite.do"> <input type="button" value="글작성">
 				</a>

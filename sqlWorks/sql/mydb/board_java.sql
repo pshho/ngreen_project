@@ -42,3 +42,22 @@ ALTER TABLE boards ADD CONSTRAINT fk_member_board
     FOREIGN KEY (memberid)
     REFERENCES members(memberid)
     ON DELETE CASCADE;
+    
+-- id 중복 체크
+SELECT DECODE(COUNT(*), 1, 'true', 'false') as result
+FROM members WHERE memberid = 'today';
+
+-- decode뺀 id 중복 체크
+SELECT COUNT(*) as result
+FROM members WHERE memberid = 'today';
+
+-- 페이지 처리
+SELECT *
+FROM (SELECT ROWNUM rn, boards.*
+FROM boards)
+WHERE rn >= 11 AND rn <= 20
+ORDER BY rn DESC; -- 별칭(RN) 사용해야 가능
+
+
+
+

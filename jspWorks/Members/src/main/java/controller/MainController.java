@@ -175,10 +175,31 @@ public class MainController extends HttpServlet {
 		// 게시판 관리
 		if(command.equals("/boardList.do")) {
 			
-			ArrayList<Board> boardList;
-			boardList = boardDAO.getBoardList();
+			// 페이지 처리
+			String pageNum = req.getParameter("pageNum");
+			if(pageNum == null) {	// pageNum이 없으면 기본 페이지
+				pageNum = "1";
+			}
+			
+			// 각 페이지 첫행 : 1page -> 01번, 2page -> 11번, 3page -> 21번
+			int pageSize = 10;
+			int currentPage = Integer.parseInt(pageNum);
+			int startRaw = (currentPage - 1) * pageSize + 1;
+			
+			// 시작 페이지
+			int startPage = startRaw / pageSize + 1;
+			
+			// 종료(끝) 페이지
+			int total = boardDAO.getBoardCount();
+			int endPage = total / pageSize;
+			endPage = (total % pageSize == 0) ? endPage : endPage + 1;
+			
+			ArrayList<Board> boardList = boardDAO.getBoardList1(currentPage);
 			
 			req.setAttribute("boardList", boardList);
+			req.setAttribute("currentPage", currentPage);
+			req.setAttribute("endPage", endPage);
+			req.setAttribute("startPage", startPage);
 			
 			nextPage = "/board/boardList.jsp";
 		}else if(command.equals("/boardWrite.do")) {
