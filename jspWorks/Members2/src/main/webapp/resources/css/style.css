@@ -1,0 +1,328 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap');
+
+*{margin: 0; font-family: 'Gowun Batang', serif; border-radius: 15px;}
+
+#container {
+	width: 70%;
+	margin: 30px auto;
+	text-align: center;
+}
+
+#container h2 {
+	font-size: 1.5vw;
+	margin: 20px auto;
+}
+
+#container img {
+	border-radius: 10px;
+	margin: 20px auto;
+}
+
+#container input[type="file"] {
+	font-size: 0.7vw;
+}
+
+/* header 스타일 */
+header {
+	width: 80%;
+	height: 100px;
+	margin: 0 auto;
+	background: #f4aaaa;
+	border-radius: 15px;
+}
+
+header a {
+	text-decoration: none;
+	color: black;
+}
+
+header h2 {
+	font-family: sans-serif;
+}
+
+header nav #headerMenu {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	padding: 0;
+}
+
+header nav #headerMenu li:first-of-type {
+	width: 15%;
+	margin: 25px;
+	font-size: 1.3vw;
+	list-style: none;
+}
+
+header nav #headerMenu li:not(:first-of-type) {
+	width: 10%;
+	margin: 38px auto;
+	list-style: none;
+	font-size: 1vw;
+	text-align: center;
+}
+
+header nav #headerMenu li #subMenu {
+	margin: 10px 0;
+	padding: 10px 0;
+	display: none;
+	background: rgba(255, 204, 255, 0.5);
+	color: #003333;
+}
+
+header nav #headerMenu li:hover #subMenu {
+	display: block;
+	cursor: pointer;
+}
+
+header nav #headerMenu li #subMenu li {
+	width: 100%;
+	margin: 0;
+	font-size: 0.8vw;
+}
+
+
+/* memberList, boardList 스타일 */
+#container #tbl_list, #container #brd_list {
+	width: 60%;
+	margin: 40px auto;
+}
+
+#memberList .logout {
+	width: 60%;
+	margin: 20px auto;
+	text-align: right;
+}
+
+#tbl_list, #brd_list {
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+#tbl_list th, #brd_list th,
+#tbl_list td, #brd_list td {
+	border-bottom: 1px solid #ccc;
+	padding: 5px 15px;
+}
+
+#container #tbl_list thead,
+#brd_list thead {
+	background: #eee;
+	font-size: 1.1vw;
+}
+
+#container #tbl_list tbody,
+#brd_list tbody {
+	font-size: 0.9vw;
+}
+
+#board_btn {
+	width: 60%;
+	margin: 0 auto;
+	text-align: right;
+}
+
+#board_btn input {
+	padding: 5px 10px;
+}
+
+/* memberForm, memberUpdate, loginForm, 
+adminLogin, board_write, board_update 스타일 */
+#register, #update, #loginForm, 
+#board_write, #board_update, #adminLogin {
+	width: 60%;
+	margin: 40px auto;
+}
+
+#adminLogin .error {
+	color: red;
+	margin: 10px auto;
+}
+
+#register form fieldset ul, 
+#update form fieldset ul,
+#loginForm form fieldset ul,
+#board_write form fieldset ul,
+#board_update ul,
+#adminLogin form fieldset ul {
+	padding: 0;
+	font-size: 1.2vw;
+}
+
+#register form fieldset ul li, 
+#update form fieldset ul li,
+#loginForm form fieldset ul li,
+#board_write form fieldset ul li,
+#board_update ul li,
+#adminLogin form fieldset ul li {
+	display: flex;
+	justify-content: space-between;
+	margin: 70px 40px;
+	list-style: none;
+}
+
+#register form fieldset ul li:first-of-type {
+	margin-bottom: 5px;
+}
+
+#register form fieldset ul .check {
+	margin-top: 5px;
+	justify-content: flex-end;
+	font-size: 0.8vw;
+}
+
+#register form fieldset ul .check button {
+	margin-left: 10px;
+}
+
+#register form fieldset ul li input, 
+#update form fieldset ul li input,
+#loginForm form fieldset ul li input,
+#board_write form fieldset ul li input, 
+#board_write form fieldset ul li textarea,
+#board_update ul li input, 
+#board_update ul li textarea,
+#adminLogin form fieldset ul li input {
+	width: 70%;
+}
+
+#register form fieldset ul li .la1, 
+#update form fieldset ul li .la1 {
+	width: 42%;
+}
+
+#register form fieldset ul li .la1 input, 
+#update form fieldset ul li .la1 input {
+	width: 30%;
+	height: 18px;
+}
+
+#register .button input, 
+#update .button input, 
+#loginForm .button input,
+#board_write .button input,
+#board_update .button input,
+#adminLogin .button input {
+	margin: 20px 7px;
+	padding: 5px 10px;
+	font-size: 1.1vw;
+}
+
+/* memberView, boardView 스타일 */
+#memberView {
+	width: 60%;
+	margin: 50px auto;
+}
+
+#boardView {
+	width: 80%;
+	margin: 50px auto;
+}
+
+#memberView ul, #boardView ul {
+	width: 60%;
+	margin: 20px auto;
+	padding: 0;
+}
+
+#memberView ul li,
+#boardView ul li {
+	margin: 25px auto;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.1vw;
+}
+
+#memberView ul li input {
+	width: 70%;
+}
+
+#boardView ul li input,
+#boardView ul li textarea {
+	width: 80%;
+}
+
+#memberView ul li label {
+	width: 45%;
+	font-size: 0.9vw;
+}
+
+#boardView ul li label {
+	width: 20%;
+}
+
+#memberView ul li label:last-of-type {
+	text-align: left;
+}
+
+#memberView ul li label input {
+	width: 30%;
+}
+
+#memberView ul #btn,
+#boardView ul #btn {
+	display: flex;
+	justify-content: center;
+}
+
+#memberView ul #btn a {
+	width: 20%;
+	padding: 5px 10px;
+}
+
+#boardView ul #btn a {
+	width: 10%;
+	padding: 5px 10px;
+}
+
+/* memberEvent 스타일 */
+#memberEvent {
+	width: 60%;
+	height: 650px;
+	margin: 50px auto;
+	background-image: url("../images/luc.jpg");
+	background-size: cover;
+}
+
+#memberEvent #luckyCoupon {
+	padding-top: 200px;
+}
+
+#memberEvent #luckyCoupon p {
+	margin: 30px auto;
+	font-size: 1.1vw;
+}
+
+#memberEvent #luckyCoupon button {
+	padding: 5px 10px;
+}
+
+/* footer 스타일 */
+footer {
+	width: 80%;
+	margin: 30px auto;
+	padding-top: 10px;
+	border-top: 2px solid #ccc;
+}
+
+footer a {
+	text-decoration: none;
+	color: black;
+}
+
+footer #bottomMenu {
+	display: flex;
+}
+
+footer #bottomMenu li {
+	margin: 0 20px;
+	list-style: none;
+	padding-right: 40px;
+	border-right: 1px solid black;
+}
+
+footer #bottomMenu li:last-of-type {
+	border-right: 0;
+}
