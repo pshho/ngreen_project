@@ -88,7 +88,7 @@ public class BoardDAO {
 	// 자료 삽입(게시글 추가)
 	public void insertBoard(Board board) {
 		conn = JDBCUtil.getConnection();
-		String sql = "INSERT INTO boards(bid, title, contents, memberid, fileuploads) " + "VALUES(b_seq.NEXTVAL, ?, ?, ?, ?)";
+		String sql = "INSERT INTO boards(title, contents, memberid, fileuploads) " + "VALUES(?, ?, ?, ?)";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -191,17 +191,14 @@ public class BoardDAO {
 		ArrayList<Board> boardList = new ArrayList<>();
 
 		conn = JDBCUtil.getConnection();
-		String sql = "SELECT * "
-				+ "FROM (SELECT ROWNUM rn, boards.* "
-				+ "FROM boards ORDER BY bid DESC)"
-				+ "WHERE rn >= ? AND rn <= ?";
+		String sql = "SELECT * FROM boards ORDER BY bid DESC limit ?, ?";
 		
 		int pageSize = 10;
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, (page - 1) * pageSize + 1);	// 시작행
-			pstmt.setInt(2, page * pageSize);			// 페이지당 게시글 총개수
+			pstmt.setInt(1, (page - 1));	// 시작행
+			pstmt.setInt(2, pageSize);			// 페이지당 게시글 총개수
 			
 			rs = pstmt.executeQuery();
 

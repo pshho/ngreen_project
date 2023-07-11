@@ -194,7 +194,7 @@ public class MainController extends HttpServlet {
 			int endPage = total / pageSize;
 			endPage = (total % pageSize == 0) ? endPage : endPage + 1;
 			
-			ArrayList<Board> boardList = boardDAO.getBoardList1(currentPage);
+			ArrayList<Board> boardList = boardDAO.getBoardList1(startRaw);
 			
 			req.setAttribute("boardList", boardList);
 			req.setAttribute("currentPage", currentPage);
@@ -205,7 +205,7 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("/boardWrite.do")) {
 			nextPage = "/board/boardWrite.jsp";
 		}else if(command.equals("/addBoard.do")) {
-			String realFolder = "C:\\ngreen_project\\jspWorks\\Members\\src\\main\\webapp\\resources\\uploadFile";
+			String realFolder = "C:\\ngreen_project\\jspWorks\\Members2\\src\\main\\webapp\\resources\\uploadFile";
 			MultipartRequest multi = new MultipartRequest(req, realFolder, 5*1024*1024, 
 					"utf-8", new DefaultFileRenamePolicy());
 			
@@ -255,7 +255,7 @@ public class MainController extends HttpServlet {
 			
 			nextPage = "/board/boardUpdate.jsp";
 		}else if(command.equals("/updBoard.do")) {
-			String realFolder = "C:\\ngreen_project\\jspWorks\\Members\\src\\main\\webapp\\resources\\uploadFile";
+			String realFolder = "C:\\ngreen_project\\jspWorks\\Members2\\src\\main\\webapp\\resources\\uploadFile";
 			MultipartRequest multi = new MultipartRequest(req, realFolder, 5*1024*1024, 
 					"utf-8", new DefaultFileRenamePolicy());
 			

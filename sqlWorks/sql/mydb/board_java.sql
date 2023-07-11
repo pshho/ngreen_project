@@ -53,9 +53,10 @@ FROM members WHERE memberid = 'today';
 
 -- 페이지 처리
 SELECT *
-FROM (SELECT ROWNUM rn, boards.*
-FROM boards)
-WHERE rn >= 11 AND rn <= 20
+FROM (SELECT ROWNUM rn, board.*
+        FROM (SELECT * FROM boards order by bid desc) board)
+WHERE rn >= 1 AND rn <= 10;
+
 ORDER BY rn DESC; -- 별칭(RN) 사용해야 가능
 
 

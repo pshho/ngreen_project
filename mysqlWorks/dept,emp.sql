@@ -31,3 +31,14 @@ select * from department;
 
 -- 사원 검색
 select * from employee;
+
+-- 사원 이름이 '한라산'인 사원의 사원 아이디와 부서 아이디를 출력하시오.
+select empid as 사원아이디, deptid as 부서아이디 from employee where empname = '한라산';
+
+-- 사원 아이디가 102인 사원의 이름을 '독도'로 나이를 40세로 변경하시오.
+update employee set empname = '독도', age = 40 where empid = 102;
+update employee set empname = '새로', age = 33 where empid = 102;
+
+-- 트랜 잭션(Transaction) - (실행 - commit, 취소 - rollback)
+rollback;
+commit;

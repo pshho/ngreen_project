@@ -192,8 +192,8 @@ public class BoardDAO {
 
 		conn = JDBCUtil.getConnection();
 		String sql = "SELECT * "
-				+ "FROM (SELECT ROWNUM rn, boards.* "
-				+ "FROM boards ORDER BY bid DESC)"
+				+ "FROM (SELECT ROWNUM rn, board.* "
+				+ "FROM (SELECT * FROM boards order by bid desc) board) "
 				+ "WHERE rn >= ? AND rn <= ?";
 		
 		int pageSize = 10;
