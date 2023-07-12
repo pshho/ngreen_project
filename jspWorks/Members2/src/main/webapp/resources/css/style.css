@@ -299,6 +299,14 @@ adminLogin, board_write, board_update 스타일 */
 	padding: 5px 10px;
 }
 
+/* 댓글 스타일 */
+.rtitle {
+	margin: 15px auto;
+	text-align: left;
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
 /* footer 스타일 */
 footer {
 	width: 80%;

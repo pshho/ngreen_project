@@ -40,6 +40,21 @@
 					</a></li>
 				</c:if>
 			</ul>
+			<!-- 댓글 영역 -->
+			<h3>댓글</h3>
+			<div class="rtitle">
+			<c:forEach items="${ replyList }" var="reply">
+				<p>${ reply.rno }.  ${ reply.rcontent }</p>
+				<p>작성자: ${ reply.replyer }</p>
+			</c:forEach>
+			</div>
+			<!-- 댓글 등록 -->
+			<form action="/addReply.do" method="post">
+				<p>
+					<textarea name="rcontent" rows="3" cols="70" placeholder="댓글을 남겨주세요."></textarea>
+				</p>
+				<button type="submit">등록</button>
+			</form>
 		</section>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>

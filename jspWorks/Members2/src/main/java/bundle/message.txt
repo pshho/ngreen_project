@@ -1,0 +1,22 @@
+/* login */
+
+login.title=로그인
+login.id=아이디
+login.password=비밀번호
+login.button=로그인
+
+/* memberForm(회원가입) */
+signup.title=회원가입
+signup.id=아이디
+signup.name=이름
+signup.password=비밀번호
+signup.password2=비밀번호확인
+signup.gender=성별
+signup.man=남
+signup.woman=여
+signup.register=등록
+signup.cancel=취소
+signup.doubleCheck=중복체크
+signup.onlyKorean=한글만
+signup.pwCheck=8자 이상 대, 소, 특수문자, 숫자
+signup.idCheck=4~15 영어 대, 소문자

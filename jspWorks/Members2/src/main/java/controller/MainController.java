@@ -21,6 +21,8 @@ import board.Board;
 import board.BoardDAO;
 import member.Member;
 import member.MemberDAO;
+import reply.Reply;
+import reply.ReplyDAO;
 
 /**
  * Servlet implementation class MainController
@@ -31,6 +33,7 @@ public class MainController extends HttpServlet {
 	
 	MemberDAO memberDAO;	// MemberDAO 객체 선언
 	BoardDAO boardDAO;		// BoardDAO 객체 선언
+	ReplyDAO replyDAO;
 
 	/**
 	 * @see Servlet#init(ServletConfig)
@@ -38,6 +41,7 @@ public class MainController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		memberDAO = new MemberDAO();
 		boardDAO = new BoardDAO();
+		replyDAO = new ReplyDAO(); 
 	}
 
 	/**
@@ -236,12 +240,14 @@ public class MainController extends HttpServlet {
 			int bid = Integer.parseInt(req.getParameter("bid"));
 			
 			Board nBoard = new Board();
+			ArrayList<Reply> replyList = replyDAO.getReplyList(bid);
 			
 			nBoard = boardDAO.getBoard(bid);
 			
 			boardDAO.hitUpdateBoard(nBoard.getBid());
 			
 			req.setAttribute("board", nBoard);
+			req.setAttribute("replyList", replyList);
 			
 			nextPage = "/board/boardView.jsp";
 		}else if(command.equals("/boardUpdate.do")) {

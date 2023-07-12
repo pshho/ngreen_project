@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,35 +17,43 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
+	<!-- 다국어 Locale 설정 -->
+	<fmt:setLocale value="${ param.Language }"/>
+	<fmt:bundle basename="bundle.message">
 	<div id="container">
 		<section id="register">
-			<h2>회원 가입</h2>
+			<!-- 다국어 메뉴 영역 -->
+			<div class="Language">
+				<a href="?Language=ko">한국어</a> | <a href="?Language=en">English</a>
+			</div>
+			<h2><fmt:message key="signup.title"/></h2>
 			<form action="addMember.do" method="post" name="member">
 				<fieldset>
 					<ul>
-						<li><label for="memberId">아이디</label> <input type="text"
-							name="memberId" id="memberId" placeholder="4~15 영어 대, 소문자"></li>
+						<li><label for="memberId"><fmt:message key="signup.id"/></label> <input type="text"
+							name="memberId" id="memberId" placeholder='<fmt:message key="signup.idCheck"/>'></li>
 						<li class="check"><p id="checked"></p>
-							<button type="button" onclick="checkId()" id="check" value="N">중복체크</button></li>
-						<li><label for="passwd1">비밀번호</label> <input type="password"
-							name="passwd1" id="passwd1" placeholder="8자 이상, 대, 소, 특수문자, 숫자"></li>
-						<li><label for="passwd2">비밀번호 확인</label> <input
+							<button type="button" onclick="checkId()" id="check" value="N"><fmt:message key="signup.doubleCheck"/></button></li>
+						<li><label for="passwd1"><fmt:message key="signup.password"/></label> <input type="password"
+							name="passwd1" id="passwd1" placeholder='<fmt:message key="signup.pwCheck"/>'></li>
+						<li><label for="passwd2"><fmt:message key="signup.password2"/></label> <input
 							type="password" name="passwd2" id="passwd2"></li>
-						<li><label for="name">이름</label> <input type="text"
-							name="name" id="name" placeholder="한글만" required></li>
-						<li><label for="gender">성별</label> <label class="la1"><input
-								type="radio" name="gender" id="gender" value="남" checked>남</label>
+						<li><label for="name"><fmt:message key="signup.name"/></label> <input type="text"
+							name="name" id="name" placeholder='<fmt:message key="signup.onlyKorean"/>' required></li>
+						<li><label for="gender"><fmt:message key="signup.gender"/></label> <label class="la1"><input
+								type="radio" name="gender" id="gender" value="남" checked><fmt:message key="signup.man"/></label>
 							<label class="la1"><input type="radio" name="gender"
-								id="gender" value="여">여</label></li>
+								id="gender" value="여"><fmt:message key="signup.woman"/></label></li>
 					</ul>
 				</fieldset>
 				<div class="button">
-					<input type="button" value="등록" onclick="checkMember()"> <input
-						type="reset" value="취소">
+					<input type="button" value="<fmt:message key="signup.register"/>" onclick="checkMember()"> <input
+						type="reset" value="<fmt:message key="signup.cancel"/>">
 				</div>
 			</form>
 		</section>
 	</div>
+	</fmt:bundle>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
