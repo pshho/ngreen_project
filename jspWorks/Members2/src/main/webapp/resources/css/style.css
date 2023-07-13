@@ -302,9 +302,17 @@ adminLogin, board_write, board_update 스타일 */
 /* 댓글 스타일 */
 .rtitle {
 	margin: 15px auto;
-	text-align: left;
+	text-align: center;
 	border: 1px solid #ccc;
 	padding: 10px;
+}
+
+.rcontent {
+	margin-bottom: 10px;
+}
+
+textarea {
+	resize: none;
 }
 
 /* footer 스타일 */

@@ -160,7 +160,7 @@ public class MainController extends HttpServlet {
 			if(check) {
 				session.setAttribute("sessionId", id);
 				
-				nextPage = "/index.jsp";
+				nextPage = "/index.do";
 			}else {
 				out.println("<script>\n "
 						+ "alert('아이디와 비밀번호를 확인해주세요')\n "
@@ -171,14 +171,13 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("/logout.do")) {
 			session.invalidate();
 			
-			nextPage = "/index.jsp";
+			nextPage = "/index.do";
 		}else if(command.equals("/memberEvent.do")) {
 			nextPage = "/member/memberEvent.jsp";
 		}
 		
 		// 게시판 관리
 		if(command.equals("/boardList.do")) {
-			
 			// 페이지 처리
 			String pageNum = req.getParameter("pageNum");
 			if(pageNum == null) {	// pageNum이 없으면 기본 페이지
@@ -294,8 +293,29 @@ public class MainController extends HttpServlet {
 			boardDAO.deleteBoard(bid);
 			
 			nextPage = "/boardList.do";
+		}else if(command.equals("/addReply.do")) {
+			String bid = req.getParameter("bid");
+			String rcontent = req.getParameter("rcontent");
+			String id = req.getParameter("replyer");
+			
+			Reply replys = new Reply();
+			
+			replys.setBid(Integer.parseInt(bid));
+			replys.setRcontent(rcontent);
+			replys.setReplyer(id);
+			
+			replyDAO.addReply(replys);
+			
+			nextPage = "/boardView.do?bid=" + Integer.parseInt(bid);
 		}
 		
+		if(command.equals("/index.do")) {
+			ArrayList<Board> boardList = boardDAO.getBoardList();
+			
+			req.setAttribute("boardList", boardList);
+			
+			nextPage = "/main.jsp";
+		}
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(nextPage);
 		dispatcher.forward(req, res);

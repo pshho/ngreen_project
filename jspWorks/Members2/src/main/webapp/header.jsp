@@ -9,12 +9,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="./resources/css/style.css">
 <link rel="stylesheet" href="./resources/css/responsive_web.css">
+<script src="https://kit.fontawesome.com/187dabceeb.js" 
+		crossorigin="anonymous" 
+		type="application/javascript"></script>
 </head>
 <body>
 	<header>
 		<nav>
 			<ul id="headerMenu">
-				<li><h2><a href="index.jsp">GangNam</a></h2></li>
+				<li><h2><a href="index.do">GangNam</a></h2></li>
 				<li><a href="memberForm.do">회원가입</a></li>
 				<c:choose>
 					<c:when test="${ not empty sessionId }">

@@ -47,4 +47,22 @@ public class ReplyDAO {
 		
 		return replyList;
 	}
+	
+	public void addReply(Reply reply){
+		conn = JDBCUtil.getConnection();
+		String sql = "INSERT INTO replys(bid, rcontent, replyer) " + "VALUES(?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reply.getBid());
+			pstmt.setString(2, reply.getRcontent());
+			pstmt.setString(3, reply.getReplyer());
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
 }
