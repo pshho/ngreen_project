@@ -1,3 +1,4 @@
+show databases;
 -- Members 프로젝트
 -- 회원 테이블
 use mydb;

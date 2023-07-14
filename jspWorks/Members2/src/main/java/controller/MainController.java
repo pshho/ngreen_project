@@ -310,15 +310,11 @@ public class MainController extends HttpServlet {
 			replys.setReplyer(id);
 			
 			replyDAO.addReply(replys);
-			
-			nextPage = "/boardView.do?bid=" + Integer.parseInt(bid);
 		}else if(command.equals("/deleteReply.do")) {
 			int rno = Integer.parseInt(req.getParameter("rno"));
 			String bid = req.getParameter("bid");
 			
 			replyDAO.deleteReply(rno);
-			
-			nextPage = "/boardView.do?bid=" + Integer.parseInt(bid);
 		}else if(command.equals("/updateReply.do")) {
 			int rno= Integer.parseInt(req.getParameter("rno"));
 			
@@ -350,8 +346,19 @@ public class MainController extends HttpServlet {
 			nextPage = "/main.jsp";
 		}
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher(nextPage);
-		dispatcher.forward(req, res);
+		//포워딩 - 새로고침 자동 저장 오류 해결 : response.sendRedirect()
+		if(command.equals("/addReply.do")) {
+			int bid = Integer.parseInt(req.getParameter("bid"));
+			res.sendRedirect("/boardView.do?bid=" + bid);
+		}else if(command.equals("/deleteReply.do")) {
+			int bid = Integer.parseInt(req.getParameter("bid"));
+			res.sendRedirect("/boardView.do?bid=" + bid);
+		}else {
+			RequestDispatcher dispatcher = 
+					req.getRequestDispatcher(nextPage);
+			
+			dispatcher.forward(req, res);
+		}
 		
 	}
 

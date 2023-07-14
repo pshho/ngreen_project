@@ -31,7 +31,7 @@
 				<fieldset>
 					<ul>
 						<li><label for="memberId"><fmt:message key="signup.id"/></label> <input type="text"
-							name="memberId" id="memberId" placeholder='<fmt:message key="signup.idCheck"/>' readonly></li>
+							name="memberId" id="memberId" placeholder='<fmt:message key="signup.idCheck"/>'></li>
 						<li class="check"><p id="checked"></p>
 							<button type="button" onclick="checkId()" id="check" value="N"><fmt:message key="signup.doubleCheck"/></button></li>
 						<li><label for="passwd1"><fmt:message key="signup.password"/></label> <input type="password"
