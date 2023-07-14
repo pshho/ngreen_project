@@ -70,6 +70,7 @@ public class MainController extends HttpServlet {
 		
 		// session 발급 및 조회
 		HttpSession session = req.getSession();
+		session.setMaxInactiveInterval(1800);
 		
 		// 회원 목록 조회
 		if(command.equals("/memberList.do")) {
@@ -100,7 +101,6 @@ public class MainController extends HttpServlet {
 			
 			nextPage = "/loginProcess.do";
 		}else if(command.equals("/memberView.do")) {
-			
 			String id = req.getParameter("memberId");
 			
 			Member nmember = new Member();
@@ -140,6 +140,11 @@ public class MainController extends HttpServlet {
 			nextPage = "/member/memberUpdate.jsp";
 		}else if(command.equals("/memberDelete.do")) {
 			String id = req.getParameter("memberId");
+			String sessionId = req.getParameter("sessionId");
+			
+			if (sessionId != null && sessionId.equals(id)) {
+				session.invalidate();
+			}
 			
 			memberDAO.deleteMember(id);
 			
@@ -307,6 +312,34 @@ public class MainController extends HttpServlet {
 			replyDAO.addReply(replys);
 			
 			nextPage = "/boardView.do?bid=" + Integer.parseInt(bid);
+		}else if(command.equals("/deleteReply.do")) {
+			int rno = Integer.parseInt(req.getParameter("rno"));
+			String bid = req.getParameter("bid");
+			
+			replyDAO.deleteReply(rno);
+			
+			nextPage = "/boardView.do?bid=" + Integer.parseInt(bid);
+		}else if(command.equals("/updateReply.do")) {
+			int rno= Integer.parseInt(req.getParameter("rno"));
+			
+			Reply reply = replyDAO.getReply(rno);
+			
+			req.setAttribute("reply", reply);
+			
+			nextPage = "reply/replyUpdate.jsp";
+		}else if(command.equals("/updReply.do")) {
+			int rno = Integer.parseInt(req.getParameter("rno"));
+			int bid = Integer.parseInt(req.getParameter("bid"));
+			String rcontent = req.getParameter("rcontent");
+			
+			Reply replys = new Reply();
+			
+			replys.setRno(rno);
+			replys.setRcontent(rcontent);
+			
+			replyDAO.updateReply(replys);
+			
+			nextPage = "/boardView.do?bid=" + bid;
 		}
 		
 		if(command.equals("/index.do")) {

@@ -307,12 +307,31 @@ adminLogin, board_write, board_update 스타일 */
 	padding: 10px;
 }
 
+.rtitle p a {
+	text-decoration: none;
+	color: black;
+}
+
+.rtitle p a:hover {
+	text-decoration: underline;
+}
+
 .rcontent {
 	margin-bottom: 10px;
 }
 
 textarea {
 	resize: none;
+}
+
+#reply_update form {
+	width: 65%;
+	margin: 10px auto;
+}
+
+#reply_update form p span {
+	display: block;
+	text-align: left;
 }
 
 /* footer 스타일 */

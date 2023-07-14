@@ -50,10 +50,26 @@
 			<div class="rtitle">
 			<c:forEach items="${ replyList }" var="reply">
 				<p style="text-align: left;">${ reply.rno }.</p>
-				<textarea rows="3" cols="100" readonly>${ reply.rcontent }</textarea>
+				<textarea rows="4" cols="100" readonly>${ reply.rcontent }</textarea>
 				<%-- <p><c:out value="${ fn:replace(reply.rcontent, LF, BR) }"
 				escapeXml="false"></c:out></p> --%>
-				<p class="rcontent">작성자: ${ reply.replyer }</p>
+				<c:choose>
+					<c:when test="${ reply.replyer == sessionId }">
+						<p class="rcontent">작성자: ${ reply.replyer }<br><c:choose><c:when 
+						test="${ not empty reply.rupdate }">
+							작성일: <fmt:formatDate value='${ reply.rdate }'
+						 	type='both'/> 수정일: <fmt:formatDate value='${ reply.rupdate }'
+						 	type='both'/><br></c:when><c:otherwise>작성일: <fmt:formatDate 
+						 	value='${ reply.rdate }'
+						 	type='both'/><br></c:otherwise></c:choose><a 
+					 	href="/updateReply.do?bid=${ board.bid }&rno=${ reply.rno }">수정</a> <a 
+						href="/deleteReply.do?bid=${ board.bid }&rno=${ reply.rno }" 
+						onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a></p>
+					</c:when>
+					<c:otherwise>
+						<p class="rcontent">작성자: ${ reply.replyer }</p>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 			</div>
 			<!-- 댓글 등록 -->
@@ -63,7 +79,7 @@
 					<form action="/addReply.do?bid=${ board.bid }" method="post">
 						<p><input type="hidden" name="replyer" value="${ sessionId }"></p>
 						<p>
-						    <textarea name="rcontent" rows="3" cols="70" placeholder="댓글을 남겨주세요."></textarea>
+						    <textarea name="rcontent" rows="4" cols="100" placeholder="댓글을 남겨주세요."></textarea>
 						</p>
 						<button type="submit">등록</button>
 					</form>

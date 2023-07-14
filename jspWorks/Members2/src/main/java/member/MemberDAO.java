@@ -33,7 +33,7 @@ public class MemberDAO {
 				memb.setPasswd(rs.getString("passwd"));
 				memb.setName(rs.getString("name"));
 				memb.setGender(rs.getString("gender"));
-				memb.setJoinDate(rs.getDate("joindate"));
+				memb.setJoinDate(rs.getTimestamp("joindate"));
 				
 				memberList.add(memb);
 				
@@ -66,7 +66,7 @@ public class MemberDAO {
 				member.setPasswd(rs.getString("passwd"));
 				member.setName(rs.getString("name"));
 				member.setGender(rs.getString("gender"));
-				member.setJoinDate(rs.getDate("joindate"));
+				member.setJoinDate(rs.getTimestamp("joindate"));
 			}
 			
 		} catch (SQLException e) {

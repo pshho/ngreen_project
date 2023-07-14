@@ -31,13 +31,13 @@
 				<fieldset>
 					<ul>
 						<li><label for="memberId"><fmt:message key="signup.id"/></label> <input type="text"
-							name="memberId" id="memberId" placeholder='<fmt:message key="signup.idCheck"/>'></li>
+							name="memberId" id="memberId" placeholder='<fmt:message key="signup.idCheck"/>' readonly></li>
 						<li class="check"><p id="checked"></p>
 							<button type="button" onclick="checkId()" id="check" value="N"><fmt:message key="signup.doubleCheck"/></button></li>
 						<li><label for="passwd1"><fmt:message key="signup.password"/></label> <input type="password"
-							name="passwd1" id="passwd1" placeholder='<fmt:message key="signup.pwCheck"/>'></li>
+							name="passwd1" id="passwd1" placeholder='<fmt:message key="signup.pwCheck"/>' required></li>
 						<li><label for="passwd2"><fmt:message key="signup.password2"/></label> <input
-							type="password" name="passwd2" id="passwd2"></li>
+							type="password" name="passwd2" id="passwd2" required></li>
 						<li><label for="name"><fmt:message key="signup.name"/></label> <input type="text"
 							name="name" id="name" placeholder='<fmt:message key="signup.onlyKorean"/>' required></li>
 						<li><label for="gender"><fmt:message key="signup.gender"/></label> <label class="la1"><input
