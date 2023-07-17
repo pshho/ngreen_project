@@ -7,8 +7,13 @@
 }
 
 #container {
-    width: 100%;
+    width: 50%;
     margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(70, 70, 211);
 }
 
 a:hover {
@@ -17,7 +22,62 @@ a:hover {
 }
 
 header {
+    width: 100%;
     font-family: Josefin Sans;
+}
+
+/* header 스타일 */
+.navbar {
+    width: 100%;
+    height: 60px;
+    background-color: #6676bd;
+    position: relative;
+}
+
+.navbar #logo a {
+    display: block;
+    padding-left: 5px;
+    width: 220px;
+    height: 60px;
+    font-size: 1.5rem;
+    line-height: 60px;
+}
+
+.navbar ul {
+    position: absolute;
+    width: 100%;
+}
+
+.navbar ul li:first-of-type {
+    border-top: 1px solid #ccc;
+}
+
+.navbar > ul > li {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 1.2rem;
+    padding-left: 5px;
+    background-color: #6676bd;
+    border-bottom: 1px solid #ccc;
+    list-style: none;
+    display: none;
+}
+
+.navbar a {
+    color: black;
+    cursor: pointer;
+}
+
+.navbar #menu {
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    right: 2px;
+    background: url("../images/header_button.png") no-repeat center;
+    background-size: contain;
+    cursor: pointer;
 }
 
 /* section 스타일 */
@@ -38,12 +98,12 @@ section ul li {
     font-family: Nanum Gothic;
 }
 
-#aboutMe, #career, #skill {
+#aboutMe, #career, #skill, #portpolio {
     width: 90%;
     margin: 30px auto;
 }
 
-#careerD, #skillD {
+#careerD, #skillD, #portpolioD {
     display: none;
 }
 
@@ -103,6 +163,16 @@ img {
     line-height: 2;
 }
 
+/* portpolio 스타일 */
+#portpolio ul {
+    padding-left: 30px;
+}
+
+#portpolio ul li {
+    list-style: square;
+    line-height: 2;
+}
+
 @media screen and (min-width: 458px) {
     section h2 {
         font-size: 1.1rem;
@@ -154,5 +224,12 @@ img {
 
     #aboutMe h3 {
         font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    #container {
+        width: 100%;
+        margin: 0 auto;
     }
 }

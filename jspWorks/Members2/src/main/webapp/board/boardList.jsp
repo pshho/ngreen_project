@@ -41,6 +41,15 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<!-- 검색 폼 -->
+			<form action="" method="post">
+				<select name="field">
+					<option ${(field == "title") ? "selected" : ""} value="title">제목</option>
+					<option ${(field == "memberId") ? "selected" : ""} value="memberId">작성자</option>
+				</select>
+				<input type="text" name="kw" value="${ kw }">
+				<button type="submit">검색</button>
+			</form>
 			<!-- 페이지 처리 영역 -->
 			<div class='pagination'>
 				<!-- 이전 페이지 -->
@@ -52,7 +61,14 @@
 				</c:if>
 				<!-- 페이지 리스트 -->
 				<c:forEach var='i' begin='1' end='${ endPage }'>
-					<a href='/boardList.do?pageNum=${ i }'>${i}</a>
+					<c:choose>
+						<c:when test="${ empty kw }">
+							<a href='/boardList.do?pageNum=${ i }'>${i}</a>
+						</c:when>
+						<c:when test="${ not empty kw }">
+							<a href='/boardList.do?field=${ field }&kw=${ kw }&pageNum=${ i }'>${i}</a>
+						</c:when>
+					</c:choose>
 				</c:forEach>
 			</div>
 			

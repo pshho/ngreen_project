@@ -43,6 +43,7 @@ select * from boards;
 select * from replys;
 
 select * from replys where bid = 26 and rno = 15;
+SELECT COUNT(*) as total FROM boards where title Like '%wa%';
 
 INSERT INTO boards(title, contents, memberid) VALUES('안녕', '가입인사', 'test1');
 insert into replys(bid, rcontent, replyer) values(26, '반가워요~', 'cloud1');

@@ -20,3 +20,7 @@ signup.doubleCheck=중복체크
 signup.onlyKorean=한글만
 signup.pwCheck=8자 이상 대, 소, 특수문자, 숫자
 signup.idCheck=4~15 영어 대, 소문자
+
+/* memberUpdate(정보 수정) */
+signup.modifytitle=수정
+signup.save=저장
