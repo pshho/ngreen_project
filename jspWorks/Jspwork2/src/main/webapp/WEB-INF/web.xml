@@ -41,4 +41,5 @@
 		<filter-name>LogFileFilter</filter-name>
 		<url-pattern>/filter/filter02_process.jsp</url-pattern>
 	</filter-mapping>
+	
 </web-app>
