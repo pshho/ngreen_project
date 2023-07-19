@@ -4,12 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>filter 예제</title>
 </head>
 <body>
 	<form action="filter01_process.jsp" method="post">
-		<input type="text" name="username">
-		<button type="submit">저장</button>
+		<p>
+		   이름 <input type="text" name="username">
+		       <button type="submit">전송</button>
+        </p>
 	</form>
 </body>
 </html>

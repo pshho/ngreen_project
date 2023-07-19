@@ -1,19 +1,25 @@
 package product;
 
 public class Product {
-	private String pid, pname, maker, date;
-	private int price;
 	
-	// 생성자
-	public Product(String pid, String pname, String maker, String date, int price) {
+	private String pid;   //상품 코드
+	private String pname; //상품 이름
+	private String maker; //제조사
+	private int price;    //가격
+	private String date;  //등록일
+	
+	//생성자
+	public Product(String pid, String pname, String maker, 
+			int price, String date) {
 		super();
 		this.pid = pid;
 		this.pname = pname;
 		this.maker = maker;
-		this.date = date;
 		this.price = price;
+		this.date = date;
 	}
 
+	//get(), set()
 	public String getPid() {
 		return pid;
 	}
@@ -38,14 +44,6 @@ public class Product {
 		this.maker = maker;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	public int getPrice() {
 		return price;
 	}
@@ -53,5 +51,12 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 }

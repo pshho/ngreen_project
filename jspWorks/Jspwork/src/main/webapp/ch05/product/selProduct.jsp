@@ -18,7 +18,7 @@
 	}
 </style>
 </head>
-<jsp:useBean id="product" class="product.Product"/>
+<jsp:useBean id="product" class="products.Product"/>
 <body>
 	<div id="container">
 		<h2>상품 선택 결과</h2>
