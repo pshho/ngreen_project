@@ -1,1 +1,1 @@
-ngreen_project/jspWorks/Servers/**
+jspWorks/Servers/**
