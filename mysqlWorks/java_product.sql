@@ -15,4 +15,6 @@ create table product(
 insert into product(pid, pname, punitPrice, pdescription, pcategory, pmanufacturer, punitsInstock, pcondition, pproductImage)
 values('SM-1', '갤럭시', '200000', '삼성 갤럭시', '삼성', '삼성', '20', '신상품', 'Galax1');
 
+update product set pcondition = '중고품' where pid = 'SM-01';
+
 select * from product;

@@ -45,16 +45,17 @@ public class ProductController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		String uri = request.getRequestURI();
 		String command = uri.substring(uri.lastIndexOf("/"));
-		System.out.println(command);
+		// System.out.println(command);
 
 		String nextPage = null;
 
 		// 세션 생성
 		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(1800);	// 세션 30분 유지
 
 		if (command.equals("/productList.do")) {// 상품 목록 페이지 요청
 
-			ArrayList<Product> productList = (ArrayList<Product>) productDAO.getProductList();
+			List<Product> productList = productDAO.getProductList();
 			request.setAttribute("productList", productList);
 			nextPage = "/product/productList.jsp";
 
@@ -71,7 +72,7 @@ public class ProductController extends HttpServlet {
 			nextPage = "/product/productForm.jsp";
 		} else if (command.equals("/addProduct.do")) {// 상품 등록 폼
 
-			String realFolder = "E:/NSW/green_project/JSPworks/Marcat/src/main/webapp/resource/upload";
+			String realFolder = "C://ngreen_project/jspWorks/Market/src/main/webapp/resource/upload";
 			MultipartRequest multi = new MultipartRequest(request, realFolder, 5 * 1024 * 1024, "utf-8",
 					new DefaultFileRenamePolicy());
 
@@ -106,7 +107,6 @@ public class ProductController extends HttpServlet {
 
 			// DAO의 addProduct 메서드를 호출하여 상품 등록
 			productDAO.addProduct(product);
-			nextPage = "/productList.do";
 		} // 상품 등록 폼 끝
 
 		else if (command.equals("/editProduct.do")) { // 상품 수정
@@ -121,10 +121,57 @@ public class ProductController extends HttpServlet {
 
 			nextPage = "/product/EditProduct.jsp";
 		} // 상품 수정 끝
+		
+		else if (command.equals("/updateProductForm.do")) {
+			String id = request.getParameter("productId");
+			
+			Product product = productDAO.getProduct(id);
+
+			request.setAttribute("product", product);
+			
+			nextPage = "/product/productUpdateForm.jsp";
+		}
+		
+		else if (command.equals("/updProduct.do")) {
+			String realFolder = "C://ngreen_project/jspWorks/Market/src/main/webapp/resource/upload";
+			MultipartRequest multi = new MultipartRequest(request, realFolder, 5 * 1024 * 1024, "utf-8",
+					new DefaultFileRenamePolicy());
+
+			// name 속성 가져오기
+			String id = multi.getParameter("productId");
+			String pname = multi.getParameter("pname");
+			int unitPrice = Integer.parseInt(multi.getParameter("unitPrice"));
+			String description = multi.getParameter("description");
+			String category = multi.getParameter("category");
+			String manufacturer = multi.getParameter("manufacturer");
+			long unitsInStock = Long.parseLong(multi.getParameter("unitsInStock"));
+			String condition = multi.getParameter("condition");
+
+			// productImage 속성 가져오기
+			String name = "";
+			String productImage = "";
+			Enumeration<String> files = multi.getFileNames();
+			if (files.hasMoreElements()) {
+				name = files.nextElement(); // 파일이 있으면 이름을 저장
+				productImage = multi.getFilesystemName(name);// 이름을 매개변수로 서버에 저장된 파일 이름을 저장
+			}
+			Product product = new Product();
+			product.setProductId(id);
+			product.setPname(pname);
+			product.setUnitPrice(unitPrice);
+			product.setDescription(description);
+			product.setCategory(category);
+			product.setManufacturer(manufacturer);
+			product.setUnitsInStock(unitsInStock);
+			product.setCondition(condition);
+			product.setProductImage(productImage);
+
+			productDAO.updateProduct(product);
+		}
 
 		else if (command.equals("/deleteProduct.do")) {// 상품 삭제
-			String productId = request.getParameter("productId");
-			productDAO.delectProduct(productId);
+			String id = request.getParameter("productId");
+			productDAO.delectProduct(id);
 			nextPage = "editProduct.do?edit=delete";
 		} // 상품 삭제 끝
 
@@ -132,20 +179,25 @@ public class ProductController extends HttpServlet {
 			String id = request.getParameter("productId");
 
 			// 상품 목록
-			List<Product> godsList = productDAO.getProductList();
-			Product goods = new Product();
+			// List<Product> goodsList = productDAO.getProductList();
+			// Product goods = new Product();
+			Product goods = productDAO.getProduct(id);
 
+			/*
 			// 목록중에서 추가한 상품을 찾음
-			for (int i = 0; i < godsList.size(); i++) {
-				goods = godsList.get(i);
+			for (int i = 0; i < goodsList.size(); i++) {
+				goods = goodsList.get(i);
 				if (goods.getProductId().equals(id))
 					break;
 			}
+			*/
+			
 			// 요청 아이디의 상품을 담은 장바구니를 초기화 함
-			List<Product> list = (List<Product>) session.getAttribute("cartlist");
+			List<Product> list = (List<Product>) session.getAttribute("cartList");
+			
 			if (list == null) {
 				list = new ArrayList<>();
-				session.setAttribute("cartlist", list); // 장바구니 세션 발급
+				session.setAttribute("cartList", list); // 장바구니 세션 발급
 			}
 
 			// 요청 아이디의 상품이 장바구니에 담긴 목록이면 해당 상품의 수량을 증가시킴
@@ -153,26 +205,41 @@ public class ProductController extends HttpServlet {
 			Product goodsQnt = new Product();
 
 			for (int i = 0; i < list.size(); i++) {
-				goodsQnt = list.get(i);
+				if (list.get(i).getProductId().equals(goods.getProductId())) {
+					cnt++;
+					goodsQnt = list.get(i);
+					int orderQuantity = goodsQnt.getQuantity() + 1; // 주문 수량 합계
+					goodsQnt.setQuantity(orderQuantity);
+				}
+				
+				/*
 				if (goodsQnt.getProductId().equals(id)) {
 					cnt++; // 해당 아이디와 같은 품목이면 1증가
 					int orderQuantity = goodsQnt.getQuantity() + 1; // 주문 수량 합계
 					goodsQnt.setQuantity(orderQuantity);
 				}
+				*/
+			}
+			
+			if (cnt == 0) {
+				goods.setQuantity(1);
+				list.add(goods);
 			}
 
+			/*
 			// 장바구니에 담긴 목록이 아니면 해당 상품의 수량을 1로하고, 장바구니 목록에 추가함
 			if (cnt == 0) {
 				goods.setQuantity(1);
 				list.add(goods);
 			}
+			*/
 
 		} // 카트 추가
 		
 		// 장바구니 페이지
 		else if(command.equals("/cart.do")) { //장바구니 페이지
 			//장바구니에 세션 가져오기(세션 유지)
-			ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartlist");
+			ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartList");
 			if(cartList == null){
 				cartList = new ArrayList<>();
 			}
@@ -200,7 +267,7 @@ public class ProductController extends HttpServlet {
 			String id = request.getParameter("productId");
 			
 			//장바구니 가져오기(세션 유지)
-			ArrayList<Product> cartList = (ArrayList<Product>)session.getAttribute("cartlist");
+			ArrayList<Product> cartList = (ArrayList<Product>)session.getAttribute("cartList");
 			
 			Product selProduct = new Product();  //삭제할 품목 선택
 			for(int i=0; i<cartList.size(); i++) {
@@ -212,17 +279,21 @@ public class ProductController extends HttpServlet {
 		}
 		
 		else if(command.equals("/deleteCart.do")) {  //장바구니 초기화(삭제)
-			session.invalidate(); //장바구니 세션 삭제
+			// session.invalidate(); //장바구니 세션 삭제
+			session.removeAttribute("cartList");
 		}
 		//장바구니의 개별 품목 삭제 끝
 		
 		// 페이지 포워딩
-		if (command.equals("/addCart.do")) {
+		if (command.equals("/addCart.do") || command.equals("/updProduct.do")) {
 			String id = request.getParameter("productId");
 			response.sendRedirect("/productInfo.do?productId=" + id);  //상세 정보 페이지 이동
 		}else if (command.equals("/removeCart.do") || command.equals("/deleteCart.do")) {
 			response.sendRedirect("/cart.do");  //장바구니 페이지로 이동
-		}else {
+		}else if (command.equals("/addProduct.do")) {
+			response.sendRedirect("/productList.do");
+		}
+		else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);			
 		}

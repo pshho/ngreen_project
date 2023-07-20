@@ -11,8 +11,8 @@ public class JDBCUtil {
 	static String driverClass = "com.mysql.cj.jdbc.Driver";
 	/* 자르에넣은 경로를 뜻함 패키지안에 가보면 해당드라이버가있음 */
 	static String url = "jdbc:mysql://localhost:3306/javaweb";
-	static String username = "root";
-	static String password = "1234";
+	static String username = "jweb";
+	static String password = "jweb";
 	
 	// DB연결 메서드
 	public static Connection getConnection() {

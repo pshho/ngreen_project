@@ -24,15 +24,15 @@ public class ProductDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Product product = new Product();
-				product.setProductId(rs.getString("p_id"));
-				product.setPname(rs.getString("p_name"));
-				product.setUnitPrice(rs.getInt("p_unitprice"));
-				product.setDescription(rs.getString("p_description"));
-				product.setCategory(rs.getString("p_category"));
-				product.setManufacturer(rs.getString("p_manufacturer"));
-				product.setUnitsInStock(rs.getLong("p_unitsInStock"));
-				product.setCondition(rs.getString("p_condition"));
-				product.setProductImage(rs.getString("p_productImage"));
+				product.setProductId(rs.getString("pid"));
+				product.setPname(rs.getString("pname"));
+				product.setUnitPrice(rs.getInt("punitPrice"));
+				product.setDescription(rs.getString("pdescription"));
+				product.setCategory(rs.getString("pcategory"));
+				product.setManufacturer(rs.getString("pmanufacturer"));
+				product.setUnitsInStock(rs.getLong("punitsInstock"));
+				product.setCondition(rs.getString("pcondition"));
+				product.setProductImage(rs.getString("pproductImage"));
 				productList.add(product);
 				
 			}
@@ -49,21 +49,21 @@ public class ProductDAO {
 	public Product getProduct(String productId) {
 		Product product = new Product();
 		conn = JDBCUtil.getConnection();
-		String sql = "select * from product where p_id = ?";
+		String sql = "select * from product where pid = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, productId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				product.setProductId(rs.getString("p_id"));
-				product.setPname(rs.getString("p_name"));
-				product.setUnitPrice(rs.getInt("p_unitprice"));
-				product.setDescription(rs.getString("p_description"));
-				product.setCategory(rs.getString("p_category"));
-				product.setManufacturer(rs.getString("p_manufacturer"));
-				product.setUnitsInStock(rs.getLong("p_unitsInStock"));
-				product.setCondition(rs.getString("p_condition"));
-				product.setProductImage(rs.getString("p_productImage"));
+				product.setProductId(rs.getString("pid"));
+				product.setPname(rs.getString("pname"));
+				product.setUnitPrice(rs.getInt("punitPrice"));
+				product.setDescription(rs.getString("pdescription"));
+				product.setCategory(rs.getString("pcategory"));
+				product.setManufacturer(rs.getString("pmanufacturer"));
+				product.setUnitsInStock(rs.getLong("punitsInstock"));
+				product.setCondition(rs.getString("pcondition"));
+				product.setProductImage(rs.getString("pproductImage"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -79,7 +79,7 @@ public class ProductDAO {
 			
 			conn = JDBCUtil.getConnection();
 			String sql = "INSERT INTO product \r\n"
-					+ "(p_id, p_name, p_unitPrice, p_description, p_category, p_manufacturer, p_unitsInStock, p_condition, p_productImage)\r\n"
+					+ "(pid, pname, punitPrice, pdescription, pcategory, pmanufacturer, punitsInstock, pcondition, pproductImage)\r\n"
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			try {
 		        pstmt = conn.prepareStatement(sql);
@@ -107,7 +107,7 @@ public class ProductDAO {
 		// 상품 삭제
 		public void delectProduct(String productId) {
 			conn = JDBCUtil.getConnection();
-			String sql = "delete from product where p_id = ?";
+			String sql = "delete from product where pid = ?";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, productId);
@@ -121,4 +121,31 @@ public class ProductDAO {
 
 		} // 상품 삭제 끝
 
+		// 상품 수정
+		public void updateProduct(Product product) {
+			conn = JDBCUtil.getConnection();
+			String sql = "update product set pname = ?, punitPrice = ?, pdescription = ?, "
+					+ "pcategory = ?, pmanufacturer = ?, punitsInstock = ?, "
+					+ "pcondition = ?, pproductImage = ? where pid = ?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, product.getPname());
+				pstmt.setInt(2, product.getUnitPrice());
+				pstmt.setString(3, product.getDescription());
+				pstmt.setString(4, product.getCategory());
+				pstmt.setString(5, product.getManufacturer());
+				pstmt.setLong(6, product.getUnitsInStock());
+				pstmt.setString(7, product.getCondition());
+				pstmt.setString(8, product.getProductImage());
+				pstmt.setString(9, product.getProductId());
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCUtil.close(conn, pstmt);
+			}
+			
+		}
 }

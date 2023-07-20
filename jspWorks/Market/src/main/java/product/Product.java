@@ -16,6 +16,7 @@ public class Product implements Serializable{
 	private String condition;     // 신상품 or 중고품 or 재생품
 	private String productImage;  // 이미지 파일
 	private int quantity;         // 장바구니에 담은 개수
+	
 	public String getProductId() {
 		return productId;
 	}
