@@ -8,64 +8,90 @@ import java.sql.SQLException;
 
 public class JDBCUtil {
 	
-	// oracle connect
 	static String driverClass = "com.mysql.cj.jdbc.Driver";
+	/* 자르에넣은 경로를 뜻함 패키지안에 가보면 해당드라이버가있음 */
 	static String url = "jdbc:mysql://localhost:3306/javaweb";
-	static String username = "jweb";
-	static String password = "jweb";
+	static String username = "root";
+	static String password = "1234";
 	
+	// DB연결 메서드
 	public static Connection getConnection() {
 		try {
 			Class.forName(driverClass);
 			return DriverManager.getConnection(url, username, password);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}// getconn
+	
+	// DB 연결 종료 메서드
+	public static void close(Connection conn,PreparedStatement psmt) {
+		if (psmt != null) {
+			try {
+				psmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				psmt = null;
+			}
 		}
 		
-	}
-	
-	public static void close(Connection conn, PreparedStatement pstmt) {
-		if(conn != null) {
+		if (conn != null) {
 			try {
 				conn.close();
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}finally {
+				conn = null;
 			}
 		}
-		
-		if(pstmt != null) {
-			try {
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	}// close
 	
-	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
-		if(conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if(pstmt != null) {
-			try {
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if(rs != null) {
+	
+	// DB 연결 종료 메서드 rs 있는버전
+	public static void close(Connection conn,PreparedStatement psmt, ResultSet rs) {
+		if (rs!=null) {
 			try {
 				rs.close();
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}finally {
+				rs = null;
 			}
 		}
-	}
+		
+		if (psmt != null) {
+			try {
+				psmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				psmt = null;
+			}
+		}
+		
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				conn = null;
+			}
+		}
+
+	}// close
+	
+
+	
 }
