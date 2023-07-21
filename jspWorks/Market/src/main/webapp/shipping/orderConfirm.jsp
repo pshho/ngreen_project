@@ -16,9 +16,10 @@
 			<c:set var="cartId" value="${shipCookieList[0]}" />
 			<c:set var="shipName" value="${shipCookieList[1]}" />
 			<c:set var="phone" value="${shipCookieList[2]}" />
-			<c:set var="postalCode" value="${shipCookieList[3]}" />
-			<c:set var="address" value="${shipCookieList[4]}" />
-			<c:set var="detAddress" value="${shipCookieList[5]}" />
+			<c:set var="shipDay" value="${shipCookieList[3]}" />
+			<c:set var="postalCode" value="${shipCookieList[4]}" />
+			<c:set var="address" value="${shipCookieList[5]}" />
+			<c:set var="detAddress" value="${shipCookieList[6]}" />
 			<div class="form-group">
 				<label for="shipName">성명</label> <input type="text"
 						class="form-control" id="shipName" name="shipName" 
@@ -28,6 +29,11 @@
 				<label for="phone">연락처</label> <input type="tel"
 					class="form-control" id="phone" name="phone" 
 					value="${ phone }" readonly>
+			</div>
+			<div class="form-group">
+				<label for="shipDay">배송일</label> <input type="date"
+					class="form-control" id="shipDay" name="shipDay" 
+					value="${ shipDay }" readonly>
 			</div>
 			<div class="form-group">
 				<label for="postalCode">우편번호</label> <input type="text"

@@ -56,7 +56,9 @@ public class ProductController extends HttpServlet {
 		if (command.equals("/productList.do")) {// 상품 목록 페이지 요청
 
 			List<Product> productList = productDAO.getProductList();
+			
 			request.setAttribute("productList", productList);
+			
 			nextPage = "/product/productList.jsp";
 
 		} else if (command.equals("/productInfo.do")) {// 상품 상세 보기
@@ -234,6 +236,7 @@ public class ProductController extends HttpServlet {
 			ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartList");
 			if(cartList == null){
 				cartList = new ArrayList<>();
+				
 			}
 			
 			Product product = null;
@@ -268,10 +271,47 @@ public class ProductController extends HttpServlet {
 					cartList.remove(selProduct); //해당 품목 삭제
 				}	
 			}
+			
+			if(cartList.size() <= 0) {
+				Cookie[] cookies = request.getCookies();
+				
+				for (Cookie cookie : cookies) {
+					String shipping = cookie.getName();
+					int laIndex = shipping.lastIndexOf("_");
+					
+					if (laIndex > 0) {
+						String ship = shipping.substring(0, laIndex);
+						
+						if (ship.equals("Shipping")) {
+							cookie.setPath("/");
+							cookie.setMaxAge(0);
+							response.addCookie(cookie);
+						}
+					}				
+				}
+			}
 		}
 		
 		else if(command.equals("/deleteCart.do")) {  //장바구니 초기화(삭제)
 			// session.invalidate(); //장바구니 세션 삭제
+			
+			Cookie[] cookies = request.getCookies();
+			
+			for (Cookie cookie : cookies) {
+				String shipping = cookie.getName();
+				int laIndex = shipping.lastIndexOf("_");
+				
+				if (laIndex > 0) {
+					String ship = shipping.substring(0, laIndex);
+					
+					if (ship.equals("Shipping")) {
+						cookie.setPath("/");
+						cookie.setMaxAge(0);
+						response.addCookie(cookie);
+					}
+				}				
+			}
+			
 			session.removeAttribute("cartList");
 		}
 		//장바구니의 개별 품목 삭제 끝
@@ -289,21 +329,24 @@ public class ProductController extends HttpServlet {
 			Cookie shippingId = new Cookie("Shipping_CartId", URLEncoder.encode(request.getParameter("cartId"), "UTF-8"));
 			Cookie shippingName = new Cookie("Shipping_Name", URLEncoder.encode(request.getParameter("shipName"), "UTF-8"));
 			Cookie shippingPhone = new Cookie("Shipping_Phone", URLEncoder.encode(request.getParameter("phone"), "UTF-8"));
+			Cookie shippingDay = new Cookie("Shipping_shipDay", URLEncoder.encode(request.getParameter("shipDay"), "UTF-8"));
 			Cookie shippingPostal = new Cookie("Shipping_Postal", URLEncoder.encode(request.getParameter("postalCode"), "UTF-8"));
 			Cookie shippingAddr = new Cookie("Shipping_Addr", URLEncoder.encode(request.getParameter("address"), "UTF-8"));
 			Cookie shippingDetAddr = new Cookie("Shipping_DetAddr", URLEncoder.encode(request.getParameter("detAddress"), "UTF-8"));
 			
-			shippingId.setMaxAge(3600);
-			shippingName.setMaxAge(3600);
-			shippingPhone.setMaxAge(3600);
-			shippingPostal.setMaxAge(3600);
-			shippingAddr.setMaxAge(3600);
-			shippingDetAddr.setMaxAge(3600);
+			shippingId.setMaxAge(1800);
+			shippingName.setMaxAge(1800);
+			shippingPhone.setMaxAge(1800);
+			shippingDay.setMaxAge(1800);
+			shippingPostal.setMaxAge(1800);
+			shippingAddr.setMaxAge(1800);
+			shippingDetAddr.setMaxAge(1800);
 			
 			// 클라이언트에게 쿠키 보내기
 			response.addCookie(shippingId);
 			response.addCookie(shippingName);
 			response.addCookie(shippingPhone);
+			response.addCookie(shippingDay);
 			response.addCookie(shippingPostal);
 			response.addCookie(shippingAddr);
 			response.addCookie(shippingDetAddr);
@@ -312,6 +355,7 @@ public class ProductController extends HttpServlet {
 			shipCookieList.add(URLDecoder.decode(shippingId.getValue(), "UTF-8"));
 			shipCookieList.add(URLDecoder.decode(shippingName.getValue(), "UTF-8"));
 			shipCookieList.add(URLDecoder.decode(shippingPhone.getValue(), "UTF-8"));
+			shipCookieList.add(URLDecoder.decode(shippingDay.getValue(), "UTF-8"));
 			shipCookieList.add(URLDecoder.decode(shippingPostal.getValue(), "UTF-8"));
 			shipCookieList.add(URLDecoder.decode(shippingAddr.getValue(), "UTF-8"));
 			shipCookieList.add(URLDecoder.decode(shippingDetAddr.getValue(), "UTF-8"));
@@ -326,9 +370,18 @@ public class ProductController extends HttpServlet {
 			Cookie[] cookies = request.getCookies();
 			
 			for (Cookie cookie : cookies) {
-				cookie.setPath("/");
-				cookie.setMaxAge(0);
-				response.addCookie(cookie);
+				String shipping = cookie.getName();
+				int laIndex = shipping.lastIndexOf("_");
+				
+				if (laIndex > 0) {
+					String ship = shipping.substring(0, laIndex);
+					
+					if (ship.equals("Shipping")) {
+						cookie.setPath("/");
+						cookie.setMaxAge(0);
+						response.addCookie(cookie);
+					}
+				}				
 			}
 			
 			String cartId = request.getParameter("cartId");
@@ -344,12 +397,31 @@ public class ProductController extends HttpServlet {
 			Cookie[] cookies = request.getCookies();
 			
 			for (Cookie cookie : cookies) {
-				cookie.setPath("/");
-				cookie.setMaxAge(0);
-				response.addCookie(cookie);
+				String shipping = cookie.getName();
+				int laIndex = shipping.lastIndexOf("_");
+				
+				if (laIndex > 0) {
+					String ship = shipping.substring(0, laIndex);
+					
+					if (ship.equals("Shipping")) {
+						cookie.setPath("/");
+						cookie.setMaxAge(0);
+						response.addCookie(cookie);
+					}
+				}				
 			}
 			
 			nextPage = "/shipping/cancelOrder.jsp";
+		}
+		
+		else if(command.equals("/loginForm.do")) {
+			nextPage = "/index.jsp";
+		}
+		
+		else if(command.equals("/logout.do")) {
+			session.invalidate();
+			
+			nextPage = "/index.jsp";
 		}
 		
 		// 페이지 포워딩

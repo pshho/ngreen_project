@@ -19,7 +19,14 @@
 						<a href="/deleteCart.do" class="btn btn-danger">삭제하기</a>
 					</td>
 					<td align="right">
-						<a href="/shippingInfo.do?cartId=${cartId}" class="btn btn-success">주문하기</a>
+						<c:choose>
+							<c:when test="${ empty cartList }">
+								<a href="#" class="btn btn-success" onclick="checkOrder()">주문하기</a>
+							</c:when>
+							<c:otherwise>
+								<a href="/shippingInfo.do?cartId=${ cartId }" class="btn btn-success">주문하기</a>
+							</c:otherwise>
+						</c:choose>
 					</td>
 				</tr>
 			</table>
@@ -47,5 +54,6 @@
 		</div>
 	</div>
 	<jsp:include page="../footer.jsp" />
+	<script type="text/javascript" src="../resource/js/validate.js"></script>
 </body>
 </html>

@@ -6,11 +6,17 @@
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Market</web-resource-name>
-			<url-pattern>/productForm.do</url-pattern>
-			<url-pattern>/editProduct.do?edit=update</url-pattern>
-			<url-pattern>/editProduct.do?edit=delete</url-pattern>
-		</web-resource-collection>
+        <web-resource-name>Market</web-resource-name>
+	        <url-pattern>/productForm.do</url-pattern>
+	    </web-resource-collection>
+	    <web-resource-collection>
+	        <web-resource-name>Market</web-resource-name>
+	        <url-pattern>/editProduct.do</url-pattern>
+	    </web-resource-collection>
+	    <web-resource-collection>
+	        <web-resource-name>Market</web-resource-name>
+	        <url-pattern>/loginForm.do</url-pattern>
+	    </web-resource-collection>
 		<auth-constraint>
 			<description>관리자</description>
 			<role-name>admin</role-name>

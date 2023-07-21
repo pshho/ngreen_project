@@ -36,3 +36,7 @@ function checkAddProduct() {
 		form.submit();
 	}
 }
+
+function checkOrder() {
+	alert("상품을 추가해주세요.")
+}

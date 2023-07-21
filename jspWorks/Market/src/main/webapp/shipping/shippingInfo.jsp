@@ -18,27 +18,32 @@
 				<div class="form-group">
 					<label for="shipName">성명</label> <input type="text"
 						class="form-control" id="shipName" name="shipName"
-						<c:if test='${not empty cookie["Shipping_Name"]}'>value="${URLDecoder.decode(cookie["Shipping_Name"].value, "UTF-8")}"</c:if> required>
+						<c:if test='${not empty cookie["Shipping_Name"]}'>value="${URLDecoder.decode(cookie['Shipping_Name'].value, 'UTF-8')}"</c:if> required>
 				</div>
 				<div class="form-group">
 					<label for="phone">연락처</label> <input type="tel"
 						class="form-control" id="phone" name="phone"
-						<c:if test='${not empty cookie["Shipping_Phone"]}'>value="${cookie["Shipping_Phone"].value}"</c:if> required>
+						<c:if test='${not empty cookie["Shipping_Phone"]}'>value="${cookie['Shipping_Phone'].value}"</c:if> required>
+				</div>
+				<div class="form-group">
+					<label for="shipDay">배송일</label> <input type="date"
+						class="form-control" id="shipDay" name="shipDay"
+						<c:if test='${not empty cookie["Shipping_shipDay"]}'>value="${cookie['Shipping_shipDay'].value}"</c:if> required>
 				</div>
 				<div class="form-group">
 					<label for="postalCode">우편번호</label> <input type="text"
 						class="form-control" id="postalCode" name="postalCode"
-						<c:if test='${not empty cookie["Shipping_Postal"]}'>value="${cookie["Shipping_Postal"].value}"</c:if> required>
+						<c:if test='${not empty cookie["Shipping_Postal"]}'>value="${cookie['Shipping_Postal'].value}"</c:if> required>
 				</div>
 				<div class="form-group">
 					<label for="address">주소</label> <input type="text"
 						class="form-control" id="address" name="address"
-						<c:if test='${not empty cookie["Shipping_Addr"]}'>value="${URLDecoder.decode(cookie["Shipping_Addr"].value, "UTF-8")}"</c:if> required>
+						<c:if test='${not empty cookie["Shipping_Addr"]}'>value="${URLDecoder.decode(cookie['Shipping_Addr'].value, 'UTF-8')}"</c:if> required>
 				</div>
 				<div class="form-group">
 					<label for="detAddress">상세주소</label> <input type="text"
 						class="form-control" id="detAddress" name="detAddress"
-						<c:if test='${not empty cookie["Shipping_DetAddr"]}'>value="${URLDecoder.decode(cookie["Shipping_DetAddr"].value, "UTF-8")}"</c:if> required>
+						<c:if test='${not empty cookie["Shipping_DetAddr"]}'>value="${URLDecoder.decode(cookie['Shipping_DetAddr'].value, 'UTF-8')}"</c:if> required>
 				</div>
 				<a class="btn btn-secondary" href="/cart.do">이전</a>
 				<button type="submit" class="btn btn-primary">주문</button>
