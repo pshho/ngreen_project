@@ -12,8 +12,7 @@
 	<div class="container my-3" style="padding-top: 8px;">
 		<h2 class="text-left mx-4 my-4">상품 등록</h2>
 		<div class="row mx-5" align="center" style="text-align: left;">
-			<form action="/addProduct.do" enctype="multipart/form-data" method="post">
-
+			<form action="/addProduct.do" enctype="multipart/form-data" method="post" name="adPro" onsubmit="return checkAddProduct();">
 				<div class="form-group">
 					<label for="productId">상품 아이디</label> <input type="text"
 						class="form-control" id="productId" name="productId" required>
@@ -33,8 +32,14 @@
 						rows="3" required></textarea>
 				</div>
 				<div class="form-group">
-					<label for="category">상품 분류</label> <input type="text"
-						class="form-control" id="category" name="category" required>
+					<label for="category">상품 분류</label> <select class="form-control"
+						id="category" name="category" required>
+						<option value="디지털">디지털</option>
+						<option value="시계">시계</option>
+						<option value="의류">의류</option>
+						<option value="생필품">생필품</option>
+						<option value="도서">도서</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label for="manufacturer">상품 제조사</label> <input type="text"
@@ -65,5 +70,6 @@
 		</div>
 	</div>
 	<jsp:include page="../footer.jsp" />
+	<script type="text/javascript" src="../resource/js/validate.js"></script>
 </body>
 </html>

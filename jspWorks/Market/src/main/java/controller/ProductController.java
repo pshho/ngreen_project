@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -9,14 +11,12 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.eclipse.jdt.internal.compiler.ast.Annotation.AnnotationTargetAllowed;
-
-import com.mysql.cj.Session;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -226,14 +226,6 @@ public class ProductController extends HttpServlet {
 				list.add(goods);
 			}
 
-			/*
-			// 장바구니에 담긴 목록이 아니면 해당 상품의 수량을 1로하고, 장바구니 목록에 추가함
-			if (cnt == 0) {
-				goods.setQuantity(1);
-				list.add(goods);
-			}
-			*/
-
 		} // 카트 추가
 		
 		// 장바구니 페이지
@@ -283,6 +275,82 @@ public class ProductController extends HttpServlet {
 			session.removeAttribute("cartList");
 		}
 		//장바구니의 개별 품목 삭제 끝
+		
+		else if(command.equals("/shippingInfo.do")) {
+			String cartId = request.getParameter("cartId");
+			
+			request.setAttribute("cartId", cartId);
+			
+			nextPage = "/shipping/shippingInfo.jsp";
+		}
+		
+		else if (command.equals("/processShipping.do")) {
+			// 쿠키발행
+			Cookie shippingId = new Cookie("Shipping_CartId", URLEncoder.encode(request.getParameter("cartId"), "UTF-8"));
+			Cookie shippingName = new Cookie("Shipping_Name", URLEncoder.encode(request.getParameter("shipName"), "UTF-8"));
+			Cookie shippingPhone = new Cookie("Shipping_Phone", URLEncoder.encode(request.getParameter("phone"), "UTF-8"));
+			Cookie shippingPostal = new Cookie("Shipping_Postal", URLEncoder.encode(request.getParameter("postalCode"), "UTF-8"));
+			Cookie shippingAddr = new Cookie("Shipping_Addr", URLEncoder.encode(request.getParameter("address"), "UTF-8"));
+			Cookie shippingDetAddr = new Cookie("Shipping_DetAddr", URLEncoder.encode(request.getParameter("detAddress"), "UTF-8"));
+			
+			shippingId.setMaxAge(3600);
+			shippingName.setMaxAge(3600);
+			shippingPhone.setMaxAge(3600);
+			shippingPostal.setMaxAge(3600);
+			shippingAddr.setMaxAge(3600);
+			shippingDetAddr.setMaxAge(3600);
+			
+			// 클라이언트에게 쿠키 보내기
+			response.addCookie(shippingId);
+			response.addCookie(shippingName);
+			response.addCookie(shippingPhone);
+			response.addCookie(shippingPostal);
+			response.addCookie(shippingAddr);
+			response.addCookie(shippingDetAddr);
+			
+			List<String> shipCookieList = new ArrayList<>();
+			shipCookieList.add(URLDecoder.decode(shippingId.getValue(), "UTF-8"));
+			shipCookieList.add(URLDecoder.decode(shippingName.getValue(), "UTF-8"));
+			shipCookieList.add(URLDecoder.decode(shippingPhone.getValue(), "UTF-8"));
+			shipCookieList.add(URLDecoder.decode(shippingPostal.getValue(), "UTF-8"));
+			shipCookieList.add(URLDecoder.decode(shippingAddr.getValue(), "UTF-8"));
+			shipCookieList.add(URLDecoder.decode(shippingDetAddr.getValue(), "UTF-8"));
+			
+			request.setAttribute("shipCookieList", shipCookieList);
+			
+			// 이동할 페이지 - 주문 완료(영수증)
+			nextPage = "/shipping/orderConfirm.jsp";
+		}
+		
+		else if(command.equals("/completeOrder.do")) {
+			Cookie[] cookies = request.getCookies();
+			
+			for (Cookie cookie : cookies) {
+				cookie.setPath("/");
+				cookie.setMaxAge(0);
+				response.addCookie(cookie);
+			}
+			
+			String cartId = request.getParameter("cartId");
+			
+			session.removeAttribute("cartList");
+			
+			request.setAttribute("cartId", cartId);
+			
+			nextPage = "/shipping/thanksOrder.jsp";
+		}
+		
+		else if(command.equals("/cancelOrder.do")) {
+			Cookie[] cookies = request.getCookies();
+			
+			for (Cookie cookie : cookies) {
+				cookie.setPath("/");
+				cookie.setMaxAge(0);
+				response.addCookie(cookie);
+			}
+			
+			nextPage = "/shipping/cancelOrder.jsp";
+		}
 		
 		// 페이지 포워딩
 		if (command.equals("/addCart.do") || command.equals("/updProduct.do")) {
