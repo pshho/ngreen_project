@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h2>주소록 프로젝트 시작</h2>
+	<h3><a href="/address/addForm.jsp">주소록 작성</a></h3>
 </body>
 </html>

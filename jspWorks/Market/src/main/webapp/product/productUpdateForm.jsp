@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 수정페이지</title>
+<script type="text/javascript" src="../resource/js/validate.js"></script>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
@@ -76,6 +77,5 @@
 		</div>
 	</div>
 	<jsp:include page="../footer.jsp" />
-	<script type="text/javascript" src="../resource/js/validate.js"></script>
 </body>
 </html>

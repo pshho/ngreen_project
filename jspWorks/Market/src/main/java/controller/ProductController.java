@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import member.Member;
+import member.MemberDAO;
 import product.Product;
 import product.ProductDAO;
 
@@ -28,10 +31,12 @@ public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private ProductDAO productDAO;
+	private MemberDAO memberDAO;
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		productDAO = new ProductDAO();
+		memberDAO = new MemberDAO();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,6 +48,9 @@ public class ProductController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+		
+		PrintWriter out = response.getWriter();
+		
 		String uri = request.getRequestURI();
 		String command = uri.substring(uri.lastIndexOf("/"));
 		// System.out.println(command);
@@ -420,6 +428,99 @@ public class ProductController extends HttpServlet {
 		
 		else if(command.equals("/logout.do")) {
 			session.invalidate();
+			
+			nextPage = "/index.jsp";
+		}
+		
+		if(command.equals("/memberList.do")) {
+			
+			List<Member> memberList; 
+			memberList = memberDAO.getMemberList();
+			
+			request.setAttribute("memberList", memberList);
+			
+			nextPage = "/member/memberList.jsp";
+		}
+		
+		else if(command.equals("/login.do")) {
+			nextPage = "/member/login.jsp";
+		}
+		
+		else if(command.equals("/loginProcess.do")) {
+			// 로그인 폼에 입력된 데이터 받아오기
+			String id = request.getParameter("mid");
+			String pw = request.getParameter("passwd1");
+			
+			Member member = new Member();
+			member.setMid(id);
+			member.setPasswd(pw);
+			
+			boolean check = memberDAO.checkLogin(member);
+			
+			if(check) {
+				session.setAttribute("sessionId", id);
+				
+				nextPage = "/index.jsp";
+			}else {
+				out.println("<script>\n "
+						+ "alert('아이디와 비밀번호를 확인해주세요')\n "
+						+ "history.go(-1)\n "	// 이전 페이지 이동
+						+ "</script> ");
+			}
+		}
+		
+		else if(command.equals("/memberInfo.do")) {
+			String id = request.getParameter("mid");
+			
+			Member member = new Member();
+			member = memberDAO.getMember(id);
+			
+			request.setAttribute("member", member);
+			
+			nextPage = "/member/memberInfo.jsp";
+		}
+		
+		else if(command.equals("/memberForm.do")) {
+			nextPage = "/member/memberForm.jsp";
+		}
+		
+		else if(command.equals("/addMember.do")) {
+			String id = request.getParameter("mid");
+			String pw = request.getParameter("passwd1");
+			String na = request.getParameter("mname");
+			String gd = request.getParameter("gender");
+			String birY = request.getParameter("birthyy");
+			String birM = request.getParameter("birthmm");
+			String birD = request.getParameter("birthdd");
+			String ph = request.getParameter("phone");
+			String em1 = request.getParameter("email1");
+			String em2 = request.getParameter("email2");
+			String addr = request.getParameter("address");
+			
+			Member member = new Member();
+			member.setMid(id);
+			member.setPasswd(pw);
+			member.setMname(na);
+			member.setGender(gd);
+			member.setBirth(birY + birM + birD);
+			member.setPhone(ph);
+			member.setEmail(em1 + em2);
+			member.setAddress(addr);
+			
+			memberDAO.addMember(member);	// 회원을 DB에 저장
+			
+			nextPage = "/loginProcess.do";
+		}
+		
+		else if (command.equals("/deleteMember.do")) {
+			String id = request.getParameter("mid");
+			String sessionId = request.getParameter("sessionId");
+			
+			if (sessionId != null && sessionId.equals(id)) {
+				session.invalidate();
+			}
+			
+			memberDAO.deleteMember(id);
 			
 			nextPage = "/index.jsp";
 		}
